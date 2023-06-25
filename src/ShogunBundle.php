@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace FyrstShogun;
+namespace Fyrst;
 
 use Shopware\Core\Framework\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -9,7 +9,7 @@ use Shopware\Core\Framework\Plugin\Context\InstallContext;
 use Shopware\Core\Framework\Plugin\Context\UninstallContext;
 use Shopware\Storefront\Framework\ThemeInterface;
 
-class FyrstShogun extends Bundle
+class ShogunBundle extends Bundle
 {
     public function build(ContainerBuilder $container): void
     {
