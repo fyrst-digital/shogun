@@ -1,0 +1,23 @@
+{% block shogun_component_footer_column %}
+    <div class="footer-column">
+        {% block shogun_component_footer_column_inner %}
+
+            {% block shogun_component_footer_column_headline %}
+                <div class="footer-column-headline footer-headline"
+                    role="listitem">
+
+                    {% block shogun_component_footer_column_headline_title %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block shogun_component_footer_column_content_container %}
+                <div class="footer-column-content-container">
+
+                    {% block shogun_component_footer_column_content %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endblock %}
+    </div>
+{% endblock %}

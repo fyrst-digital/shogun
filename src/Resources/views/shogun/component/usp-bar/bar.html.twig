@@ -1,0 +1,50 @@
+{% block shogun_component_uspbar %}
+
+    {% if iconPack is not defined %}
+        {% set iconPack = 'default' %}
+    {% endif %}
+    {% if iconNamespace is not defined %}
+        {% set iconNamespace = 'Storefront' %}
+    {% endif %}
+
+    {% set classes = {
+        bar: [
+            "uspbar",
+            "bg-light",
+            "p-2"
+        ],
+        container: [
+            "d-flex", 
+            "justify-content-between"
+        ],
+        item: [
+            "usp-item",
+            "gap-3",
+            "d-flex", 
+            "align-items-center", 
+            "justify-content-start"
+        ],
+        itemLabel: [
+            "usp-item-label"
+        ]
+    } %}
+
+    {% block shogun_component_uspbar_wrapper %}
+        {% if UspItems is not empty %}
+            <div class="{{ classes.bar|join(' ') }}" data-shogun="uspbar-slider">
+                <div class="container">
+                    
+                    {% block shogun_component_uspbar_container %}
+                        <div class="{{ classes.container|join(' ') }}" data-uspbar-slider-container>
+                            {% for usp in UspItems %}
+                                {% block shogun_component_uspbar_item_include %}
+                                    {% sw_include '@Storefront/shogun/component/usp-bar/item.html.twig' %}
+                                {% endblock %}
+                            {% endfor %}
+                        </div>
+                    {% endblock %}
+                </div>
+            </div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

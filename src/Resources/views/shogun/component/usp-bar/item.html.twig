@@ -1,0 +1,16 @@
+{% block shogun_component_uspbar_item %}
+    <div class="{{ classes.item|join(' ') }}">
+        {% block shogun_component_uspbar_item_icon %}
+            {% sw_include '@Storefront/storefront/utilities/icon.html.twig' with {
+                'name': usp.icon,
+                'pack': iconPack,
+                'namespace': iconNamespace
+            } %}
+        {% endblock %}
+        {% block shogun_component_uspbar_item_label %}
+            <div class="{{ classes.item|join(' ') }}">
+                {{ usp.label }}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
