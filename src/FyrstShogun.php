@@ -8,6 +8,6 @@ use Shopware\Core\Framework\Plugin\Context\InstallContext;
 use Shopware\Core\Framework\Plugin\Context\UninstallContext;
 use Shopware\Storefront\Framework\ThemeInterface;
 
-class FyrstShogun extends Plugin
+class FyrstShogun extends Bundle
 {
 }

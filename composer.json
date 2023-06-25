@@ -2,27 +2,20 @@
     "name": "fyrst/shogun",
     "description": "Shogun",
     "version": "0.0.1",
-    "type": "shopware-platform-plugin",
-    "minimum-stability": "stable",
+    "type": "library",
     "license": "MIT",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Fyrst Digital (Robert Bisovski)"
         }
     ],
     "require": {
+        "php": "~8.1.0 || ~8.2.0",
         "shopware/core": "6.5.*"
     },
-    "extra": {
-        "shopware-plugin-class": "FyrstShogun\\FyrstShogun",
-        "label": {
-            "de-DE": "Shogun",
-            "en-GB": "Shogun"
-        },
-        "description": {
-            "de-DE": "Komponenten basiertes Storefront Template",
-            "en-GB": "Component based storefront template"
-        }
+    "config": {
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
