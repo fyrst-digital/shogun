@@ -28,4 +28,4 @@ return [
 If you want to use Shogun as a foundation of your theme you want to ship in the shopware store, you can do this as a composer dependency.  
 ...  
 
-[More info in shopware doc]("https://developer.shopware.com/docs/guides/plugins/plugins/plugin-fundamentals/using-composer-dependencies")
+[More info in shopware doc](https://developer.shopware.com/docs/guides/plugins/plugins/plugin-fundamentals/using-composer-dependencies)
