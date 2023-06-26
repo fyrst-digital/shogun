@@ -1,3 +1,5 @@
+## install as project composer dependency
+
 ## install as static-plugin
 
 ``` bash
