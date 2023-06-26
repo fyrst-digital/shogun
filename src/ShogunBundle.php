@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Fyrst;
+namespace Fyrst\ShogunBundle;
 
 use Shopware\Core\Framework\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
