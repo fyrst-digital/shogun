@@ -13,12 +13,12 @@ composer require fyrst/shogun
 
 ## optional: enable the bundle
 
-It should auto enabled in the `config/bundles.php` if you are using symfony flex. However, sometimes it can be necessary to enable it by yourself. So check your `config/bundle.php` for the follwing line and at it to the array.
+It should auto enabled in the `config/bundles.php` if you are using symfony flex. However, sometimes it can be necessary to enable it by yourself. So check your `config/bundles.php` for the follwing line and add  it to the array.
 
 ``` php
 return [
     ...
-    Fyrst\ShogunBundle\ShogunBBundle::class => ['all' => true]
+    Fyrst\ShogunBundle\ShogunBundle::class => ['all' => true]
     ...
 ];
 ```
