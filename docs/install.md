@@ -18,7 +18,7 @@ It should auto enabled in the `config/bundles.php` if you are using symfony flex
 ``` php
 return [
     ...
-    FyrstShogun\FyrstShogun::class => ['all' => true]
+    Fyrst\ShogunBundle\ShogunBBundle::class => ['all' => true]
     ...
 ];
 ```
