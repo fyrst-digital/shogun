@@ -6,7 +6,7 @@ module.exports = () => {
            alias: { 
                '@fyrst/shogun/plugins': resolve( 
                     join(__dirname, '..', 'src', 'plugins') 
-               ) 
+               )
            } 
        } 
    }; 
