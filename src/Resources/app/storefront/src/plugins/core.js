@@ -2,7 +2,6 @@ const definePlugins = ( plugins ) => {
 
     if (window) {
 
-        
         plugins.forEach(plugin => {
             
             if ( !Object.keys(window.PluginManager.getPluginList()).find((element) => element === plugin.name) ) {
