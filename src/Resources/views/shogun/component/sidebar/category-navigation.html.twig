@@ -27,15 +27,17 @@
                                 {% endblock %}
                             {% endif %}
                             {% block layout_navigation_categories_recoursion %}
-                                {% if level < navigationMaxDepth %}
+                                {#% if level < navigationMaxDepth %#}
                                     {% sw_include '@Storefront/shogun/component/sidebar/category-navigation.html.twig' with {
                                         navigationTree: item.children,
                                         activeResult: activeResult,
                                         level: level + 1
                                     } only %}
-                                {% endif %}
+                                {#% endif %#}
                             {% endblock %}
-                        {% elseif level > 0 %}
+                        </li>
+                    {% elseif level > 0 %}
+                        <li class="category-navigation-entry">
                             {% if item.category.type == 'folder' %}
                                 {% block layout_navigation_categories_text %}
                                     <span class="category-navigation-link">{{ item.category.translated.name }}</span>
