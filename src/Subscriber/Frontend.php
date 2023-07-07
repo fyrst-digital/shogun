@@ -6,8 +6,17 @@ use Shopware\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Shopware\Storefront\Page\Product\ProductPageLoadedEvent;
 
+use Fyrst\ShogunBundle\Service\Storefront\ProductService;
+
 class Frontend implements EventSubscriberInterface
 {
+    private ProductService $storefrontProductService;
+
+    public function __construct(ProductService $storefrontProductService)
+    {
+        $this->storefrontProductService = $storefrontProductService;
+    }
+
     public static function getSubscribedEvents(): array
     {
         return [
@@ -16,29 +25,7 @@ class Frontend implements EventSubscriberInterface
     }
 
     public function onProductPageLoaded(ProductPageLoadedEvent $event): void
-    {
-        $product = $event->getPage()->getProduct();
-        $prices = $product->getPrices();
-        $pricesQuanities = [];
-        
-        foreach ($prices->getElements() as $key => $price) {
-
-            $pricesQuanities[$key] = [
-                'quantityStart' => $price->getQuantityStart(),
-                'quantityEnd' => $price->getQuantityEnd()
-            ];
-        }
-
-        $pricesQuanities = array_unique($pricesQuanities, SORT_REGULAR);
-
-        $product->getCalculatedPrices()->map( function( $value ) use ($pricesQuanities) { 
-
-            foreach ($pricesQuanities as $key => $price) {
-
-                if ($price['quantityEnd'] === $value->getQuantity()) {
-                    $value->addArrayExtension('quantities', $price);
-                }
-            }
-        });
+    {        
+        $this->storefrontProductService->pricesQuanitiesExtension( $event->getPage()->getProduct() );
     }
 }
