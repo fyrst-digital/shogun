@@ -4,15 +4,15 @@ namespace Fyrst\ShogunBundle;
 
 use Shopware\Core\Framework\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Shopware\Core\Framework\Plugin;
-use Shopware\Core\Framework\Plugin\Context\InstallContext;
-use Shopware\Core\Framework\Plugin\Context\UninstallContext;
-use Shopware\Storefront\Framework\ThemeInterface;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 class ShogunBundle extends Bundle
 {
     public function build(ContainerBuilder $container): void
     {
         parent::build($container);
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/DependencyInjection'));
+        $loader->load('services.xml');
     }
 }
