@@ -1,7 +1,26 @@
 {% block shogun_benefits_settings %}
     <sw-page>
+
+        <template #smart-bar-header>
+            <h2>
+                {{ $tc('sw-settings.index.title') }}
+                <sw-icon
+                    name="regular-chevron-right-xs"
+                    small
+                />
+                {{ $tc('shogun.uspbarModule') }}
+            </h2>
+        </template>
+
         <template slot="content">
-            <h2>Hello world!</h2>
+            <sw-system-config
+                ref="systemConfig"
+                sales-channel-switchable
+                domain="ShogunBundle"
+                >
+
+
+            </sw-system-config>
         </template>
     </sw-page>
 {% endblock %}

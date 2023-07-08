@@ -1,5 +1,5 @@
 export default {
-    color: '#ff3d58',
+    color: '#9AA8B5',
     icon: 'solid-spinner-star',
     label: 'shogun.uspbarModule'
 }

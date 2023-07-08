@@ -6,7 +6,7 @@ Shopware.Module.register('shogun-uspbar', {
     title: meta.label,
     description: 'shogun.uspbarModule',
     color: meta.color,
-    icon: meta.icon,
+    icon: 'regular-cog',
     navigation: [{
         id: 'shogun-uspbar-settings',
         label: meta.label,
