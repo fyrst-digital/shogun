@@ -1,6 +1,6 @@
 import meta from "./meta";
 
-Shopware.Module.register('shogun-uspbar', {
+Shopware.Module.register('shogun-benefits', {
     type: 'plugin',
     name: 'shogunUspbar',
     title: meta.label,
@@ -8,23 +8,23 @@ Shopware.Module.register('shogun-uspbar', {
     color: meta.color,
     icon: 'regular-cog',
     navigation: [{
-        id: 'shogun-uspbar-settings',
+        id: 'shogun-benefits-settings',
         label: meta.label,
         color: meta.color,
-        path: 'shogun.uspbar.settings',
+        path: 'shogun.benefits.settings',
         icon: meta.icon,
         parent: 'sw-settings',
         position: 100
     }],
     settingsItem: [{
         group: 'shop', // shop, system, plugins
-        to: 'shogun.uspbar.settings',
+        to: 'shogun.benefits.settings',
         icon: meta.icon, // nedds to be changed
         name: 'shogun.uspbarEntry'
     }],
     routes: {
         settings: {
-            component: 'shogun-uspbar-settings',
+            component: 'shogun-benefits-settings',
             path: 'settings',
             meta: {
                 parentPath: 'sw.settings.index.shop'

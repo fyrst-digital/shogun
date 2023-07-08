@@ -1,5 +1,6 @@
-import './component/shogun-uspbar-settings';
-import './module/uspbar/index.js';
+import './component/shogun-benefits-selection';
+import './component/shogun-benefits-settings';
+import './module/benefits/index.js';
 import enGB from './snippet/en-GB.json';
 import deDE from './snippet/de-DE.json';
 

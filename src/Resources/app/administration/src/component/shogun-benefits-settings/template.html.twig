@@ -12,15 +12,22 @@
             </h2>
         </template>
 
+        <template #smart-bar-actions>
+            <sw-button
+                variant="primary"
+                class="sw-extension-config__save-action"
+                @click.prevent="onSave"
+            >
+                {{ $tc('global.default.save') }}
+            </sw-button>
+        </template>
+
         <template slot="content">
             <sw-system-config
                 ref="systemConfig"
                 sales-channel-switchable
                 domain="ShogunBundle.benefits"
-                >
-
-
-            </sw-system-config>
+                />
         </template>
     </sw-page>
 {% endblock %}

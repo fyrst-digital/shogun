@@ -6,5 +6,11 @@
         <input-field  type="text">
             <name>benefit1</name>
         </input-field>
+
+        <component name="shogun-benefits-selection">
+            <name>selection</name>
+            <label>Choose a product for the plugin configuration</label>
+            <defaultValue>gdsgsdfgf</defaultValue>
+        </component>
     </card>
 </config>
