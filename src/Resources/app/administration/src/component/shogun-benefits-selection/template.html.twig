@@ -1,6 +1,32 @@
 {% block shogun_benefits_settings %}
-    <div :key="'lul'">
+    <div>
     
-        {{ value }}
+        <sw-container columns="1fr 2fr auto" gap="0 1rem">
+            <template v-if="selection.length > 0" v-for="(item, index) of selection">
+                <sw-text-field
+                    v-model="item.icon" />
+
+                <sw-text-field
+                    v-model="item.text" />
+
+                <div>
+                    <button @click="removeItem(index)">
+                        Remove
+                    </button>
+                </div>
+            </template>
+            <sw-text-field
+                v-model="newItem.icon" />
+
+            <sw-text-field
+                v-model="newItem.text" 
+                :class="[newItem.error ? 'has-error' : null]" />
+
+            <div>
+                <button @click="addItem(newItem)">
+                    Add
+                </button>
+            </div>
+        </sw-container>
     </div>
 {% endblock %}
