@@ -1,5 +1,14 @@
 {
     "shogun": {
-        "uspbarModule": "Benefits"
+        "uspbarModule": "Benefits",
+        "benefits": {
+            "icon": "Icon",
+            "description": "Description",
+            "add": "Add",
+            "remove": "Remove",
+            "error": {
+                "missingDescription": "The Description for your benefit is missing"
+            }
+        }
     }
 }

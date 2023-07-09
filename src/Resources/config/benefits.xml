@@ -2,10 +2,10 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
     <card>
+        <title>Benefits selection</title>
+        <title lang="de-DE">Vorteil-Auswahl</title>
         <component name="shogun-benefits-selection">
             <name>selection</name>
-            <label>Choose a product for the plugin configuration</label>
-            <defaultValue>gdsgsdfgf</defaultValue>
         </component>
     </card>
 </config>

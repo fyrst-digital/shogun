@@ -1,5 +1,14 @@
 {
     "shogun": {
-        "uspbarModule": "Vorteile"
+        "uspbarModule": "Vorteile",
+        "benefits": {
+            "icon": "Icon",
+            "description": "Beschreibung",
+            "add": "Hinzufügen",
+            "remove": "Entfernen",
+            "error": {
+                "missingDescription": "Die Beschreibung zu Ihrem Vorteil fehlt"
+            }
+        }
     }
 }

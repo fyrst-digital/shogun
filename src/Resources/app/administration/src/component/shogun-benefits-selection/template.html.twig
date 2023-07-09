@@ -1,32 +1,47 @@
 {% block shogun_benefits_settings %}
     <div>
     
-        <sw-container columns="1fr 2fr auto" gap="0 1rem">
-            <template v-if="selection.length > 0" v-for="(item, index) of selection">
+        <sw-container 
+            columns="1fr 2fr auto" 
+            gap="0 1rem" 
+            style="align-items:flex-start;">
+            
+            <template 
+                v-if="selection.length > 0" 
+                v-for="(item, index) of selection">
+
                 <sw-text-field
                     v-model="item.icon" />
 
                 <sw-text-field
                     v-model="item.text" />
 
-                <div>
-                    <button @click="removeItem(index)">
-                        Remove
-                    </button>
-                </div>
+                <sw-button
+                    size="large"
+                    :block="true"
+                    @click="removeItem(index)">
+                    {{ $tc('shogun.benefits.remove') }}
+                </sw-button>
             </template>
+
             <sw-text-field
-                v-model="newItem.icon" />
+                v-model="newItem.icon"
+                :placeholder="$tc('shogun.benefits.icon')" />
 
             <sw-text-field
                 v-model="newItem.text" 
-                :class="[newItem.error ? 'has-error' : null]" />
+                :placeholder="$tc('shogun.benefits.description')" 
+                :class="[newItem.error ? 'has--error' : null]" />
 
-            <div>
-                <button @click="addItem(newItem)">
-                    Add
-                </button>
-            </div>
+
+            <sw-button
+                variant="primary"
+                size="large"
+                :block="true"
+                @click="addItem(newItem)">
+                {{ $tc('shogun.benefits.add') }}
+            </sw-button>
+
         </sw-container>
     </div>
 {% endblock %}
