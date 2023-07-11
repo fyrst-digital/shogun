@@ -1,0 +1,16 @@
+{% block shogun_component_contact_button %}
+    {% set modalOptions = {
+        'modalClass': 'modal-xl'
+    } %}
+
+    {% block shogun_component_contact_button_element %}
+        <a 
+            href="{{ path('frontend.cms.page', { id: config('core.basicInformation.contactPage') }) }}" 
+            data-ajax-modal="true"
+            data-ajax-modal-options="{{modalOptions|json_encode}}"
+            data-url="{{ path('frontend.cms.page', { id: config('core.basicInformation.contactPage') }) }}"
+            class="btn">
+            {% block shogun_component_contact_button_inner %}Kontakt{% endblock %}
+        </a>
+    {% endblock %}
+{% endblock %}
