@@ -9,6 +9,7 @@
             "error": {
                 "missingDescription": "The Description for your benefit is missing"
             }
-        }
+        },
+        "newsletterModule": "Newsletter Subscription"
     }
 }

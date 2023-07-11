@@ -9,6 +9,7 @@
             "error": {
                 "missingDescription": "Die Beschreibung zu Ihrem Vorteil fehlt"
             }
-        }
+        },
+        "newsletterModule": "Newsletter Anmeldung"
     }
 }

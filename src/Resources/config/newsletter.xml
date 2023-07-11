@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Link newsletter page</title>
+        <title lang="de-DE">Newsletterseite verknüpfen</title>
+        <component name="sw-entity-single-select">
+            <name>newsletterLandingpage</name>
+            <entity>landing_page</entity>
+            <label>Select Landingpage</label>
+            <label lang="de-DE">Landingpage auswählen</label>
+            <helpText>Verknüpfe eine Landingpage mit der Newsletter Schnellanmeldung. Lege vorher eine Landingpage unter <b>Kategorien → Landingpages</b> an und verknüpfe diese mit einem entsprechenden Erlebniswelten Layout.</helpText>
+            <helpText lang="de-DE">Verknüpfe eine Landingpage mit der Newsletter Schnellanmeldung. Lege vorher eine Landingpage unter <b>Kategorien → Landingpages</b> an und verknüpfe diese mit einem entsprechenden Erlebniswelten Layout.</helpText>
+        </component>
+    </card>
+</config>
