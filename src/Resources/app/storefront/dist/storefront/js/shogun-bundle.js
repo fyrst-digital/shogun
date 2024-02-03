@@ -1,1 +1,1 @@
-(self.webpackChunk=self.webpackChunk||[]).push([["shogun-bundle"],{9071:()=>{}},e=>{var s;s=9071,e(e.s=s)}]);
+(self.webpackChunk=self.webpackChunk||[]).push([["shogun-bundle"],{7872:()=>{}},e=>{var s;s=7872,e(e.s=s)}]);
