@@ -1,0 +1,6 @@
+:root {
+    // generate gaps
+    @each $key, $value in $gaps {
+        --gap-#{$key}: #{$value};
+    }
+}
