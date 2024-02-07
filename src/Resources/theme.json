@@ -1,0 +1,11 @@
+{
+    "name": "Shogun",
+    "author": "Fyrst Digital",
+    "description": {
+      "en-GB": "Default theme of Shopware 6",
+      "de-DE": "Standard Theme von Shopware 6"
+    },
+    "style": [
+        "app/storefront/src/scss/base.scss"
+    ]
+}
