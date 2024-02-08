@@ -1,0 +1,40 @@
+{% extends '@Storefront/storefront/layout/header/actions/wishlist-widget.html.twig' %}
+
+{% block layout_header_actions_wishlist_widget %}
+    {% set showCounter = showCounter ?? true %}
+    {% set wishlistStorageOptions = {
+        listPath: path('frontend.wishlist.product.list'),
+        mergePath: path('frontend.wishlist.product.merge'),
+        pageletPath: path('frontend.wishlist.product.merge.pagelet'),
+    } %}
+    {% set wishlistWidgetOptions = { showCounter: showCounter } %}
+
+    {% block layout_header_actions_wishlist_widget_icon %}
+        {% if showCounter %}
+            <span class="header-action-icon header-wishlist-icon">
+                {% block layout_header_actions_wishlist_widget_icon_element %}
+                    {% sw_icon 'heart-straight' style {
+                        'namespace': 'ShogunBundle',
+                        'pack': 'phosphor'
+                    } %}
+                {% endblock %}
+
+                {% block layout_header_actions_wishlist_widget_badge %}
+                    <span class="badge badge-sm bg-primary header-action-badge header-wishlist-badge"
+                        id="wishlist-basket"
+                        data-wishlist-storage="true"
+                        data-wishlist-storage-options="{{ wishlistStorageOptions|json_encode }}"
+                        data-wishlist-widget="true"
+                        data-wishlist-widget-options="{{ wishlistWidgetOptions|json_encode }}"
+                    ></span>
+                {% endblock %}
+            </span>
+        {% endif %}
+    {% endblock %}
+
+    {% block layout_header_actions_wishlist_widget_label %}
+        <span class="header-action-label">
+            {{ 'header.wishlist'|trans|striptags }}
+        </span>
+    {% endblock %}
+{% endblock %}

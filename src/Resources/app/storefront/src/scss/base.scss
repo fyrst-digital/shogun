@@ -1,5 +1,2 @@
 @import "mixins", "variables", "root";
-
-body {
-    content: 'ShogunBase bohh--........';
-}
+@import "component", "layout";

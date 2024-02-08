@@ -9,3 +9,19 @@ $gaps: (
     '2xl': 40px,
     '3xl': 64px
 ) !default;
+
+$fontSizes: (
+    'xs': 12px,
+    'sm': 14px,
+    'default': 16px,
+    'md': 20px,
+    'lg': 24px,
+    'xl': 32px,
+) !default;
+
+$iconSizes: (
+    'sm': 16px,
+    'default': 20px,
+    'md': 24px,
+    'lg': 32px,
+) !default;

@@ -1,0 +1,26 @@
+{% extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
+
+{% block utilities_offcanvas_close_icon %}
+    {% sw_icon 'x' style { 'size': 'sm' } %}
+{% endblock %}
+
+{% block utilities_offcanvas_close_text %}
+    <div class="offcanvas-header-content">
+        {% block component_offcanvas_cart_header_title %}
+            {{ "checkout.cartHeader"|trans|sw_sanitize }} 
+        {% endblock %}
+
+        {% block component_offcanvas_cart_header_count %}
+            {% if page.cart.lineItems|length > 0 %}
+                <div class="badge badge-sm bg-dark">
+                    {{ "checkout.itemCounter"|trans({'%count%': page.cart.lineItems|length})|sw_sanitize }}
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block component_offcanvas_cart_header %}
+    {% block component_offcanvas_cart_header_item_counter %}
+    {% endblock %}
+{% endblock %}

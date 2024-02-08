@@ -1,0 +1,7 @@
+.alert {
+    --alert-padding-x: var(--gap);
+    --alert-padding-y: var(--gap);
+    --alert-border-width: 1px;
+    --alert-border: var(--alert-border-width) solid var(--alert-border-color);
+    --alert-border-radius: var(--border-radius);
+}

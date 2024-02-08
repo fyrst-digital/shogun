@@ -1,0 +1,23 @@
+.btn {
+    --btn-gap: var(--gap);
+    --btn-icon-color: var(--btn-color);
+    --btn-icon-size: var(--icon-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--btn-gap);
+
+    .icon {
+        @include iconSize(var(--btn-icon-size));
+        color: var(--btn-icon-color);
+        transition: all .15s;
+    }
+}
+
+.btn-sm, 
+.btn-group-sm > .btn {
+    --input-padding-x: var(--gap-sm);
+    --input-padding-y: var(--gap-xs);
+    --btn-font-size: var(--font-size-sm);
+    --btn-icon-size: var(--font-size-sm);
+}

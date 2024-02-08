@@ -1,0 +1,11 @@
+{% extends '@Storefront/storefront/component/line-item/element/quantity.html.twig' %}
+
+{% block component_line_item_quantity_inner %}
+    {% block component_line_item_quantity_label %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block component_line_item_quantity_select_wrapper %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

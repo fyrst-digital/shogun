@@ -1,0 +1,34 @@
+{% extends '@Storefront/storefront/layout/header/actions/account-widget.html.twig' %}
+
+{% block layout_header_actions_account_widget_dropdown_button %}
+    <button class="btn account-menu-btn header-actions-btn"
+            type="button"
+            id="accountWidget"
+            {# @deprecated tag:v6.6.0 - Registering plugin on selector "data-offcanvas-account-menu" is deprecated. Use "data-account-menu" instead #}
+            {% if feature('v6.6.0.0') %}
+                data-account-menu="true"
+            {% else %}
+                data-offcanvas-account-menu="true"
+            {% endif %}
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="{{ "account.myAccount"|trans|striptags }}"
+            title="{{ "account.myAccount"|trans|striptags }}">
+        {% block layout_header_actions_account_widget_icon %}
+            <span class="header-action-icon header-account-icon">
+                {% block layout_header_actions_account_widget_icon_element %}
+                    {% sw_icon 'user' style {
+                        'namespace': 'ShogunBundle',
+                        'pack': 'phosphor'
+                    } %}
+                {% endblock %}
+            </span>
+        {% endblock %}
+        {% block layout_header_actions_account_widget_label %}
+            <span class="header-action-label">
+                {{ "account.myAccount"|trans|striptags }}
+            </span>
+        {% endblock %}
+    </button>
+{% endblock %}

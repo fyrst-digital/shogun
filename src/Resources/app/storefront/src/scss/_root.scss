@@ -1,4 +1,6 @@
 :root {
     // generate gaps
     @include cssVarByMap(gap, $gaps);
+    @include cssVarByMap(font-size, $fontSizes);
+    @include cssVarByMap(icon-size, $iconSizes);
 }
