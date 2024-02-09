@@ -11,3 +11,31 @@
         {% endblock %}
     </div>
 {% endblock %}
+
+{% block page_checkout_cart_add_promotion_input_group %}
+    {% block page_checkout_cart_add_promotion_label %}
+        {{ parent() }}
+    {% endblock %}
+
+    <div class="input-group checkout-aside-add-code">
+        {% block page_checkout_cart_add_promotion_input %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block page_checkout_cart_add_promotion_submit %}
+            <button class="btn btn-success"
+                    type="submit"
+                    id="addPromotion">
+                {% block page_checkout_cart_add_promotion_submit_icon %}
+                    {% sw_icon 'ticket' style {
+                        'namespace': 'ShogunBundle',
+                        'pack': 'phosphor'
+                    } %}
+                {% endblock %}
+                {% block page_checkout_cart_add_promotion_submit_snippet %}
+                    {{ "general.action.redeem"|trans }}
+                {% endblock %}
+            </button>
+        {% endblock %}
+    </div>
+{% endblock %}

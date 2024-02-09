@@ -23,3 +23,42 @@
         margin: 0 !important;
     }
 }
+
+.checkout-aside-summary-list {
+    --summary-list-columns: minmax(0, 1fr) auto;
+    --summary-list-gap: var(--gap-xs);
+    --summary-list-mb: var(--gap-xl);
+    display: grid;
+    grid-template-columns: var(--summary-list-columns);
+    grid-row-gap: var(--summary-list-gap);
+    margin-bottom: var(--summary-list-mb);
+}
+
+.checkout-aside-summary-label,
+.checkout-aside-summary-value {
+    --summary-item-padding-y: 0;
+    --summary-item-padding-x: 0;
+    --summary-item-color: inherit;
+    --summary-item-font-size: inherit;
+    width: auto;
+    margin: 0 !important;
+    padding: var(--summary-item-padding-y) var(--summary-item-padding-x) !important;
+    color: var(--summary-item-color);
+    font-size: var(--summary-item-font-size);
+}
+
+.checkout-aside-summary-total {
+    border: 0 none;
+}
+
+.checkout-aside-actions {
+    --checkout-actions-gap: var(--gap-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--checkout-actions-gap);
+
+    .checkout-aside-action {
+        flex: 1 1 100%;
+        margin: 0;
+    }
+}
