@@ -1,0 +1,23 @@
+[data-quantity-selector] {
+    @include cssVarsQuantityField();
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+
+    > .btn {
+        --btn-padding-y: var(--quantity-field-btn-padding);
+        --btn-padding-x: var(--quantity-field-btn-padding);
+
+        .icon {
+            --btn-icon-size: var(--quantity-field-icon-size);
+        }
+    }
+
+    > .form-control {
+        --input-padding-y: var(--quantity-field-input-padding);
+        --input-font-size: var(--quantity-field-font-size);
+        --input-hover-border-color: var(--quantity-field-border-color);
+        margin: 0 !important;
+        width: auto !important;
+        min-width: var(--quantity-field-input-min-width);
+    }
+}

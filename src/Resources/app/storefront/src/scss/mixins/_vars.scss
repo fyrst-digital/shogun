@@ -7,3 +7,12 @@
         }
     }
 }
+
+@mixin cssVarsQuantityField() {
+    --quantity-field-border-color: var(--border-color);
+    --quantity-field-btn-padding: var(--gap-sm);
+    --quantity-field-input-padding: var(--gap-xs);
+    --quantity-field-input-min-width: 42px;
+    --quantity-field-font-size: var(--font-size-sm);
+    --quantity-field-icon-size: var(--icon-size-sm);
+}
