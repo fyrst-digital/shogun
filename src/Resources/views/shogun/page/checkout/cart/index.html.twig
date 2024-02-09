@@ -1,0 +1,13 @@
+{% extends '@Storefront/storefront/page/checkout/cart/index.html.twig' %}
+
+{% block page_checkout_cart_product_table %}
+    <div class="card checkout-product-table cart-table">
+        {% block page_checkout_cart_table_header %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block page_checkout_cart_table_items %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}

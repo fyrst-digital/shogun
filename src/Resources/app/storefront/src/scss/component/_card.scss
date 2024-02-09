@@ -1,0 +1,7 @@
+.card {
+    --card-color: inherit;
+}
+.card-title {
+    line-height: inherit;
+    color: var(--card-color);
+}

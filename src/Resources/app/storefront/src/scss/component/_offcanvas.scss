@@ -1,0 +1,47 @@
+// offcanvas cart
+.offcanvas-cart-items {
+    margin: 0;
+    border-color: var(--border-color);
+}
+.offcanvas-summary {
+    --padding-x: var(--gap-md);
+    --padding-y: 0;
+    --columns: minmax(0, 1fr) auto;
+    --summary-list-gap: var(--gap-sm);
+    display: grid;
+    grid-template-columns: var(--columns);
+    grid-gap: var(--summary-list-gap);
+    margin: 0;
+    padding: var(--padding-x) var(--padding-y);
+
+    .shipping-label,
+    .shipping-value,
+    .summary-label,
+    .summary-value {
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .offcanvas-shipping-preference {
+        max-height: none;
+        grid-column: 1 / 3;
+    }
+
+    .offcanvas-shipping-preference--hidden {
+        display: none;
+    }
+}
+.offcanvas-summary-list,
+.offcanvas-shipping-info {
+    display: contents;
+}
+.offcanvas-cart-promotion-form {
+    margin: 0;
+}
+.offcanvas-cart-actions {
+    --list-gap: var(--gap-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--list-gap);
+}

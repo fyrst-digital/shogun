@@ -1,0 +1,41 @@
+{% extends '@Storefront/storefront/component/checkout/cart-header.html.twig' %}
+
+{% block component_checkout_cart_header_element %}
+    <div class="card-title cart-table-header">
+        {% block component_checkout_cart_header_product_info %}
+            <div class="cart-header-info">
+                {{ 'checkout.cartHeaderInfo'|trans|sw_sanitize }}
+            </div>
+        {% endblock %}
+
+        {% block component_checkout_cart_header_quantity %}
+            <div class="cart-header-quantity">
+                {{ 'checkout.cartHeaderQuantity'|trans|sw_sanitize }}
+            </div>
+        {% endblock %}
+
+        {% block component_checkout_cart_header_unit_price %}
+            {% if showTaxPrice %}
+                <div class="cart-header-tax-price">
+                    {% if context.salesChannel.taxCalculationType == 'horizontal' %}
+                        {% if context.taxState == 'gross' %}
+                            {{ 'checkout.cartHeaderTaxIncludeVat'|trans|sw_sanitize }}
+                        {% else %}
+                            {{ 'checkout.cartHeaderTaxExcludeVat'|trans|sw_sanitize }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="cart-header-unit-price">
+                    {{ 'checkout.cartHeaderUnitPrice'|trans|sw_sanitize }}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block component_checkout_cart_header_total_price %}
+            <div class="cart-header-total-price">
+                {{ 'checkout.cartHeaderTotalPrice'|trans|sw_sanitize }}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+.cart-table-header {
+    --cart-table-header-display: none;
+    --cart-table-header-columns: 1fr 120px 120px 120px;
+    --cart-table-header-gap: var(--gap);
+    --cart-table-header-display: none;
+    grid-template-columns: var(--cart-table-header-columns);
+    grid-gap: var(--cart-table-header-gap);
+    display: var(--cart-table-header-display);
+    align-items: center;
+
+    @include media-breakpoint-up( xl ) {
+        --cart-table-header-display: grid;
+    }
+}
+.cart-header-quantity {
+    text-align: left;
+}
