@@ -1,0 +1,25 @@
+.checkout-container {
+    --checkout-columns: 1fr;
+    --checkout-gap: var(--gap-3xl);
+    --checkout-aside-width: 280px;
+    display: grid !important;
+    grid-template-columns: var(--checkout-columns);
+    grid-gap: var(--checkout-gap);
+    margin: 0 !important;
+
+    @include media-breakpoint-up( xl ) {
+        --checkout-columns: minmax(0, 1fr) var(--checkout-aside-width);
+    }
+
+    @include media-breakpoint-up( xxl ) {
+        --checkout-aside-width: 320px;
+    }
+
+    .checkout-main,
+    .checkout-aside {
+        width: auto !important;
+        flex-basis: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
