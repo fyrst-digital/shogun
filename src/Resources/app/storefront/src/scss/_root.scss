@@ -1,6 +1,17 @@
 :root {
-    // generate gaps
     @include cssVarByMap(gap, $gaps);
     @include cssVarByMap(font-size, $fontSizes);
     @include cssVarByMap(icon-size, $iconSizes);
+    /** @todo put in mixin */
+    --page-bg: ;
+    --header-bg: var(--page-bg);
+    --footer-bg: var(--page-bg);
+    --input-padding-x: var(--gap);
+    --input-padding-y: 10px;
+    --input-font-size: var(--font-size);
+    --input-border-color: var(--border-color);
+    --input-border-radius: var(--border-radius);
+    --input-line-height: var(--body-line-height);
+    --input-icon-color: var(--primary);
+    --input-hover-border-color: var(--primary);
 }

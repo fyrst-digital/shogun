@@ -21,3 +21,20 @@
         min-width: var(--quantity-field-input-min-width);
     }
 }
+
+.form-select,
+.form-control {
+    font-size: var(--input-font-size);
+    line-height: var(--input-line-height);
+    padding: var(--input-padding-y) var(--input-padding-x);
+    border-radius: var(--input-border-radius);
+    
+    &:hover {
+        border-color: var(--input-hover-border-color);
+    }
+}
+
+.form-select {
+    background-position: right var(--input-padding-x) center;
+    cursor: pointer;
+}
