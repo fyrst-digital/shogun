@@ -1,5 +1,11 @@
 {% extends '@Storefront/storefront/page/checkout/address/index.html.twig' %}
 
+{% block page_checkout_address %}
+    <div class="checkout-register">
+        {{ parent() }}
+    </div>
+{% endblock %}
+
 {% block page_checkout_address_login_toggle %}
 {% endblock %}
 

@@ -18,4 +18,12 @@
     --form-columns: ;
     --form-gap: var(--gap-md);
     --form-group-gap: var(--gap-xs);
+    // line-item
+    --line-item-columns: minmax(0, 1fr);
+    --line-item-gap: var(--gap);
+    --line-item-padding-x: 0;
+    --line-item-padding-y: var(--gap-lg);
+    --line-item-border-color: var(--border-color);
+    --line-item-label-color: var(--body-color);
+    --line-item-label-size: var(--font-size);
 }

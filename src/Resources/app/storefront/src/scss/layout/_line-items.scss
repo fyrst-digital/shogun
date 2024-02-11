@@ -1,16 +1,9 @@
 .line-item {
-    --line-item-columns: minmax(0, 1fr);
-    --line-item-gap: var(--gap);
-    --line-item-padding-x: 0;
-    --line-item-padding-y: var(--gap-lg);
-    --line-item-border-color: var(--border-color);
-    --line-item-label-color: var(--body-color);
-    --line-item-label-size: var(--font-size);
     /** @todo replace static value with css var */
     --line-item-label-weight: 500;
     display: grid;
     grid-gap: var(--line-item-gap);
-    padding: var(--line-item-padding-y) var(--line-item-padding-x);
+    padding: 0 var(--line-item-padding-x) var(--line-item-padding-y);
     border-color: var(--line-item-border-color);
     grid-template-columns: var(--line-item-columns);
 
@@ -44,6 +37,7 @@
     display: grid;
     grid-template-columns: var(--image-col-width) minmax(0, 1fr);
     grid-gap: var(--line-item-gap);
+    margin: 0;
 }
 
 .line-item-details-container {
@@ -53,6 +47,12 @@
 .line-item-label {
     display: inline-flex;
     margin-bottom: var(--gap-sm);
+}
+
+.line-item-info-img {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .line-item-img-container {
@@ -72,12 +72,15 @@
     margin: 0;
     display: grid !important;
     grid-template-columns: var(--columns);
+    gap: var(--line-item-gap);
     align-items: center;
 }
 
 .line-item-quantity-label {
     margin: 0;
+    padding: 0;
     width: auto !important;
+    text-align: right;
 }
 
 .line-item-quantity-select-wrapper {

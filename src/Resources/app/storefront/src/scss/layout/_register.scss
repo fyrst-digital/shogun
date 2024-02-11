@@ -1,17 +1,3 @@
-.register-personal {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--form-gap);
-
-    .form-group {
-    }
-}
-
-.register-guest-control {
-    flex: 1 1 100%;
-    margin: 0;
-}
-
 .register-form {
 
     .row {
@@ -38,4 +24,30 @@
             }
         }
     }
+}
+
+.checkout-register {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.register-personal,
+.register-billing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--form-gap);
+}
+
+.register-billing {
+    
+    .form-group {
+        @include media-breakpoint-up( md ) {
+            flex-basis: calc(50% - var(--form-gap));
+        }
+    }
+}
+
+.register-guest-control {
+    flex: 1 1 100%;
+    margin: 0;
 }

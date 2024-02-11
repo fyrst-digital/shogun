@@ -24,6 +24,11 @@
     }
 }
 
+.checkout-aside-container {
+    position: sticky;
+    top: 40px;
+}
+
 .checkout-aside-summary-list {
     --summary-list-columns: minmax(0, 1fr) auto;
     --summary-list-gap: var(--gap-xs);

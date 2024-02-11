@@ -1,5 +1,8 @@
 // offcanvas cart
 .offcanvas-cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--line-item-padding-y);
     margin: 0;
     border-color: var(--border-color);
 }

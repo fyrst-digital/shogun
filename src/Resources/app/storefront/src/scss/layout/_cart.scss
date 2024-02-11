@@ -1,3 +1,9 @@
+.cart-table {
+    display: flex;
+    flex-direction: column;
+    gap: var(--line-item-gap);
+}
+
 .cart-table-header {
     --cart-table-header-display: none;
     --cart-table-header-columns: 1fr 120px 120px 120px;
