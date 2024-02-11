@@ -1,0 +1,65 @@
+{% extends '@Storefront/storefront/component/account/login.html.twig' %}
+
+{% block component_account_login %}
+    <div class="card login-card">
+        {% block component_account_login_header %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block component_account_login_body %}
+            <div class="card-body">
+                {% block component_account_login_form_error %}
+                    {{ parent() }}
+                {% endblock %}
+
+                {% block component_account_login_form_description %}
+                    {{ parent() }}
+                {% endblock %}
+
+                {% block component_account_login_form %}
+                    <form class="login-form"
+                        action="{{ path('frontend.account.login') }}"
+                        method="post"
+                        data-form-validation="true">
+
+                        {% block component_account_login_form_redirect %}
+                            {{ parent() }}
+                        {% endblock %}
+
+                        {% block component_account_login_form_fields %}
+
+                            {% block component_account_login_form_mail %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block component_account_login_form_password %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                        {% endblock %}
+                    </form>
+
+                    {% block component_account_login_actions %}
+                        <div class="login-submit login-actions">
+                            {% block component_account_login_submit %}
+                                <button type="submit"
+                                        class="btn btn-primary login-action">
+                                    {{ "account.loginSubmit"|trans|sw_sanitize }}
+                                </button>
+                            {% endblock %}
+
+                            {% block component_account_login_password_recover %}
+                                {% block component_account_login_password_recover_link %}
+                                    <a href="{{ seoUrl('frontend.account.recover.page') }}"
+                                        class="btn btn-link login-action action-recover-password">
+                                        {{ 'account.loginPasswordRecover'|trans }}
+                                    </a>
+                                {% endblock %}
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

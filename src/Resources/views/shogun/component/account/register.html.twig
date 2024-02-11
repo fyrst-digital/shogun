@@ -1,0 +1,57 @@
+{% extends '@Storefront/storefront/component/account/register.html.twig' %}
+
+{% block component_account_register_personal_password %}
+    <div class="form-group group-password js-form-field-toggle-guest-mode">
+        {% block component_account_register_personal_password_label %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block component_account_register_personal_password_input %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block component_account_register_personal_password_description %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block component_account_register_personal_password_input_error %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block component_account_register_personal_password_confirmation %}
+    <div class="form-group group-password-confirm js-form-field-toggle-guest-mode">
+        {% block component_account_register_personal_password_confirmation_label %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block component_account_register_personal_password_confirmation_input %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block component_account_register_personal_password_confirmation_input_error %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block component_account_register_personal_account_fields %}
+    <div class="row">
+        <div class="form-group group-mail">
+            {{ formGroupMail }}
+        </div>
+
+        {% if config('core.loginRegistration.requireEmailConfirmation') %}
+            <div class="form-group group-mail-confirm">
+                {{ formGroupMailConfirmation }}
+            </div>
+        {% endif %}
+
+        {{ formGroupPassword }}
+
+        {% if config('core.loginRegistration.requirePasswordConfirmation') %} 
+            {{ formGroupPasswordConfirmation }}
+        {% endif %}
+    </div>
+{% endblock %}

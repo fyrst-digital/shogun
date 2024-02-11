@@ -1,0 +1,35 @@
+.login-form {
+    --padding-y: var(--gap-md);
+    --padding-x: 0;
+    --margin-b: var(--gap-sm);
+    --form-columns: 1fr;
+    display: grid;
+    grid-template-columns: var(--form-columns);
+    gap: var(--form-gap);
+    padding: var(--padding-y) var(--padding-x);
+    margin-bottom: var(--margin-b);
+
+
+    @include media-breakpoint-up( md ) {
+        --form-columns: 1fr 1fr;
+    }
+
+    .form-group {
+        width: auto !important;
+    }
+}
+
+.login-form-description {
+    margin: 0;
+}
+
+.login-actions {
+    --list-gap: var(--gap-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--list-gap);
+
+    @include media-breakpoint-up( lg ) {
+        flex-direction: row;
+    }
+}
