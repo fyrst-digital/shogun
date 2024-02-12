@@ -5,6 +5,7 @@
 }
 
 .cart-table-header {
+    --card-title-font-size: var(--font-size);
     --cart-table-header-display: none;
     --cart-table-header-columns: 1fr 120px 120px 120px;
     --cart-table-header-gap: var(--gap);

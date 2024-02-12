@@ -3,6 +3,8 @@
     @include cssVarByMap(font-size, $fontSizes);
     @include cssVarByMap(icon-size, $iconSizes);
     /** @todo put in mixin */
+    --padding-y: ;
+    --padding-x: ;
     --page-bg: ;
     --header-bg: var(--page-bg);
     --footer-bg: var(--page-bg);
@@ -26,4 +28,12 @@
     --line-item-border-color: var(--border-color);
     --line-item-label-color: var(--body-color);
     --line-item-label-size: var(--font-size);
+    // checkout-methods
+    --checkout-method-title-color: var(--body-color);
+    --checkout-method-title-weight: 600;
+    --checkout-method-bg: var(--dark);
+    --checkout-method-border-radius: var(--border-radius-xl);
+    --checkout-method-border-color: var(--dark);
+    --checkout-method-hover-border-color: var(--gray-700);
+    --checkout-method-gap: var(--gap-xs);
 }

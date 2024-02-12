@@ -1,7 +1,11 @@
 .card {
-    --card-color: inherit;
+    --card-title-color: inherit;
+    --card-title-font-size: var(--font-size-md);
+    --card-title-font-weight: 500;
 }
 .card-title {
     line-height: inherit;
-    color: var(--card-color);
+    color: var(--card-title-color);
+    font-size: var(--card-title-font-size);
+    font-weight: var(--card-title-font-weight);
 }
