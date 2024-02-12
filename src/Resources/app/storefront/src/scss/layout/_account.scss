@@ -61,11 +61,15 @@
 }
 
 .account-content {
-    --columns: 260px minmax(0, 1fr);
+    --columns: 1fr;
     margin: 0 !important;
     display: grid;
     grid-template-columns: var(--columns);
     gap: var(--gap-xl);
+
+    @include media-breakpoint-up( lg ) {
+        --columns: 260px minmax(0, 1fr);
+    }
 
     .account-content-main,
     .account-content-aside {
@@ -83,4 +87,35 @@
     background-color: var(--sidebar-bg);
     border-radius: var(--sidebar-border-radius);
     box-shadow: var(--sidebar-shadow);
+}
+
+#profilePersonalForm,
+#profileMailForm,
+#profilePasswordForm,
+.account-address-form form {
+    @extend .form-flex;
+}
+
+.account-profile-required-info, 
+.address-required-info {
+    flex: 1 1 100%;
+    margin: 0;
+}
+
+.account-credentials-nav {
+    --columns: 1fr;
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: var(--columns);
+    align-items: center;
+
+    @include media-breakpoint-up( xl ) {
+        --columns: 1fr auto auto;
+    }
+}
+
+.account-profile-change {
+    &.collapsed {
+        @extend .btn-light;
+    }
 }
