@@ -18,6 +18,7 @@
 
                 {% block component_account_login_form %}
                     <form class="login-form"
+                        id="CustomerLoginForm"
                         action="{{ path('frontend.account.login') }}"
                         method="post"
                         data-form-validation="true">
@@ -43,6 +44,7 @@
                         <div class="login-submit login-actions">
                             {% block component_account_login_submit %}
                                 <button type="submit"
+                                        form="CustomerLoginForm"
                                         class="btn btn-primary login-action">
                                     {{ "account.loginSubmit"|trans|sw_sanitize }}
                                 </button>

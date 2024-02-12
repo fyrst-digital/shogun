@@ -33,3 +33,54 @@
         flex-direction: row;
     }
 }
+
+.account-menu-dropdown {
+    padding: var(--dropdown-padding-y) var(--dropdown-padding-x);
+
+    .offcanvas-header {
+        display: none !important;
+    }
+}
+
+.account-menu-header {
+    --margin-b: var(--gap);
+    font-size: var(--font-size);
+    font-weight: 600;
+    color: var(--dropdown-color);
+    border-color: var(--border-color);
+    margin-bottom: var(--margin-b);
+}
+
+.account-aside-btn {
+    @extend .btn-sm;
+}
+
+.account-aside-footer {
+    padding: 0 !important;
+    margin-top: var(--dropdown-padding-y) !important;
+}
+
+.account-content {
+    --columns: 260px minmax(0, 1fr);
+    margin: 0 !important;
+    display: grid;
+    grid-template-columns: var(--columns);
+    gap: var(--gap-xl);
+
+    .account-content-main,
+    .account-content-aside {
+        padding: 0 !important;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .account-content-main {
+        max-width: 800px;
+    }
+}
+
+.account-aside {
+    background-color: var(--sidebar-bg);
+    border-radius: var(--sidebar-border-radius);
+    box-shadow: var(--sidebar-shadow);
+}
