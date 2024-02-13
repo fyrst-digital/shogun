@@ -1,0 +1,54 @@
+.main-navigation {
+    background-color: var(--main-navigation-bg);
+    box-shadow: var(--main-navigation-shadow);
+    position: relative;
+}
+
+.main-navigation-link {
+    --nav-link-color: var(--highlight-color);
+
+    &:hover,
+    &.is-open {
+        background-color: var(--nav-link-hover-bg);
+    }
+
+    &.active {
+        background-color: var(--nav-link-active-bg);
+    }
+}
+
+.navigation-flyouts {
+    top: 100%;
+}
+
+.navigation-flyout {
+    background-color: var(--navigation-flyout-bg);
+}
+
+.navigation-flyout-content {
+    padding: 64px 0;
+    gap: var(--gap-lg);
+    margin: 0;
+
+    > * {
+        width: auto;
+        padding: 0;
+    }
+}
+
+.navigation-flyout-categories {
+    flex: 1 1;
+}
+
+.navigation-flyout-teaser {
+    flex: 0 0 auto;
+}
+
+.navigation-flyout-categories {
+    margin: 0;
+    gap: var(--gap-2xl) 0;
+}
+
+.navigation-flyout-col {
+    padding: 0;
+}

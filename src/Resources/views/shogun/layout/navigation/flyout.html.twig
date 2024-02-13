@@ -1,0 +1,22 @@
+{% extends '@Storefront/storefront/layout/navigation/flyout.html.twig' %}
+
+{% block layout_navigation_flyout_bar %}
+{% endblock %}
+
+{% block layout_navigation_flyout_categories %}
+    <div class="navigation-flyout-categories">
+        {% block layout_navigation_flyout_categories_recoursion %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block layout_navigation_flyout_teaser %}
+    {% if category.media %}
+        <div class="navigation-flyout-teaser">
+            {% block layout_navigation_flyout_teaser_image %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}
