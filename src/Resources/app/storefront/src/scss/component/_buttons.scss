@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--btn-gap);
+    color: var(--btn-color);
 
     .icon {
         @include iconSize(var(--btn-icon-size));

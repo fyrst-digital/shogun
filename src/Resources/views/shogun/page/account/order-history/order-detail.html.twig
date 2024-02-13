@@ -1,0 +1,34 @@
+{% extends '@Storefront/storefront/page/account/order-history/order-detail.html.twig' %}
+
+{% block page_account_order_item_detail_table_labels_summary %}
+    <div class="order-item-detail-footer">
+        {% block page_account_order_item_detail_summary %}
+            <dl class="row order-item-detail-summary">
+                {% block page_account_order_item_detail_shipping_costs %}
+                    {{ parent() }}
+                {% endblock %}
+            </dl>
+
+            <dl class="row order-item-detail-summary">
+                {% block page_account_order_item_detail_amount %}
+                    {{ parent() }}
+                {% endblock %}
+            </dl>
+        {% endblock %}
+
+        {% block page_account_order_item_detail_date %}
+        {% endblock %}
+
+        {% block page_account_order_item_detail_number %}
+        {% endblock %}
+
+        {% block page_account_order_item_detail_payment_method %}
+        {% endblock %}
+
+        {% block page_account_order_item_detail_shipping_method %}
+        {% endblock %}
+
+        {% block page_account_order_item_detail_tracking_code %}
+        {% endblock %}
+    </div>
+{% endblock %}
