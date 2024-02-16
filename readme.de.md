@@ -4,7 +4,7 @@ Dies ist eine Bundle Version von Shogun. Diese muss gegebenenfalls in `config/bu
 ``` php
 return [
     ...
-    FyrstShogun\FyrstShogun::class => ['all' => true]
+    Fyrst\ShogunBundle\ShogunBundle::class => ['all' => true]
     ...
 ];
 ```
