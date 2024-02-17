@@ -1,0 +1,10 @@
+.method-logos {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: var(--gap);
+}
+
+.method-logo-image {
+    border-radius: var(--border-radius);
+}

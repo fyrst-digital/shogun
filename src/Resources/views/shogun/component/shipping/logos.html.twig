@@ -1,0 +1,31 @@
+{% if shippingMethods is not defined %}
+    {% set shippingMethods = page.salesChannelShippingMethods %}
+{% endif %}
+
+{% if thumbnailSize is not defined %}
+    {% set thumbnailSize = {
+        default: '100px'
+    } %}
+{% endif %}
+
+{% block component_shipping_logos %}
+    <div class="method-logos shipping-logos">
+        {% for shippingMethod in shippingMethods %}
+            {% block component_shipping_logo %}
+                {% if shippingMethod.media %}
+                    <div class="method-logo shipping-logo">
+                        {% sw_thumbnails 'shipping-logo-thumbnails' with {
+                            media: shippingMethod.media,
+                            sizes: thumbnailSize,
+                            attributes: {
+                                class: 'img-fluid method-logo-image shipping-logo-image',
+                                alt: (shippingMethod.media.translated.alt ?: shippingMethod.translated.name),
+                                title: (shippingMethod.media.translated.title ?: shippingMethod.translated.name)
+                            }
+                        } %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+        {% endfor %}
+    </div>
+{% endblock %}
