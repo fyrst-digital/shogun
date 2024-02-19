@@ -10,6 +10,15 @@
                 "missingDescription": "The Description for your benefit is missing"
             }
         },
+        "socialMediaModule": "Social Media",
+        "socialMedia": { 
+            "facebook": "Facebook",
+            "instagram": "Instagram",
+            "youtube": "YouTube",
+            "urlLabel": "Kanal URL",
+            "urlPlaceholder": "Enter your social media URL",
+            "positionLabel": "Order"
+        },
         "newsletterModule": "Newsletter Subscription"
     }
 }

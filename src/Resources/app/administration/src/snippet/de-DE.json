@@ -10,6 +10,15 @@
                 "missingDescription": "Die Beschreibung zu Ihrem Vorteil fehlt"
             }
         },
+        "socialMediaModule": "Social Media",
+        "socialMedia": { 
+            "facebook": "Facebook",
+            "instagram": "Instagram",
+            "youtube": "YouTube",
+            "urlLabel": "Kanal URL",
+            "placeholderUrl": "Gib deine Social Media URL ein",
+            "positionLabel": "Reihenfolge"
+        },
         "newsletterModule": "Newsletter Anmeldung"
     }
 }

@@ -1,0 +1,11 @@
+.social-media-channels {
+    --social-media-icon-size: var(--icon-size-lg);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap);
+
+    .icon {
+        @include iconSize(var(--social-media-icon-size));
+    }
+}

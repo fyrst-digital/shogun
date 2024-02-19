@@ -1,0 +1,36 @@
+{% if iconPack is not defined %}
+    {% set iconPack = 'default' %}
+{% endif %}
+{% if iconNamespace is not defined %}
+    {% set iconNamespace = 'Storefront' %}
+{% endif %}
+
+{% block shogun_component_social_media_icons %}
+    {% set socialMediaChannels = config('ShogunBundle.social_media.channels') %}
+
+    {% block shogun_component_social_media_icons_list %}
+        {% if socialMediaChannels|length > 0 %}
+            <div class="social-media-channels">
+
+                {% for channel, options in socialMediaChannels|sort((a, b) => a.position <=> b.position) %}
+
+                    {% block shogun_component_social_media_icons_item %}
+                        {% set icon = channel ~ '-logo' %}
+
+                        <a href="{{options.url}}"
+                            target="_blank"
+                            class="social-media-channel">
+                            {% block shogun_component_social_media_icons_item_icon %}
+                                {% sw_include '@Storefront/storefront/utilities/icon.html.twig' with {
+                                    'name': icon,
+                                    'pack': iconPack,
+                                    'namespace': iconNamespace
+                                } %}
+                            {% endblock %}
+                        </a>
+                    {% endblock %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

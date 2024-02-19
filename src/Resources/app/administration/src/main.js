@@ -1,8 +1,11 @@
 import './component/shogun-benefits-selection';
 import './component/shogun-benefits-settings';
 import './component/shogun-newsletter-settings';
+import './component/shogun-social-media-channels';
+import './component/shogun-social-media-settings';
 import './module/benefits/index.js';
 import './module/newsletter/index.js';
+import './module/social-media/index.js';
 import enGB from './snippet/en-GB.json';
 import deDE from './snippet/de-DE.json';
 
