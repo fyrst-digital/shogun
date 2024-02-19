@@ -9,3 +9,7 @@
         @include iconSize(var(--social-media-icon-size));
     }
 }
+
+.social-media-channel {
+    display: flex;
+}
