@@ -1,5 +1,5 @@
 {% block shogun_component_footer_column %}
-    <div class="{% block shogun_component_footer_column_classes %}footer-column{% endblock %}">
+    <div class="{% block shogun_component_footer_column_classes %}footer-column{% if columnClasses|length > 0 %} {{ columnClasses|join(' ') }}{% endif %}{% endblock %}">
         {% block shogun_component_footer_column_inner %}
 
             {% block shogun_component_footer_column_headline %}
