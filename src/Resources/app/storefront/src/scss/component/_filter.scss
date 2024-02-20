@@ -1,0 +1,65 @@
+.filter-panel-items-container {
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.filter-panel-active-container {
+    --filter-panel-gap: var(--gap);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex: 1 1 100%;
+    gap: var(--filter-panel-gap);
+}
+
+.filter-active,
+.filter-reset-all {
+    display: inline-flex !important;
+    margin: 0;
+}
+
+.filter-panel-item {
+    margin: 0;
+
+    .filter-panel-item-toggle {
+        color: var(---filter-btn-color);
+        background-color: var(--filter-btn-bg);
+        border-color: var(--filter-btn-border);
+        gap: 6px;
+    }
+}
+
+.filter-panel-wrapper-toggle {
+    @extend .d-flex, .d-lg-none;
+    padding: var(--btn-padding-y) var(--btn-padding-x) !important;
+
+    .icon {
+        margin: 0 !important;
+        color: var(--btn-icon-color);
+    }
+
+    &:hover {
+        background-color: var(--btn-hover-bg) !important;
+        color: var(--btn-hover-color) !important;
+
+        .icon {
+            color: var(--btn-hover-color) !important;
+        }
+    }
+}
+
+.filter-panel-item-dropdown {
+    border-radius: var(--dropdown-border-radius);
+    box-shadow: var(--dropdown-box-shadow);
+}
+
+.filter-panel-offcanvas-title {
+    color: var(--filter-panel-color);
+    line-height: 1;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.cms-element-sidebar-filter {
+    margin-bottom: 20px;
+}

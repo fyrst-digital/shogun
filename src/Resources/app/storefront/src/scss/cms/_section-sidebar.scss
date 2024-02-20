@@ -1,0 +1,18 @@
+.cms-section-sidebar:not(.cms-section) {
+    --section-sidebar-columns: 1fr;
+    --section-sidebar-gap: var(--gap);
+    --section-sidebar-width: 240px;
+    display: grid !important;
+    grid-template-columns: var(--section-sidebar-columns);
+    gap: var(--section-sidebar-gap);
+
+    @include media-breakpoint-up( lg ) {
+        --section-sidebar-columns: var(--section-sidebar-width) minmax(0, 1fr);
+    }
+
+    .cms-section-sidebar-sidebar-content,
+    .cms-section-sidebar-main-content {
+        width: auto;
+        padding: 0;
+    }
+}

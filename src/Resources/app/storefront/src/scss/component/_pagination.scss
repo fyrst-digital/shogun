@@ -1,0 +1,14 @@
+.pagination {
+    gap: var(--pagination-gap);
+    justify-content: center;
+}
+
+.page-link {
+    line-height: 1;
+    border-radius: var(--pagination-border-radius) !important;
+
+    .page-item.disabled &,
+    &.disabled {
+        opacity: .5;
+    }
+}

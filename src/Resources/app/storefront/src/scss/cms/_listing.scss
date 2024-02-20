@@ -1,0 +1,15 @@
+.cms-listing-row {
+    --listing-column-count: 1;
+    --listing-columns: repeat(var(--listing-column-count), minmax(0, 1fr));
+    --listing-gap: var(--gap);
+    display: grid;
+    margin: 0;
+    grid-template-columns: var(--listing-columns);
+    gap:var(--listing-gap);
+}
+
+.cms-listing-col {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
