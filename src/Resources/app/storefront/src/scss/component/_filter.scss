@@ -22,7 +22,7 @@
     margin: 0;
 
     .filter-panel-item-toggle {
-        color: var(---filter-btn-color);
+        color: var(--filter-btn-color);
         background-color: var(--filter-btn-bg);
         border-color: var(--filter-btn-border);
         gap: 6px;
@@ -51,6 +51,10 @@
 .filter-panel-item-dropdown {
     border-radius: var(--dropdown-border-radius);
     box-shadow: var(--dropdown-box-shadow);
+
+    .cms-block-sidebar-filter & {
+        max-height: none;
+    }
 }
 
 .filter-panel-offcanvas-title {
@@ -62,4 +66,10 @@
 
 .cms-element-sidebar-filter {
     margin-bottom: 20px;
+}
+
+.filter-multi-select-list-item {
+    --btn-padding-y: var(--gap-2xs);
+    --btn-padding-x: var(--gap-lg);
+    padding: var(--btn-padding-y) var(--btn-padding-x);
 }
