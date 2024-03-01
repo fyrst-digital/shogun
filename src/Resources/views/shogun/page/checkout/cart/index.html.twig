@@ -12,6 +12,72 @@
     </div>
 {% endblock %}
 
+{% block page_checkout_cart_add_product_and_shipping %}
+    <div class="cart-additional-actions">
+        {% block page_checkout_cart_add_product %}
+            <div class="cart-add-product-container">
+                <form action="{{ path('frontend.checkout.product.add-by-number') }}"
+                        class="cart-add-product"
+                        method="post">
+                    {% block page_checkout_cart_add_product_redirect %}
+                        {{ parent() }}
+                    {% endblock %}
+
+                    {% block page_checkout_cart_add_product_input_group %}
+                        {% block page_checkout_cart_add_product_label %}
+                            {{ parent() }}
+                        {% endblock %}
+
+                        <div class="input-group">
+                            {% block page_checkout_cart_add_product_input %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block page_checkout_cart_add_product_submit %}
+                                {{ parent() }}
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                </form>
+            </div>
+        {% endblock %}
+
+        {% block page_checkout_cart_shipping_costs %}
+            <div class="cart-shipping-costs-container">
+                <form name="precalc"
+                        method="post"
+                        action="{{ path('frontend.checkout.configure') }}"
+                        data-form-auto-submit="true">
+
+                    {% block page_checkout_cart_shipping_costs_trigger %}
+                        {% set PHYSICAL_STATE = constant('Shopware\\Core\\Content\\Product\\State::IS_PHYSICAL') %}
+                        {% if page.cart.lineItems.hasLineItemWithState(PHYSICAL_STATE) %}
+                            <a class="btn btn-outline-primary"
+                                data-bs-toggle="collapse"
+                                href="#collapseShippingCost"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="collapseExample">
+                                {{ 'checkout.shippingCosts'|trans|sw_sanitize }}
+                                {% block page_checkout_cart_shipping_costs_trigger_icon %}
+                    {% sw_icon 'arrow-right' style {
+                        'namespace': 'ShogunBundle',
+                        'pack': 'phosphor'
+                    } %}
+                                                    {% endblock %}
+                            </a>
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block page_checkout_cart_shipping_costs_form_group %}
+                        {{ parent() }}
+                    {% endblock %}
+                </form>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
 {% block page_checkout_cart_add_promotion_input_group %}
     {% block page_checkout_cart_add_promotion_label %}
         {{ parent() }}

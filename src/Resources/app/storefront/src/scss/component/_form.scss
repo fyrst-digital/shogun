@@ -1,5 +1,4 @@
 [data-quantity-selector] {
-    @include cssVarsQuantityField();
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
 
@@ -9,6 +8,7 @@
 
         .icon {
             --btn-icon-size: var(--quantity-field-icon-size);
+            --btn-icon-color: var(--quantity-field-icon-color);
         }
     }
 

@@ -2,6 +2,7 @@
     @include cssVarByMap(gap, $gaps);
     @include cssVarByMap(font-size, $fontSizes);
     @include cssVarByMap(icon-size, $iconSizes);
+    @include cssVarsQuantityField();
     /** @todo put in mixin */
     --padding-y: ;
     --padding-x: ;
