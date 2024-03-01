@@ -2,6 +2,12 @@
     --checkout-columns: 1fr;
     --checkout-gap: var(--gap-3xl);
     --checkout-aside-width: 280px;
+    --checkout-aside-padding-y: var(--sidebar-padding-y);
+    --checkout-aside-padding-x: var(--sidebar-padding-x);
+    --checkout-aside-bg: var(--sidebar-bg);
+    --checkout-aside-border: var(--sidebar-border);
+    --checkout-aside-border-radius: var(--sidebar-border-radius);
+    --checkout-aside-shadow: var(--sidebar-shadow);
     display: grid !important;
     grid-template-columns: var(--checkout-columns);
     grid-gap: var(--checkout-gap);
@@ -27,6 +33,11 @@
 .checkout-aside-container {
     position: sticky;
     top: 40px;
+    padding: var(--checkout-aside-padding-y) var(--checkout-aside-padding-x);
+    background-color: var(--checkout-aside-bg);
+    border: var(--checkout-aside-border);
+    border-radius: var(--checkout-aside-border-radius);
+    box-shadow: var(--checkout-aside-shadow);
 }
 
 .checkout-aside-summary-list {
