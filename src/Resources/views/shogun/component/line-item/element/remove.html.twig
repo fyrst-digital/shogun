@@ -4,7 +4,12 @@
     <button type="submit"
             title="{{ "checkout.removeLineItem"|trans|striptags }}"
             data-product-id="{{ lineItem.id }}"
-            class="btn btn-link btn-sm line-item-remove-button">
-        {% sw_icon 'x' %}
+            class="btn btn-link line-item-remove-button">
+        {% block component_line_item_remove_button_icon %}
+            {% sw_icon 'trash' style {
+                'namespace': 'ShogunBundle',
+                'pack': 'phosphor'
+            } %}
+        {% endblock %}
     </button>
 {% endblock %}

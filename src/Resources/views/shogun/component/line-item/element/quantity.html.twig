@@ -8,6 +8,14 @@
     {% block component_line_item_quantity_select_wrapper %}
         {{ parent() }}
     {% endblock %}
+
+    {% block component_line_item_type_product_col_remove %}
+        {% if showRemoveButton %}
+            {% if lineItem.removable and nestingLevel < 1 %}
+                {% sw_include '@Storefront/storefront/component/line-item/element/remove.html.twig' %}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
 {% endblock %}
 
 {% block component_line_item_quantity_display %}

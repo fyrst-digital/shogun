@@ -37,12 +37,6 @@
             {{ parent() }}
         {% endblock %}
 
-        {% if showRemoveButton %}
-            {% block component_line_item_type_product_col_remove %}
-                {{ parent() }}
-            {% endblock %}
-        {% endif %}
-
         {% if displayMode === 'order' %}
             {% block component_line_item_type_product_downloads_table %}
                 {{ parent() }}
