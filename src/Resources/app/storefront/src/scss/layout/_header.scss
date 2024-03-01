@@ -2,3 +2,14 @@
 .header-main {
     background-color: var(--header-bg);
 }
+
+.header-action-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.header-action-label {
+    display: var(--display);
+    line-height: 1;
+}

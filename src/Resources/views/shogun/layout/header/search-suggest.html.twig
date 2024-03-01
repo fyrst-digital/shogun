@@ -1,0 +1,52 @@
+{% extends '@Storefront/storefront/layout/header/search-suggest.html.twig' %}
+
+{% block layout_search_suggest_result_link %}
+    <a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}"
+        title="{{ product.translated.name }}"
+        class="search-suggest-product-link">
+
+        {% block layout_search_suggest_result_image %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block layout_search_suggest_result_content %}
+            <div class="search-suggest-product-content">
+                {% block layout_search_suggest_result_name %}
+                    {{ parent() }}
+                {% endblock %}
+
+                {% block layout_search_suggest_result_price %}
+                    {{ parent() }}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </a>
+{% endblock %}
+
+{% block layout_search_suggest_result_total_result %}
+    <li class="js-result search-suggest-total">
+        {% block layout_search_suggest_result_total_link %}
+            <div class="search-suggest-total-label">
+                <a href="{{ path('frontend.search.page') }}?search={{ page.searchTerm }}"
+                    title="{{ "header.searchAllResults"|trans|striptags }}"
+                    class="search-suggest-total-link">
+
+                    {% sw_icon 'arrow-right' style {
+                        'namespace': 'ShogunBundle',
+                        'pack': 'phosphor'
+                    } %}
+
+                    {{ "header.searchAllResults"|trans|sw_sanitize }}
+                </a>
+            </div>
+        {% endblock %}
+
+        {% block layout_search_suggest_result_total_count %}
+            <div class="search-suggest-total-count">
+                {{ "header.searchResults"|trans({
+                    '%count%': page.searchResult.total,
+                })|sw_sanitize }}
+            </div>
+        {% endblock %}
+    </li>
+{% endblock %}
