@@ -18,6 +18,10 @@
         @include iconSize(var(--btn-icon-size));
         color: var(--btn-icon-color);
         transition: all .15s;
+
+        > svg {
+            top: auto;
+        }
     }
 }
 
