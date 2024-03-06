@@ -9,6 +9,12 @@ Shopware.Component.register('shogun-social-media-settings', {
         Mixin.getByName('notification'),
     ],
 
+    data() {
+        return {
+            salesChannelId: null
+        }
+    },
+
     methods: {
 
         // @TODO: language awareness
@@ -34,5 +40,9 @@ Shopware.Component.register('shogun-social-media-settings', {
                 });
             }
         },
+
+        meddl (value) {
+            console.log('meddl', value)
+        }
     }
 });

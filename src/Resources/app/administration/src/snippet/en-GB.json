@@ -12,10 +12,9 @@
         },
         "socialMediaModule": "Social Media",
         "socialMedia": { 
-            "facebook": "Facebook",
-            "instagram": "Instagram",
-            "youtube": "YouTube",
-            "urlLabel": "Kanal URL",
+            "iconLabel": "Icon",
+            "iconPlaceholder": "Alternate icon",
+            "urlLabel": "URL",
             "urlPlaceholder": "Enter your social media URL",
             "positionLabel": "Order"
         },

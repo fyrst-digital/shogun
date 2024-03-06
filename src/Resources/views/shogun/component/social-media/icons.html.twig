@@ -6,7 +6,8 @@
 {% endif %}
 
 {% block shogun_component_social_media_icons %}
-    {% set socialMediaChannels = config('ShogunBundle.social_media.channels')|filter(v => v.url !== "") %}
+    
+    {% set socialMediaChannels = config('ShogunBundle.socialMediaChannels')|filter(v => v.url !== "") %}
 
     {% block shogun_component_social_media_icons_list %}
         {% if socialMediaChannels|length > 0 %}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Social Media channels</title>
+        <title lang="de-DE">Social Media Kanäle</title>
+        <component name="shogun-social-media-channel-field">
+            <name>facebook</name>
+            <label>Facebook</label>
+            <position>1</position>
+        </component>
+        <component name="shogun-social-media-channel-field">
+            <name>instagram</name>
+            <label>Instagram</label>
+            <position>2</position>
+        </component>
+        <component name="shogun-social-media-channel-field">
+            <name>youtube</name>
+            <label>YouTube</label>
+            <position>3</position>
+        </component>
+    </card>
+</config>
