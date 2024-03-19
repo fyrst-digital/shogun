@@ -1,6 +1,5 @@
 [data-quantity-selector] {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    display: flex;
 
     > .btn {
         --btn-padding-y: var(--quantity-field-btn-padding);
@@ -73,5 +72,15 @@
         @include media-breakpoint-up( md ) {
             flex: 1 0;
         }
+    }
+}
+
+.input-group-text {
+    background-color: var(--input-affix-bg-color);
+    color: var(--input-affix-color);
+    border-radius: var(--border-radius);
+
+    &:last-child {
+        border-left: 0;
     }
 }
