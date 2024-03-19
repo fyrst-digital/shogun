@@ -1,3 +1,11 @@
+%filter-panel-btn {
+    color: var(--filter-btn-color);
+    background-color: var(--filter-btn-bg);
+    border-color: var(--filter-btn-border);
+    font-weight: 400;
+    gap: 6px;
+}
+
 .filter-panel-items-container {
     gap: 16px;
     margin-bottom: 20px;
@@ -22,10 +30,33 @@
     margin: 0;
 
     .filter-panel-item-toggle {
-        color: var(--filter-btn-color);
-        background-color: var(--filter-btn-bg);
-        border-color: var(--filter-btn-border);
-        gap: 6px;
+        @extend %filter-panel-btn;
+    }
+
+    &.filter-boolean {
+        @extend .btn, %filter-panel-btn;
+        height: auto;
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            gap: var(--btn-gap);
+            min-height: auto;
+            margin: 0;
+        }
+
+        .filter-boolean-label {
+            line-height: inherit;
+            height: auto;
+            color: var(--btn-color);
+        }
+
+        .filter-boolean-input {
+            float: none;
+            margin: 0;
+            flex: 1 0 auto;
+        }
     }
 }
 
