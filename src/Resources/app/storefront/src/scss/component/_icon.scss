@@ -1,0 +1,4 @@
+.icon {
+    @include iconSize(var(--icon-size));
+    color: var(--icon-color);
+}
