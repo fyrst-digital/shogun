@@ -1,3 +1,7 @@
+button {
+    @extend .btn;
+}
+
 .btn {
     --btn-padding-x: var(--input-padding-x);
     --btn-padding-y: var(--input-padding-y);
