@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block layout_navigation_flyout_categories %}
-    <div class="navigation-flyout-categories">
+    <div class="navigation-flyout-categories categories-root">
         {% block layout_navigation_flyout_categories_recoursion %}
             {{ parent() }}
         {% endblock %}
@@ -16,6 +16,9 @@
         <div class="navigation-flyout-teaser">
             {% block layout_navigation_flyout_teaser_image %}
                 {{ parent() }}
+            {% endblock %}
+
+            {% block layout_navigation_flyout_teaser_content %}
             {% endblock %}
         </div>
     {% endif %}
