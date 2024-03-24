@@ -1,0 +1,19 @@
+.gallery-slider,
+.gallery-slider-thumbnails-item-inner {
+    background-color: var(--box-bg);
+}
+
+.base-slider-dot {
+    --dot-bg: var(--light);
+    --dot-hover-bg: var(--dark);
+    --dot-active-bg: var(--dark);
+    background-color: var(--dot-bg) !important;
+    
+    &:hover {
+        background-color: var(--dot-hover-bg) !important;
+    }
+    
+    &.tns-nav-active {
+        background-color: var(--dot-active-bg) !important;
+    }
+}
