@@ -22,8 +22,16 @@
 
 .filter-active,
 .filter-reset-all {
+    --btn-padding-y: var(--gap-2xs);
+    --btn-font-size: var(--font-size-sm);
+    --btn-font-weight: 500;
     display: inline-flex !important;
     margin: 0;
+    height: auto !important;
+    line-height: var(--btn-line-height) !important;
+    padding: var(--btn-padding-y) var(--btn-padding-x);
+    border-color: var(--btn-border-color);
+    font-weight: var(--btn-font-weight) !important;
 }
 
 .filter-panel-item {
@@ -96,6 +104,7 @@
 }
 
 .cms-element-sidebar-filter {
+    background-color: var(--sidebar-bg);
     margin-bottom: 20px;
 }
 
@@ -103,4 +112,8 @@
     --btn-padding-y: var(--gap-2xs);
     --btn-padding-x: var(--gap-lg);
     padding: var(--btn-padding-y) var(--btn-padding-x);
+}
+
+.filter-active {
+    @extend .btn;
 }

@@ -3,12 +3,11 @@
 }
 
 .category-navigation-box {
-    --category-box-bg: transparent;
     --category-box-border-width: 1px;
     --category-box-border-color: var(--border-color);
     --category-box-border-radius: var(--border-radius);
     --category-link-size: var(--body-font-size);
-    background-color: var(--category-box-bg);
+    background-color: var(--sidebar-bg);
     border: var(--category-box-border-width) solid var(--category-box-border-color);
     border-radius: var(--category-box-border-radius);
 }
