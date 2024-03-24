@@ -40,17 +40,21 @@
         {% endblock %}
     </div>
 
-    <div class="row row-address-additional-1">
-        {% block component_address_form_additional_field1 %}
-            {{ parent() }}
-        {% endblock %}
-    </div>
+    {% if config('core.loginRegistration.showAdditionalAddressField1') %}
+        <div class="row row-address-additional-1">
+            {% block component_address_form_additional_field1 %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+    {% endif %}
 
-    <div class="row row-address-additional-2">
-        {% block component_address_form_additional_field2 %}
-            {{ parent() }}
-        {% endblock %}
-    </div>
+    {% if config('core.loginRegistration.showAdditionalAddressField2') %}
+        <div class="row row-address-additional-2">
+            {% block component_address_form_additional_field2 %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+    {% endif %}
 
     <div class="row country-and-state-form-elements" data-country-state-select="true">
         {% block component_address_form_country %}
