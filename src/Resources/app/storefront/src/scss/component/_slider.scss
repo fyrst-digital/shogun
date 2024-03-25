@@ -1,0 +1,54 @@
+.base-slider-dot {
+    --dot-bg: var(--light);
+    --dot-hover-bg: var(--dark);
+    --dot-active-bg: var(--dark);
+    background-color: var(--dot-bg) !important;
+    
+    &:hover {
+        background-color: var(--dot-hover-bg) !important;
+    }
+    
+    &.tns-nav-active {
+        background-color: var(--dot-active-bg) !important;
+    }
+}
+
+.base-slider-controls {
+    --control-bg: var(--white);
+    --control-hover-bg: var(--light);
+    --control-active-bg: var(--color-secondary);
+    --control-width: 32px;
+    --control-height: 55px;
+    --control-border-radius: var(--border-radius);
+    --control-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
+    --control-transition: .2s all;
+
+    [data-controls] {
+        width: var(--control-width);
+        height: var(--control-height);
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--control-bg) !important;
+        border-radius: var(--control-border-radius);
+        box-shadow: var(--control-shadow);
+        transition: var(--control-transition);
+        opacity: 1;
+
+        &:hover {
+            --control-bg: var(--control-hover-bg);
+        }
+
+        &:active {
+            --control-bg: var(--control-active-bg);
+        }
+    } 
+}
+
+.base-slider-controls-prev {
+    left: var(--control-spacing);
+}
+.base-slider-controls-next {
+    right: var(--control-spacing);
+}
