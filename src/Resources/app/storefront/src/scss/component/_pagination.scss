@@ -1,14 +1,23 @@
 .pagination {
+    --pagination-justify: center;
+    --pagination-font-weight: 400;
+    --pagination-active-font-weight: 800;
     gap: var(--pagination-gap);
-    justify-content: center;
+    justify-content: var(--pagination-justify);
 }
 
 .page-link {
     line-height: 1;
     border-radius: var(--pagination-border-radius) !important;
+    font-weight: var(--pagination-font-weight);
 
     .page-item.disabled &,
     &.disabled {
         opacity: .5;
+    }
+
+    .page-item.active &,
+    &.active {
+        font-weight: var(--pagination-active-font-weight);
     }
 }
