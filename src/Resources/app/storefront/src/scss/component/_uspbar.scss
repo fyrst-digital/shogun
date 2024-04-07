@@ -1,5 +1,11 @@
 .uspbar {
     --padding-x: var(--gap-xs);
-    background-color: var(--usp-bar-bg);
+    --uspbar-link-color: var(--uspbar-color);
+    background-color: var(--uspbar-bg);
+    color: var(--uspbar-color);
     padding: var(--padding-x) 0;
+
+    a {
+        color: var(--uspbar-link-color);
+    }
 }
