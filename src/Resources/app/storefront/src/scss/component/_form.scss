@@ -1,5 +1,8 @@
 [data-quantity-selector] {
+    --quantity-field-max-width: 120px;
     display: flex;
+    flex-wrap: nowrap;
+    max-width: var(--quantity-field-max-width);
 
     > .btn {
         --btn-padding-y: var(--quantity-field-btn-padding);
