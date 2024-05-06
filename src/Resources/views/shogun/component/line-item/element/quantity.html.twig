@@ -12,7 +12,9 @@
     {% block component_line_item_type_product_col_remove %}
         {% if showRemoveButton %}
             {% if lineItem.removable and nestingLevel < 1 %}
-                {% sw_include '@Storefront/storefront/component/line-item/element/remove.html.twig' %}
+                {% sw_include '@Storefront/storefront/component/line-item/element/remove.html.twig' with {
+                    formAction: path('frontend.checkout.line-item.delete', { id: lineItem.id })
+                } %}
             {% endif %}
         {% endif %}
     {% endblock %}
