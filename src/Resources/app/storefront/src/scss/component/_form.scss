@@ -15,6 +15,7 @@
         --input-padding-y: var(--quantity-field-input-padding);
         --input-font-size: var(--quantity-field-font-size);
         --input-hover-border-color: var(--quantity-field-border-color);
+        flex-basis: 0%;
         margin: 0 !important;
         width: auto !important;
         min-width: var(--quantity-field-input-min-width);
