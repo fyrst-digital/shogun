@@ -1,5 +1,10 @@
-## Bundle Version
-Dies ist eine Bundle Version von Shogun. Diese muss gegebenenfalls in `config/bundle.php` hinzugefügt werden.
+# Shogun - Boost up your Shopware 6 theme development
+This Bundle brings some boilerplates, components and styling to your theme development. All functions in this bundle are opt-in. So you can include only what you need
+
+## Install and setup
+Add this bundle to your Shopware 6 project via composer `composer require fyrst/shogun`
+
+Check your `bundles.php` to activate the bundle
 
 ``` php
 return [
@@ -8,16 +13,3 @@ return [
     ...
 ];
 ```
-
-Shogun ist ein Komponenten basiertes Template für Shopware 6 Themes. Shogun ist strikt nach Komponenten unterteilt. Das macht die Code-Basis flexibel, wiederverwendbar und wartbar. Es ist vor allem als Boilerplate für Themes gedacht. Es räumt das Storefront Template von Shopware auf und bringt erweiterte Komponenten mit. Wie zum Beispiel **Shop-Vorteile** und eine **Newsletter-Maske**. Somit ist Shogun die optimale Grundlage für Theme Entwicklungen.
-
-Starte mit `composer require fyrst/shogun` und erlebe eine bessere Developer Expierence.
-
-## Erweiterte Komponenten
-- Vorteils-Balken
-- Newsletter-Maske
-
-## Hinweise
-
-- Alle views von Shogun befinden sich im Ordner `shogun` um Namenskonflikte zu vermeiden. Komponenten können so verwendet werden: `{% sw_include '@Storefront/shogun/component/...' %}`  
-  Es ist auch möglich von Komponenten abzuleiten: `{% sw_extends '@Storefront/shogun/component/...' %}`
