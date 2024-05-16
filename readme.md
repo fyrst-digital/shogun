@@ -25,3 +25,12 @@ Shogun brings the very basic Bootstrap styles without adding additional styling.
     ],
 }
 ```
+
+## Template components
+You can include template components from Shogun like this:
+
+``` twig
+{% sw_include '@Storefront/shogun/layout/header/header.html.twig' %}
+```
+
+Note that all Shogun templates stores under the `/shogun/` directory.
