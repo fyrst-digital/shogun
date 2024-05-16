@@ -1,0 +1,6 @@
+{% block shogun_utilities_icon %}
+    {% set icon = source('@' ~ shogunIconNamespace ~ '/shogun/icons/' ~ shogunIconPack ~ '/' ~ name ~ '.svg', ignore_missing = true) %}
+    <span class="icon icon-{{name}} d-inline-flex align-items-center">
+        {{ icon|sw_icon_cache|raw }}
+    </span>
+{% endblock %}
