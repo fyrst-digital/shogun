@@ -10,8 +10,9 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Shopware\Storefront\DependencyInjection\DisableTemplateCachePass;
 use Shopware\Storefront\DependencyInjection\StorefrontMigrationReplacementCompilerPass;
+use Shopware\Storefront\Framework\ThemeInterface;
 
-class ShogunBundle extends Bundle
+class ShogunBundle extends Bundle implements ThemeInterface
 {
     public function build(ContainerBuilder $container): void
     {
@@ -21,5 +22,10 @@ class ShogunBundle extends Bundle
 
         $container->addCompilerPass(new DisableTemplateCachePass());
         $container->addCompilerPass(new StorefrontMigrationReplacementCompilerPass());
+    }
+
+    public function getTemplatePriority(): int
+    {
+        return -10;
     }
 }

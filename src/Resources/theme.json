@@ -1,0 +1,12 @@
+{
+    "name": "Shogun",
+    "author": "Fyrst Digital",
+    "description": {
+        "en-GB": "My custom theme",
+        "de-DE": "Mein custom thema"
+    },
+    "style": [
+        "app/storefront/node_modules/bootstrap/scss/bootstrap.scss",
+        "app/storefront/src/scss/base.scss"
+    ]
+}
