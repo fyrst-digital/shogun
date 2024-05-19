@@ -2,8 +2,8 @@
   "name": "@fyrst/shogun-storefront",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
+    "build:icons": "node build.icons.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,5 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.2.3"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.211",
+    "@iconify/utils": "^2.1.23"
   }
 }

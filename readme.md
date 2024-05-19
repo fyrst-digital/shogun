@@ -34,3 +34,22 @@ You can include template components from Shogun like this:
 ```
 
 Note that all Shogun templates stores under the `/shogun/` directory.
+
+### Programmatic CSS classes in components
+Most of components CSS classes are programmatic. That means the classes are stored in an array and can be overriden by a new array or can be extended. So you don't need to touch the whole template if you want to override some CSS classes. Nor no need to override styles in your SCSS files.
+
+Lets take the cookie banner component `shogun/component/cookie/cookie-permission.html.twig` for example. 
+``` twig
+<div
+    class="{% block shogun_component_cookie_banner_classes %}{{cookieBannerClasses|join(' ')}}{% endblock %}"
+    data-cookie-permission="true">
+    ...
+</div>
+```
+
+As you can see there are two major hookpoint. Number one is the `cookieBannerClasses` array. You can override it in your template inclusion. Number two is the wrapping block. So you can extend the component in your own template.
+
+## Icons
+Icons will be pure SVG in CSS icons because of some advantages over SVG in HTML.  
+All icons coming from shogun are prefixed with `sh` so the common class for shogun icons is `.sh-icon`.
+@todo: There will be a `sh_icon('name')` twig function that will render `<span class="sh-icon icon-name"></span>` to simplify markup.
