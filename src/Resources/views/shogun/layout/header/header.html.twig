@@ -51,11 +51,7 @@
                                     data-off-canvas-menu="true"
                                     aria-label="{{ 'general.menuLink'|trans|striptags }}"
                                 >
-                                    {% block layout_header_navigation_toggle_button_icon %}
-                                        {% sw_include '@Storefront/shogun/utilities/icon.html.twig' with {
-                                            name: 'list'
-                                        } %}
-                                    {% endblock %}
+                                    {{sh_icon('list')}}
                                 </button>
                             {% endblock %}
                         </div>
@@ -70,9 +66,7 @@
                                     aria-expanded="false"
                                     aria-controls="searchCollapse"
                                     aria-label="{{ 'header.searchButton'|trans|striptags }}">
-                                {% sw_include '@Storefront/shogun/utilities/icon.html.twig' with {
-                                    name: 'magnifying-glass'
-                                } %}
+                                {{sh_icon('magnifying-glass')}}
                             </button>
                         </div>
                     {% endblock %}
