@@ -1,7 +1,7 @@
 {
     "name": "fyrst/shogun",
     "description": "Shogun",
-    "version": "1.0.0",
+    "version": "dev-next/osaka",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
