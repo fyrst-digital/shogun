@@ -14,15 +14,30 @@ return [
 ];
 ```
 
-## Clean Bootstrap styling
+## Include clean Bootstrap styling in your Theme config
 Shogun brings the very basic Bootstrap styles without adding additional styling. Just add it to the style property of your `theme.json`:
 
 ``` json
 {
     "style": [
         "@ShogunBundle",
+        "@Plugins",
         "app/storefront/src/scss/base.scss"
     ],
+}
+```
+
+## Include Template components in your Theme config
+To use the Shogun Template components you have to include these in your `theme.json` Theme config under the `views` property:
+
+``` json
+{
+    "views": [
+        "@Storefront",
+        "@ShogunBundle",
+        "@YourTheme",
+        "@Plugins"
+    ]
 }
 ```
 
