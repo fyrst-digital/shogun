@@ -1,7 +1,14 @@
 {% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
 
 {% block layout_header_navigation %}
-    <div class="d-flex header-row">
+
+    {% if headerClasses is not defined %}
+        {% set headerClasses = [
+            'd-flex', 'container', 'align-items-center', 'py-4', 'header-row'
+        ] %}
+    {% endif %}
+
+    <div class="{{headerClasses|join(' ')}}">
 
         {% block shogun_layout_header_inner %}
 
@@ -13,34 +20,12 @@
 
             {% block layout_header_search %}
                 <div class="col header-search-col">
-                    <div class="row">
-                        <div class="col-sm-auto d-none d-sm-block d-lg-none">
-                            {% block layout_header_navigation_toggle_tablet %}
-                                <div class="nav-main-toggle">
-                                    {% block layout_header_navigation_toggle_tablet_button %}
-                                        <button
-                                            class="btn nav-main-toggle-btn header-actions-btn"
-                                            type="button"
-                                            data-off-canvas-menu="true"
-                                            aria-label="{{ 'general.menuLink'|trans|striptags }}"
-                                        >
-                                            {% block layout_header_navigation_toggle_tablet_button_icon %}
-                                                {% sw_icon 'stack' %}
-                                            {% endblock %}
-                                        </button>
-                                    {% endblock %}
-                                </div>
-                            {% endblock %}
-                        </div>
-                        <div class="col">
-                            {% sw_include '@Storefront/storefront/layout/header/search.html.twig' %}
-                        </div>
-                    </div>
+                    {% sw_include '@Storefront/storefront/layout/header/search.html.twig' %}
                 </div>
             {% endblock %}
 
             {% block layout_header_actions %}
-                <div class="col d-flex justify-content-end align-items-center header-actions-col">
+                <div class="col-auto d-flex justify-content-end align-items-center header-actions-col">
 
                     {% block layout_header_navigation_toggle %}
                         <div class="col-auto header-action menu-button">
@@ -88,7 +73,7 @@
 
                     {% block layout_header_actions_account %}
                         <div class="col-auto header-action account-menu">
-                            {% sw_include '@Storefront/storefront/layout/header/actions/account-widget.html.twig' %}
+                            {% sw_include '@Storefront/shogun/component/account/account-widget.html.twig' %}
                         </div>
                     {% endblock %}
 
@@ -101,7 +86,7 @@
                                 data-cart-widget="true"
                                 title="{{ 'checkout.cartTitle'|trans|striptags }}"
                                 aria-label="{{ 'checkout.cartTitle'|trans|striptags }}">
-                                {% sw_include '@Storefront/storefront/layout/header/actions/cart-widget.html.twig' %}
+                                {% sw_include '@Storefront/shogun/component/cart/cart-widget.html.twig' %}
                             </a>
                         </div>
                     {% endblock %}

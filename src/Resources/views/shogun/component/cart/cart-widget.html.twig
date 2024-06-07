@@ -1,0 +1,12 @@
+{% block layout_header_actions_cart_widget %}
+
+    {% block shogun_component_cart_widget_icon %}
+        {{sh_icon('shopping-cart-simple')}}
+    {% endblock %}
+
+    {% block shogun_component_cart_widget_badge %}
+        {% if page.cart.lineItems|length > 0 %}
+            <span class="badge bg-primary header-cart-badge">{{ page.cart.lineItems|length }}</span>
+        {% endif %}
+    {% endblock %}
+{% endblock %}
