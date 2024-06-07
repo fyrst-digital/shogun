@@ -1,0 +1,34 @@
+{% block shogun_component_search_suggest_summary %}
+    {% if page.searchResult.total == 0 %}
+        {% block shogun_component_search_suggest_no_result %}
+            <li class="search-suggest-no-result">
+                {{ 'header.searchNoResult'|trans|sw_sanitize }}
+            </li>
+        {% endblock %}
+    {% else %}
+        {% block shogun_component_search_suggest_summary_results %}
+            <li class="js-result search-suggest-total">
+                <div class="row align-items-center g-0">
+                    {% block shogun_component_suggest_summary_results_link %}
+                        <div class="col">
+                            <a href="{{ path('frontend.search.page') }}?search={{ page.searchTerm }}"
+                                title="{{ 'header.searchAllResults'|trans|striptags }}"
+                                class="search-suggest-total-link">
+                                {% sw_icon 'arrow-head-right' style { size: 'sm' } %}
+                                {{ 'header.searchAllResults'|trans|sw_sanitize }}
+                            </a>
+                        </div>
+                    {% endblock %}
+
+                    {% block shogun_component_suggest_summary_results_count %}
+                        <div class="col-auto search-suggest-total-count">
+                            {{ 'header.searchResults'|trans({
+                                '%count%': page.searchResult.total,
+                            })|sw_sanitize }}
+                        </div>
+                    {% endblock %}
+                </div>
+            </li>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

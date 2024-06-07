@@ -1,0 +1,79 @@
+{% block shogun_component_search_suggest_item %}
+    <a href="{{ seoUrl('frontend.detail.page', {productId: product.id}) }}"
+        title="{{ product.translated.name }}"
+        class="search-suggest-item flex-grow-1 d-flex flex-wrap gap-3">
+
+        {% block shogun_component_search_suggest_item_image %}
+            <div class="col-auto search-suggest-item-image-container">
+                {% set attributes = {
+                    class: 'search-suggest-product-image w-100 d-block',
+                    title: (product.cover.media.translated.title ?: '')
+                } %}
+
+                {% if product.cover.media.url and product.cover.media.isSpatialObject() == false %}
+                    {% if product.cover.media.getMediaType().getName() === 'VIDEO' %}
+                        {% sw_include '@Storefront/storefront/utilities/video.html.twig' with {
+                            media: product.cover.media,
+                            attributes: attributes
+                        } %}
+                    {% else %}
+                        {% set attributes = attributes|merge({
+                            alt: (product.cover.media.translated.alt ?: '')
+                        }) %}
+
+                        {% sw_thumbnails 'search-suggest-product-image-thumbnails' with {
+                            media: product.cover.media,
+                            sizes: {
+                                default: '100px'
+                            },
+                            attributes: attributes
+                        } %}
+                    {% endif %}
+                {% else %}
+                    {% sw_icon 'placeholder' style {
+                        size: 'lg'
+                    } %}
+                {% endif %}
+            </div>
+        {% endblock %}
+
+        <div class="col">
+            {% block shogun_component_search_suggest_item_name %}
+                <div class="col search-suggest-product-name">
+                    {{ product.translated.name }}
+                </div>
+            {% endblock %}
+
+            {% block shogun_component_search_suggest_itemt_price %}
+                <div class="col-auto search-suggest-product-price">
+                    {% set price = product.calculatedPrice %}
+                    {% if product.calculatedPrices.count > 0 %}
+                        {% set price = product.calculatedPrices.last %}
+                    {% endif %}
+
+                    {% if product.variantListingConfig.displayParent and product.parentId === null %}
+                        {% set displayFromVariants = price.unitPrice !== product.calculatedCheapestPrice.unitPrice %}
+                        {% set price = product.calculatedCheapestPrice %}
+                    {% endif %}
+
+                    {% set referencePrice = price.referencePrice %}
+
+                    {% if product.calculatedPrices.count > 1 or displayFromVariants %}
+                        {{ 'listing.listingTextFrom'|trans|sw_sanitize }}
+                    {% endif %}
+                    <span class="search-suggest-product-price">
+                        {{ price.unitPrice|currency }}{{ 'general.star'|trans|sw_sanitize }}
+                    </span>
+
+                    {% if price.referencePrice is not null %}
+                        <br><small class="search-suggest-product-reference-price">({{ price.referencePrice.price|currency }}{{ 'general.star'|trans|sw_sanitize }} / {{ price.referencePrice.referenceUnit }}&nbsp;{{ price.referencePrice.unitName }})</small>
+                    {% endif %}
+
+                    {% if price.regulationPrice.price is not null %}
+                        <small class="search-suggest-product-list-price">{{ 'general.listPricePreviously'|trans({'%price%': price.regulationPrice.price|currency }) }}{{ 'general.star'|trans|sw_sanitize }}</small>
+                    {% endif %}
+                </div>
+            {% endblock %}
+        </div>
+    </a>
+{% endblock %}
