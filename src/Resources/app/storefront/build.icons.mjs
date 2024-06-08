@@ -9,13 +9,21 @@ import { locate } from '@iconify/json';
 */
 const icons = {
    'ph': [
+      'caret-up',
+      'caret-down',
+      'caret-right',
+      'caret-left',
       'check',
       'handbag-simple',
       'handbag',
       'list',
       'magnifying-glass',
+      'minus',
+      'plus',
       'shopping-bag',
       'shopping-cart-simple',
+      'sliders',
+      'sliders-horizontal',
       'user',
       'x'
    ]

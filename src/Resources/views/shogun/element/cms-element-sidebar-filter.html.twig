@@ -1,0 +1,34 @@
+{% extends '@Storefront/storefront/element/cms-element-sidebar-filter.html.twig' %}
+
+{% block element_product_listing_filter_button %}
+    <button
+        class="btn btn-outline-primary w-100 filter-panel-wrapper-toggle"
+        type="button"
+        data-off-canvas-filter="true"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-label="{{ 'general.menuLink'|trans }}"
+    >
+        {% block element_product_listing_filter_button_icon %}
+            {{sh_icon('sliders-horizontal')}}
+        {% endblock %}
+
+        {{ 'listing.filterTitleText'|trans }}
+    </button>
+{% endblock %}
+
+{% block element_sidebar_filter_panel %}
+    <div
+        id="filter-panel-wrapper"
+        class="filter-panel-wrapper"
+        data-off-canvas-filter-content="true"
+    >
+
+        {% block shogun_element_filter_panel_include %}
+            {% sw_include '@Storefront/shogun/component/filter/panel.html.twig' with {
+                listing: listing,
+                sidebar: sidebar
+            } %}
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
+
+{% block component_filter_panel_header %}
+    <div class="d-flex flex-wrap gap-3 p-4 align-items-center filter-panel-offcanvas-header">
+        <div class="fs-5 fw-semibold filter-panel-offcanvas-only filter-panel-offcanvas-title">
+            {{ "listing.filterTitleText"|trans }}
+        </div>
+
+        <div class="btn ms-auto filter-panel-offcanvas-only filter-panel-offcanvas-close js-offcanvas-close">
+            {{sh_icon('x')}}
+        </div>
+    </div>
+{% endblock %}
+
+{% block component_filter_panel_items_container %}
+    <div class="d-grid gap-3 filter-panel-items-container">
+        {% block component_filter_panel_items %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
