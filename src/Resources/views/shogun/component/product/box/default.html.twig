@@ -11,7 +11,7 @@
         <div class="card product-box box-{{ layout }}" data-product-information="{{ {id, name}|json_encode }}">
 
             {% block component_product_box_image %}
-                <div class="col-auto d-flex justify-content-center align-items-center product-image-wrapper">
+                <div class="card-body flex-grow-0 flex-shrink-0 d-flex justify-content-center align-items-center product-image-wrapper">
                     {% block component_product_box_badges %}
                         {% sw_include '@Storefront/storefront/component/product/card/badges.html.twig' %}
                     {% endblock %}
@@ -42,7 +42,7 @@
             {% block component_product_box_content %}
 
                 {% block component_product_box_info %}
-                    <div class="flex-fill product-info">
+                    <div class="card-body flex-fill product-info">
                         {% block component_product_box_rating %}
                             {% if config('core.listing.showReview') %}
                                 <div class="product-rating">

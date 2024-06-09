@@ -1,0 +1,9 @@
+@mixin cssVarByMap($property, $map) {
+    @each $key, $value in $map {
+        @if $key == default {
+            --#{$property}: #{$value};
+        } @else {
+            --#{$property}-#{$key}: #{$value};
+        }
+    }
+}

@@ -1,0 +1,54 @@
+{% sw_extends '@Storefront/storefront/component/product/listing.html.twig' %}
+
+{% block element_product_listing_pagination_nav_actions %}
+    <div class="cms-element-product-listing-actions row g-0 gap-3 justify-content-between">
+
+        {% block shogun_component_product_listing_action_pagination_col %}
+            <div class="col-sm-auto order-2 order-sm-1">
+                {% block element_product_listing_pagination_nav_top %}
+                    {# @deprecated tag:v6.7.0 - variable `criteria` will be removed #}
+                    {% if feature('v6.7.0.0') %}
+                        {% sw_include '@Storefront/storefront/component/pagination.html.twig' with {entities: searchResult} %}
+                    {% else %}
+                        {% sw_include '@Storefront/storefront/component/pagination.html.twig' with {
+                            entities: searchResult,
+                            criteria: searchResult.criteria
+                        } %}
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block shogun_component_product_listing_action_sorting_col %}
+            <div class="col-sm-auto order-1 order-sm-2">
+                {% block element_product_listing_sorting %}
+                    {% sw_include '@Storefront/storefront/component/sorting.html.twig' with {
+                        current: searchResult.sorting,
+                        sortings: searchResult.availableSortings
+                    } %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block element_product_listing_row %}
+    <div class="d-grid row g-0 cms-listing-row js-listing-wrapper">
+        {% if searchResult.total > 0 %}
+            {% block element_product_listing_col %}
+                {% for product in searchResult %}
+                    {% block element_product_listing_box %}
+                        {% sw_include '@Storefront/shogun/component/product/box/base.html.twig' with {
+                            layout: boxLayout,
+                            displayMode: displayMode
+                        } %}
+                    {% endblock %}
+                {% endfor %}
+            {% endblock %}
+        {% else %}
+            {% block element_product_listing_col_empty %}
+                {{ parent() }}
+            {% endblock %}
+        {% endif %}
+    </div>
+{% endblock %}
