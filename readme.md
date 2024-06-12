@@ -27,7 +27,7 @@ Shogun brings the very basic Bootstrap styles without adding additional styling.
 }
 ```
 
-## Include Template components in your Theme config
+## Include template components in your Theme config
 To use the Shogun Template components you have to include these in your `theme.json` Theme config under the `views` property:
 
 ``` json
@@ -39,6 +39,12 @@ To use the Shogun Template components you have to include these in your `theme.j
         "@Plugins"
     ]
 }
+```
+
+## Include style components in your Theme scss files
+`~shogun` serves as an alias to import specific styles from Shogun. This alias points to `src/Resources/app/storefront/src/scss`.
+```scss
+@import '~shogun/some-file-from-shogun'
 ```
 
 ## Template components

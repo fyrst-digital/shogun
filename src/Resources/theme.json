@@ -8,6 +8,12 @@
     "style": [
         "app/storefront/src/scss/override.scss",
         "app/storefront/node_modules/bootstrap/scss/bootstrap.scss",
-        "app/storefront/src/scss/base.scss"
+        {
+            "app/storefront/src/scss/base.scss": {
+                "resolve": {
+                    "shogun": "app/storefront/src/scss/"
+                }
+            }
+        }
     ]
 }
