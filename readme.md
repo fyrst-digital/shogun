@@ -42,9 +42,10 @@ To use the Shogun Template components you have to include these in your `theme.j
 ```
 
 ## Include style components in your Theme scss files
-`~shogun` serves as an alias to import specific styles from Shogun. This alias points to `src/Resources/app/storefront/src/scss`.
+`~shogun` serves as an alias to import specific styles from Shogun. This alias points to `src/Resources/app/storefront/src/scss`. This works in the build (`bin/build-storefront.sh`) and also in the watch (`bin/watch-storefront.sh`) process.
 ```scss
-@import '~shogun/some-file-from-shogun'
+@import '~shogun/some-file-from-shogun';
+@import '~shogun/some-folder/some-file';
 ```
 
 ## Template components
