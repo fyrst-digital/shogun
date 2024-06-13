@@ -27,8 +27,28 @@ Shogun brings the very basic Bootstrap styles without adding additional styling.
 }
 ```
 
+## Include style components in your Theme scss files
+`~shogun` serves as an alias to import specific files from Shogun. This alias points to `src/Resources/app/storefront/src/`. Because it points to the `src` directory to be unified with js imports, you always have to add the scss path. This results in SCSS import statements like `@import '~shogun/scss'` in your custom theme. This works in the build (`bin/build-storefront.sh`) and also in the watch (`bin/watch-storefront.sh`) process.
+```scss
+@import '~shogun/scss/some-file-from-shogun';
+@import '~shogun/scss/some-folder/some-file';
+```
+
+### Style modules
+Style modules provide styling for shopware specific components. For example listing, product components, search and so on. Mostly this styles add CSS variables to shopwares storefront default classes you can and should use to customize your theme. This approach will avoid heavy CSS.  
+As always these modules are opt-in. You can set them all in once with `@import '~shogun/modules/index'` or you can import specific modules with `@import '~shogun/modules/listing'` for example.
+
+#### shogun/modules/listing
+Provides additional CSS variables to listing classes
+
+### Icons
+Icons will be pure SVG in CSS icons because of some advantages over SVG in HTML.  
+All icons coming from shogun are prefixed with `sh` so the common class for shogun icons is `.sh-icon`.
+There is also a `sh_icon('name')` twig function that will render `<span class="sh-icon icon-name"></span>` to simplify markup.
+As always the icon styles are opt-in and can be included with `@import '~shogun/icons'`. The used iconset is **phosphor**. But with iconify you can provide your own SVG in CSS icons.
+
 ## Include template components in your Theme config
-To use the Shogun Template components you have to include these in your `theme.json` Theme config under the `views` property:
+To use the Shogun template components you have to include it in your `theme.json` Theme config under the `views` property:
 
 ``` json
 {
@@ -41,22 +61,12 @@ To use the Shogun Template components you have to include these in your `theme.j
 }
 ```
 
-## Include style components in your Theme scss files
-`~shogun` serves as an alias to import specific styles from Shogun. This alias points to `src/Resources/app/storefront/src/scss`. This works in the build (`bin/build-storefront.sh`) and also in the watch (`bin/watch-storefront.sh`) process.
-```scss
-@import '~shogun/some-file-from-shogun';
-@import '~shogun/some-folder/some-file';
+## Include javascript modules
+As mentioned in the style components section there is the `shogun` alias pointing to Shoguns `src` directory. To import javascript modules from Shogun you can import them like this:
+``` js
+import 'shogun/js/test'
 ```
-
-### Style modules
-Style modules provide styling for shopware specific components. For example listing, product components, search and so on. Mostly this styles add CSS variables to shopwares storefront default classes you can and should use to customize your theme. This approach will avoid heavy CSS.  
-As always these modules are opt-in. You can set them all in once with `@import '~shogun/modules/index'` or you can import specific modules with `@import '~shogun/modules/listing'` for example
-
-### Icons
-Icons will be pure SVG in CSS icons because of some advantages over SVG in HTML.  
-All icons coming from shogun are prefixed with `sh` so the common class for shogun icons is `.sh-icon`.
-There is also a `sh_icon('name')` twig function that will render `<span class="sh-icon icon-name"></span>` to simplify markup.
-As always the icon styles are opt-in and can be included with `@import '~shogun/icons'`. The used iconset is **phosphor**. But with iconify you can provide your own SVG in CSS icons.
+This works in build and watch process as well.
 
 ## Template components
 You can include template components from Shogun like this:

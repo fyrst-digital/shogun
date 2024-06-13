@@ -11,7 +11,7 @@
         {
             "app/storefront/src/scss/base.scss": {
                 "resolve": {
-                    "shogun": "app/storefront/src/scss/"
+                    "shogun": "app/storefront/src/"
                 }
             }
         }

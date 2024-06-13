@@ -1,16 +1,34 @@
 {
     "name": "fyrst/shogun",
-    "description": "Shogun",
+    "description": "rocket star for custom theme development in shopware. Pure Bootstrap by default with first class opt-in components",
     "version": "dev-next/osaka",
     "type": "symfony-bundle",
     "license": "MIT",
+    "keywords": [
+        "bootstrap",
+        "shopware",
+        "template",
+        "theme",
+        "twig",
+        "storefront",
+        "scss",
+        "bundle"
+    ],
+    "homepage": "https://fyrst.digital",
     "authors": [
         {
-            "name": "Fyrst Digital"
+            "name": "Robert Bisovski",
+            "email": "robert@fyrst.digital",
+            "homepage": "https://fyrst.digital",
+            "role": "Owner"
         }
     ],
+    "support": {
+        "issues": "https://gitlab.com/fyrst/shogun/-/issues"
+    },
     "require": {
-        "shopware/core": "^6.6"
+        "shopware/core": "^6.6",
+        "shopware/storefront": "^6.6"
     },
     "config": {
         "sort-packages": true,
