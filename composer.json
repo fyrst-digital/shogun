@@ -1,6 +1,6 @@
 {
     "name": "fyrst/shogun",
-    "description": "rocket star for custom theme development in shopware. Pure Bootstrap by default with first class opt-in components",
+    "description": "rocket start for custom theme development in shopware. Pure Bootstrap by default with first class opt-in components",
     "version": "dev-next/osaka",
     "type": "symfony-bundle",
     "license": "MIT",
