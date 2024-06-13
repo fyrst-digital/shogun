@@ -48,6 +48,10 @@ To use the Shogun Template components you have to include these in your `theme.j
 @import '~shogun/some-folder/some-file';
 ```
 
+### Style modules
+Style modules provide styling for shopware specific components. For example listing, product components, search and so on. Mostly this styles add CSS variables to shopwares storefront default classes you can and should use to customize your theme. This approach will avoid heavy CSS.  
+As always these modules are opt-in. You can set them all in once with `@import '~shogun/modules/index'` or you can import specific modules with `@import '~shogun/modules/listing'` for example
+
 ## Template components
 You can include template components from Shogun like this:
 
