@@ -52,6 +52,12 @@ To use the Shogun Template components you have to include these in your `theme.j
 Style modules provide styling for shopware specific components. For example listing, product components, search and so on. Mostly this styles add CSS variables to shopwares storefront default classes you can and should use to customize your theme. This approach will avoid heavy CSS.  
 As always these modules are opt-in. You can set them all in once with `@import '~shogun/modules/index'` or you can import specific modules with `@import '~shogun/modules/listing'` for example
 
+### Icons
+Icons will be pure SVG in CSS icons because of some advantages over SVG in HTML.  
+All icons coming from shogun are prefixed with `sh` so the common class for shogun icons is `.sh-icon`.
+There is also a `sh_icon('name')` twig function that will render `<span class="sh-icon icon-name"></span>` to simplify markup.
+As always the icon styles are opt-in and can be included with `@import '~shogun/icons'`. The used iconset is **phosphor**. But with iconify you can provide your own SVG in CSS icons.
+
 ## Template components
 You can include template components from Shogun like this:
 
@@ -75,7 +81,3 @@ Lets take the cookie banner component `shogun/component/cookie/cookie-permission
 
 As you can see there are two major hookpoint. Number one is the `cookieBannerClasses` array. You can override it in your template inclusion. Number two is the wrapping block. So you can extend the component in your own template.
 
-## Icons
-Icons will be pure SVG in CSS icons because of some advantages over SVG in HTML.  
-All icons coming from shogun are prefixed with `sh` so the common class for shogun icons is `.sh-icon`.
-@todo: There will be a `sh_icon('name')` twig function that will render `<span class="sh-icon icon-name"></span>` to simplify markup.
