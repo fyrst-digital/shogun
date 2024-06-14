@@ -1,0 +1,51 @@
+{% sw_extends '@Storefront/storefront/utilities/alert.html.twig' %}
+
+{% block utilities_alert %}
+    {% if type is same as('error') %}
+        {% set type = 'danger' %}
+    {% endif %}
+
+    <div role="alert"
+         {# @deprecated tag:v6.7.0 - Class `alert-has-icon` will be removed. Use helper classes `d-flex align-items-center` directly in the template like documented by Bootstrap. #}
+         class="d-flex flex-wrap align-items-center gap-3 alert {% if type %}alert-{{ type }}{% endif %}{% if dismissible %} alert-dismissible fade show{% endif %}{% if icon != 'error' %} {% if feature('ACCESSIBILITY_TWEAKS') %}d-flex align-items-center{% else %}alert-has-icon{% endif %}{% endif %}">
+        
+        {% block utilities_alert_icon %}
+            {% set iconName = 'x' %}
+
+            {% if icon != 'false' %}
+                <div class="alert-icon-container fs-5 d-flex col-auto">
+                    {% if type is same as('danger') %}
+                        {% set iconName = 'x-circle' %}
+                    {% elseif type is same as('warning')  %}
+                        {% set iconName = 'warning' %}
+                    {% elseif type is same as('info') %}
+                        {% set iconName = 'info' %}
+                    {% elseif type is same as('success') %}
+                        {% set iconName = 'check' %}
+                    {% endif %}
+
+                    {% block shogun_component_alert_icon_element %}
+                        {{sh_icon(iconName)}}
+                    {% endblock %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block utilities_alert_content_container %}
+            <div class="alert-content-container">
+                {% block utilities_alert_heading %}
+                    {{ parent() }}
+                {% endblock %}
+
+                {% block utilities_alert_content %}
+                    {# @deprecated tag:v6.7.0 - The inner container `alert-content` will be removed. #}
+                    {{ parent() }}
+                {% endblock %}
+
+                {% block utilities_alert_dismissible %}
+                    {{ parent() }}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

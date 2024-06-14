@@ -16,6 +16,7 @@ const icons = {
       'check',
       'handbag-simple',
       'handbag',
+      'info',
       'list',
       'magnifying-glass',
       'minus',
@@ -25,7 +26,9 @@ const icons = {
       'sliders',
       'sliders-horizontal',
       'user',
-      'x'
+      'warning',
+      'x',
+      'x-circle'
    ]
 };
 
