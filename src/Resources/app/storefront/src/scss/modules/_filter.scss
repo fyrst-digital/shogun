@@ -1,0 +1,24 @@
+.filter-multi-select-list {
+    @extend .list-unstyled;
+    padding: var(--filter-list-padding-y) var(--filter-list-padding-x);
+}
+.filter-rating-select-list-item,
+.filter-multi-select-list-item {
+    padding: var(--filter-item-padding-y) var(--filter-item-padding-x);
+}
+.filter-range-container {
+    @extend .d-flex,
+    .flex-wrap;
+    gap: var(--filter-range-gap-y) var(--filter-range-gap-x);
+    padding: var(--filter-range-padding-y) var(--filter-range-padding-x);
+}
+.filter-range-divider {
+    @extend .d-none;
+}
+.filter-panel-item-dropdown {
+    --filter-panel-w: 100%;
+    width: var(--filter-panel-w);
+}
+.filter-active {
+    @extend .btn;
+}
