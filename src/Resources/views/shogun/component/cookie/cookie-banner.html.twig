@@ -3,8 +3,9 @@
 {% block layout_cookie_permission_inner %}
     {% set acceptAllCookies = config('core.basicInformation.acceptAllCookies') %}
     {% set useDefaultCookieConsent = config('core.basicInformation.useDefaultCookieConsent') == true %}
+    {% set cookies = app.request.cookies.all() %}
 
-    {% if useDefaultCookieConsent %}
+    {% if useDefaultCookieConsent and ('cookie-preference' in cookies|keys) is same as(false) %}
         {% block shogun_component_cookie_banner %}
 
             {% set cookieBannerClasses = [
