@@ -4,7 +4,6 @@
             <button class="btn account-menu-btn header-actions-btn"
                     type="button"
                     id="accountWidget"
-                    data-account-menu="true"
                     data-bs-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
@@ -15,10 +14,7 @@
         {% endblock %}
 
         {% block layout_header_actions_account_widget_dropdown_menu %}
-            <div class="dropdown-menu dropdown-menu-end account-menu-dropdown js-account-menu-dropdown"
-                aria-labelledby="accountWidget">
-                {% sw_include '@Storefront/storefront/layout/header/account-menu.html.twig' %}
-            </div>
+            {% sw_include '@Storefront/shogun/component/account/dropdown.html.twig' %}
         {% endblock %}
     </div>
 {% endblock %}
