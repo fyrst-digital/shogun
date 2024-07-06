@@ -77,6 +77,48 @@ You can include template components from Shogun like this:
 
 Note that all Shogun templates stores under the `/shogun/` directory.
 
+### Third-party plugin compatility
+Most of Shoguns template components extends from shopwares default components via `sw_extends`. So in theory this includes plugin templates also. But in the real world plugin templates are overriden by the Shogun template component if the same block is present.
+
+Example third-plugin template (box-standard.html.twig):
+``` twig
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{% block component_product_box %}
+
+    I come from third-part plugin
+
+    {{ parent() }}  
+{% endblock %}
+```
+
+Shogun Template component (product/box/default.html.twig)
+```
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{% block component_product_box %}
+    ....
+{% endblock %}
+```
+
+As a result `I come from third-part plugin` will be overriden. In best case (this should be convinience dear developer) the third-party plugin provides a wrapper block:
+``` twig
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{% block component_product_box %}
+
+    {% block awesome_extension_block %}
+        I come from third-part plugin
+    {% endblock %}
+
+    {{ parent() }}  
+{% endblock %}
+```
+
+Then you can reuse this block anywhere (if it's in the inheritance chain) with Twigs block function. for example `{{ block('awesome_extension_block') }}`
+
+**However, Shogun is designed to be used as a Theme foundation in custom projects. So you have to handle the third-party plugin templates by yourself.**
+
 ### Programmatic CSS classes in components
 Most of components CSS classes are programmatic. That means the classes are stored in an array and can be overriden by a new array or can be extended. So you don't need to touch the whole template if you want to override some CSS classes. Nor no need to override styles in your SCSS files.
 
@@ -90,4 +132,3 @@ Lets take the cookie banner component `shogun/component/cookie/cookie-permission
 ```
 
 As you can see there are two major hookpoint. Number one is the `cookieBannerClasses` array. You can override it in your template inclusion. Number two is the wrapping block. So you can extend the component in your own template.
-

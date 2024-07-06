@@ -23,9 +23,4 @@ class ShogunBundle extends Bundle implements ThemeInterface
         $container->addCompilerPass(new DisableTemplateCachePass());
         $container->addCompilerPass(new StorefrontMigrationReplacementCompilerPass());
     }
-
-    public function getTemplatePriority(): int
-    {
-        return -10;
-    }
 }
