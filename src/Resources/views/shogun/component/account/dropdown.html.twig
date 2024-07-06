@@ -1,5 +1,15 @@
-
-    
-<div class="dropdown-menu dropdown-menu-end p-3">
-    {% sw_include '@Storefront/shogun/component/account/login-form.html.twig' %}
+<div class="dropdown-menu dropdown-menu-end account-dropdown">
+    {% if not context.customer %}
+        {% sw_include '@Storefront/shogun/component/account/login-form.html.twig' %}
+        <div class="divider">
+            <div class="divider-label">
+                Noch kein Kunde?
+            </div>
+        </div>
+        <div class="p-3">
+        <button class="btn btn-primary">
+            Registrieren
+        </button>
+        </div>
+    {% endif %}
 </div>
