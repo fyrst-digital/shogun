@@ -4,3 +4,7 @@
     object-position: var(--product-image-object-position);
     background-color: var(--product-image-bg-color);
 }
+
+.product-review-rating {
+    gap: var(--review-point-gap-y) var(--review-point-gap-y);
+}

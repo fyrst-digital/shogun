@@ -19,3 +19,31 @@
         {% endblock %}
     </div>
 {% endblock %}
+
+{% block component_filter_panel_item_price %}
+    {% set price = listing.aggregations.get('price') %}
+
+    {% if price.min !== null and price.max !== null %}
+        {% sw_include '@Storefront/shogun/component/filter/filter-range.html.twig' with {
+            sidebar: sidebar,
+            name: 'price',
+            minKey: 'min-price',
+            maxKey: 'max-price',
+            lowerBound: 0,
+            displayName: 'listing.filterPriceDisplayName'|trans|sw_sanitize,
+            minInputValue: 0,
+            maxInputValue: price.max,
+        } %}
+    {% endif %}
+{% endblock %}
+
+{% block component_filter_panel_item_rating_select %}
+    {% if listing.aggregations.get('rating').max > 0 %}
+        {% sw_include '@Storefront/shogun/component/filter/filter-rating-select.html.twig' with {
+            sidebar: sidebar,
+            name: 'rating',
+            pluginSelector: 'filter-rating-select',
+            displayName: 'listing.filterRatingDisplayName'|trans|sw_sanitize
+        } %}
+    {% endif %}
+{% endblock %}

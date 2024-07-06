@@ -1,0 +1,35 @@
+/** filter panel **/
+.filter-panel {
+    @extend .d-flex, .flex-column, .flex-wrap;
+    --filter-panel-gap-y: var(--spacer-md);
+    --filter-panel-gap-x: var(--spacer-md);
+}
+
+/** multi filter **/
+.filter-multi-select-list {
+    @extend .m-0;
+    --filter-list-gap-y: var(--spacer-2xs);
+    --filter-list-gap-x: var(--filter-list-gap-y);
+    --filter-list-padding-y: var(--spacer-sm);
+    --filter-list-padding-x: var(--spacer-md);
+}
+
+/** range filter **/
+.filter-range {
+    --filter-range-gap-y: var(--spacer-md);
+    --filter-range-gap-x: var(--spacer-md);
+    --filter-range-padding-y: var(--spacer-sm);
+    --filter-range-padding-x: var(--spacer-md);
+}
+
+/** rating filter **/
+.filter-rating-select-radio {
+    @extend .d-none;
+}
+.filter-rating-select-item-checkmark {
+    @extend .d-none;
+}
+.filter-rating-select-item-label {
+    @extend .d-flex, .flex-wrap, .align-items-center, .justify-content-between;
+    cursor: pointer;
+}

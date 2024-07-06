@@ -1,0 +1,61 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter/filter-range.html.twig' %}
+
+{% block component_filter_range_toggle_icon %}
+    {{sh_icon('caret-down')}}
+{% endblock %}
+
+{% block component_filter_range_min %}
+    <label class="filter-range-min">
+        {% block component_filter_range_min_label %}
+            <span class="filter-range-label">
+                {{ 'listing.filterRangeMinLabel'|trans|sw_sanitize }}
+            </span>
+        {% endblock %}
+
+        {% block component_filter_range_min_input_group %}
+            <div class="input-group">
+                {% block component_filter_range_min_input %}
+                    <input class="form-control min-input"
+                        type="number"
+                        name="{{ minKey }}"
+                        min="{{ minInputValue }}"
+                        max="{{ maxInputValue }}">
+                {% endblock %}
+
+                {% block component_filter_range_min_unit %}
+                    <span class="input-group-text filter-range-unit">
+                        {{ unit }}
+                    </span>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </label>
+{% endblock %}
+
+{% block component_filter_range_max %}
+    <label class="filter-range-max">
+        {% block component_filter_range_max_label %}
+            <span class="filter-range-label">
+                {{ 'listing.filterRangeMaxLabel'|trans|sw_sanitize }}
+            </span>
+        {% endblock %}
+
+        {% block component_filter_range_max_input_group %}
+            <div class="input-group">
+                {% block component_filter_range_max_input %}
+                    <input class="form-control max-input"
+                        type="number"
+                        name="{{ maxKey }}"
+                        min="{{ minInputValue }}"
+                        max="{{ maxInputValue }}">
+                {% endblock %}
+
+                {% block component_filter_range_max_unit %}
+                    <span class="input-group-text filter-range-unit">
+                        {{ unit }}
+                    </span>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </label>
+{% endblock %}
