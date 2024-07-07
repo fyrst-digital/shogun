@@ -1,15 +1,33 @@
-<div class="dropdown-menu dropdown-menu-end account-dropdown">
-    {% if not context.customer %}
-        {% sw_include '@Storefront/shogun/component/account/login-form.html.twig' %}
-        <div class="divider">
-            <div class="divider-label">
-                Noch kein Kunde?
-            </div>
-        </div>
-        <div class="p-3">
-        <button class="btn btn-primary">
-            Registrieren
-        </button>
-        </div>
-    {% endif %}
-</div>
+{% block shogun_component_account_dropdown %}
+    <div class="dropdown-menu dropdown-menu-end account-dropdown">
+        {% if context.customer %}
+            {# @todo add template for logged in users #}
+        {% else %}
+            {% block shogun_component_account_dropdown_login_form %}
+                <div class="px-3 py-2">
+                    {% sw_include '@Storefront/shogun/component/account/login-form.html.twig'  %}
+                </div>
+            {% endblock %}
+            {% block shogun_component_account_dropdown_register_divider %}
+                <div class="divider">
+                    {% block shogun_component_account_dropdown_register_divider_label %}
+                        <div class="divider-label">
+                            {{ 'account.newCustomerLabel'|trans|sw_sanitize }}
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            {% block shogun_component_account_dropdown_register %}
+                <div class="d-grid p-3">
+                    {% block shogun_component_account_dropdown_register_action %}
+                        <a href="{{ path('frontend.account.login.page') }}"
+                            title="{{ 'account.orRegisterLink'|trans|striptags }}"
+                            class="btn btn-primary">
+                            {{ 'account.orRegisterLink'|trans|sw_sanitize }}
+                        </a>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endif %}
+    </div>
+{% endblock %}

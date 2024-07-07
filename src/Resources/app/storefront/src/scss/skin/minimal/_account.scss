@@ -1,4 +1,33 @@
 /** account dropdown **/
 .account-dropdown {
-    --dropdown-min-width: 260px;
+    --dropdown-min-width: 320px;
+}
+
+/** login and register card **/
+.login-card-header,
+.register-card-header {
+    --card-cap-padding-y: .75rem;
+}
+
+/** register form **/
+.register-form {
+
+    .field-salutation {
+        --form-group-column-end: span 6;
+    }
+    .field-personal-title {
+        --form-group-column-end: span 6;
+    }
+    .field-firstname {
+        --form-group-column-end: span 6;
+    }
+    .field-lastname {
+        --form-group-column-end: span 6;
+    }
+    .field-user-email,
+    .field-user-email-confirmation,
+    .field-user-password,
+    .field-user-password-confirmation {
+        --form-group-column-end: span 6;
+    }
 }

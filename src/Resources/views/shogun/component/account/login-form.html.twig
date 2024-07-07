@@ -1,16 +1,133 @@
-  <form class="p-3">
-<div class="form-floating mb-3">
-  <input type="email" class="form-control form-control-sm" id="floatingInput" placeholder="name@example.com">
-  <label for="floatingInput">Email address</label>
-</div>
-<div class="form-floating">
-  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-  <label for="floatingPassword">Password</label>
-</div>
-    <div class="mb-3">
-        <a href="">
-            Passswort vergessen?
-        </a>
-    </div>
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </form>
+{# @template-origin: storefront/component/account/login.html.twig #}
+
+{% set classes = {} %}
+{% if classes.form is not defined %}
+	{% set classes = classes|merge({
+		form: ['login-form', 'd-flex', 'flex-column', 'flex-wrap gap-3']
+	}) %}
+{% endif %}
+{% if classes.username is not defined %}
+	{% set classes = classes|merge({
+		username: ['login-form-username']
+	}) %}
+{% endif %}
+{% if classes.password is not defined %}
+	{% set classes = classes|merge({
+		password: ['login-form-password']
+	}) %}
+{% endif %}
+{% if classes.actions is not defined %}
+	{% set classes = classes|merge({
+		actions: ['login-form-actions','d-flex','flex-row','flex-wrap','align-items-center','justify-content-center','gap-2']
+	}) %}
+{% endif %}
+{% if classes.actionLogin is not defined %}
+	{% set classes = classes|merge({
+		actionLogin: ['flex-grow-0','flex-basis-auto','btn','btn-primary']
+	}) %}
+{% endif %}
+{% if classes.actionPasswordRecovery is not defined %}
+	{% set classes = classes|merge({
+		actionPasswordRecovery: ['flex-grow-1','flex-basis-0','btn','btn-sm','btn-link']
+	}) %}
+{% endif %}
+
+{% block shogun_component_account_login_form %}
+	<form action="{{ path('frontend.account.login') }}"
+		method="post"
+		data-form-validation="true"
+		class="{% if classes.form %}{{classes.form|join(' ')}}{% endif %}">
+
+		{% block shogun_component_account_login_form_parameter %}
+			<input type="hidden"
+					name="redirectTo"
+					value="{{ redirectTo }}">
+
+			<input type="hidden"
+					name="redirectParameters"
+					value="{{ redirectParameters }}">
+		{% endblock %}
+
+		{% block shogun_component_account_login_form_error %}
+			{% if loginError %}
+				{% if errorSnippet != null %}
+					{% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+						type: 'danger',
+						content: errorSnippet|trans|sw_sanitize
+					} %}
+				{% elseif waitTime != null %}
+					{% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+						type: 'info',
+						content: 'account.loginThrottled'|trans({'%seconds%': waitTime})|sw_sanitize
+					} %}
+				{% else %}
+					{% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+						type: 'danger',
+						content: 'account.loginBadCredentials'|trans|sw_sanitize
+					} %}
+				{% endif %}
+			{% endif %}
+		{% endblock %}
+
+		{% block shogun_component_account_login_form_username %}
+			<div class="{% if classes.username %}{{classes.username|join(' ')}}{% endif %}">
+
+				{% block shogun_component_account_login_form_username_label %}
+					<label for="LoginInputEmail">
+						{{ 'account.loginMailLabel'|trans|sw_sanitize }}
+					</label>
+				{% endblock %}
+
+				{% block shogun_component_account_login_form_username_input %}
+					<input type="email" 
+						name="username"
+						id="LoginInputEmail" 
+						autocomplete="username webauthn"
+						required="required"
+						class="form-control{% if loginError %} is-invalid{% endif %}" 
+						placeholder="{{ 'account.loginMailPlaceholder'|trans|striptags }}">
+				{% endblock %}
+			</div>
+		{% endblock %}
+
+		{% block shogun_component_account_login_form_password %}
+			<div class="{% if classes.password %}{{classes.password|join(' ')}}{% endif %}">
+
+				{% block shogun_component_account_login_form_password_label %}
+					<label for="LoginInputPassword">
+						{{ 'account.loginPasswordLabel'|trans|sw_sanitize }}
+					</label>
+				{% endblock %}
+
+				{% block shogun_component_account_login_form_password_input %}
+					<input type="password" 
+						name="password"
+						id="LoginInputPassword" 
+						autocomplete="current-password"
+						required="required"
+						class="form-control{% if loginError %} is-invalid{% endif %}" 
+						placeholder="{{ 'account.loginPasswordPlaceholder'|trans|striptags }}">
+				{% endblock %}
+			</div>
+		{% endblock %}
+
+		{% block shogun_component_account_login_form_actions %}
+			<div class="{% if classes.actions %}{{classes.actions|join(' ')}}{% endif %}">
+
+				{% block shogun_component_account_login_form_submit_button %}
+					<button type="submit" 
+						class="{% if classes.actionLogin %}{{classes.actionLogin|join(' ')}}{% endif %}">
+						{{ 'account.loginSubmit'|trans|sw_sanitize }}
+					</button>
+				{% endblock %}
+
+				{% block shogun_component_account_login_form_password_recovery %}
+					<a href="{{ seoUrl('frontend.account.recover.page') }}"
+						class="{% if classes.actionPasswordRecovery %}{{classes.actionPasswordRecovery|join(' ')}}{% endif %}">
+						{{ 'account.loginPasswordRecover'|trans|sw_sanitize }}
+					</a>
+				{% endblock %}
+			</div>
+		{% endblock %}
+	</form>
+{% endblock %}

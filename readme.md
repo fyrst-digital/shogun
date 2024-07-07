@@ -119,16 +119,49 @@ Then you can reuse this block anywhere (if it's in the inheritance chain) with T
 
 **However, Shogun is designed to be used as a Theme foundation in custom projects. So you have to handle the third-party plugin templates by yourself.**
 
-### Programmatic CSS classes in components
-Most of components CSS classes are programmatic. That means the classes are stored in an array and can be overriden by a new array or can be extended. So you don't need to touch the whole template if you want to override some CSS classes. Nor no need to override styles in your SCSS files.
+### WIP: Programmatic CSS classes in components
+Some components CSS classes are programmatic. That means the classes are stored in an array and can be overriden by a new array or can be extended. So you don't need to touch the whole template if you want to override some CSS classes. Nor no need to override styles in your SCSS files.
 
-Lets take the cookie banner component `shogun/component/cookie/cookie-permission.html.twig` for example. 
+This approach is still experimental and implemented in just a few components. The current approach sets a `classes` object. You can extend this object by Twigs `merge` filter.
+Take this starting point for example:
+
 ``` twig
-<div
-    class="{% block shogun_component_cookie_banner_classes %}{{cookieBannerClasses|join(' ')}}{% endblock %}"
-    data-cookie-permission="true">
-    ...
-</div>
+{% set classes = {
+    form: ['login-form', 'd-flex', 'flex-column', 'flex-wrap gap-3']
+} %}
 ```
 
-As you can see there are two major hookpoint. Number one is the `cookieBannerClasses` array. You can override it in your template inclusion. Number two is the wrapping block. So you can extend the component in your own template.
+You can add additional classes like this:
+``` twig
+{% set classes = classes|merge({
+    form: classes.form|merge(['test'])
+}) %}
+```
+
+Or you can completly override the values:
+``` twig
+{% set classes = classes|merge({
+    form: ['these', 'are', 'my-new', 'classes']
+}) %}
+```
+
+Also the `classes` object is wrapped around a defined statement. So if you include a Shogun template component you can build your own classes from scratch.
+``` twig
+{% if classes is not defined %}
+    {% set classes = {
+        form: ['login-form', 'd-flex', 'flex-column', 'flex-wrap gap-3']
+    } %}
+{% endif %}
+
+{% sw_include '@Storefront/shogun/component/account/login-form.html.twig' with {
+    classes: {
+        form: ['these-classes', 'come', 'form-include']
+    }
+} %}
+```
+
+## Overview: Shogun template components
+
+- **`shogun/component/account/login-form.twig.html`**
+- **`shogun/component/account/login-card.twig.html`** (near feature complete)
+- **`shogun/component/account/register-card.twig.html`** (wip)
