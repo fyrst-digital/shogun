@@ -12,6 +12,7 @@
 /** register form **/
 .register-form {
 
+    /*
     .field-salutation {
         --form-group-column-end: span 6;
     }
@@ -30,4 +31,9 @@
     .field-user-password-confirmation {
         --form-group-column-end: span 6;
     }
+    */
+}
+
+.register-personal {
+    --rows: auto-fit;
 }

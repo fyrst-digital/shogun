@@ -1,0 +1,12 @@
+.btn {
+    @extend .d-inline-flex, .align-items-center, .justify-content-center;
+    --btn-gap: var(--spacer-sm);
+    /** @todo turn into css var **/
+    --btn-icon-size: 20px;
+    gap: var(--btn-gap);
+
+    .icon,
+    .sh-icon {
+        font-size: var(--btn-icon-size);
+    }
+}

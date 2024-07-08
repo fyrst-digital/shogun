@@ -1,0 +1,19 @@
+/** Header actions **/
+.header-actions-btn {
+    --btn-padding-y: var(--spacer-2xs);
+    --btn-padding-x: var(--spacer-2xs);
+
+    @include media-breakpoint-up( lg ) {
+        /** @todo turn into css var **/
+        --btn-icon-size: 24px;
+    }
+}
+.header-actions-col {
+    @extend .ms-auto;
+}
+.header-action-badge {
+    --badge-padding-y: var(--spacer-2xs);
+    --badge-padding-x: var(--spacer-xs);
+    /** @todo turn into css var **/
+    --badge-font-size: 12px;
+}

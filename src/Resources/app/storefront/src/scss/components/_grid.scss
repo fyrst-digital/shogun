@@ -1,16 +1,12 @@
-.form-grid {
-    --form-grid-columns: 12;
-    --form-group-column-end: span var(--form-grid-columns);
-    display: grid !important;
-    grid-template-columns: repeat(var(--form-grid-columns), minmax(0, 1fr));
-    
+.grid {
+
     > .row {
         display: contents !important;
         
         > .form-group {
             @extend .w-100, .p-0, .m-0;
-            grid-column-start: var(--form-group-column-start);
-            grid-column-end: var(--form-group-column-end);
+            // grid-column-start: var(--form-group-column-start);
+            // grid-column-end: var(--form-group-column-end);
             max-width: var(--form-group-max-w);
         }
 
