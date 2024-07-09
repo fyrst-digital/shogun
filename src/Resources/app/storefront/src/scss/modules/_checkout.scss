@@ -1,0 +1,12 @@
+/** checkout aside **/
+.checkout-aside-container {
+    background-color: var(--sidebar-bg-color);
+    border: var(--sidebar-border-width) solid var(--sidebar-border-color);
+    border-radius: var(--sidebar-border-radius);
+}
+
+.checkout-aside-summary-header,
+.checkout-aside-product-header {
+    font-size: var(--sidebar-header-fs);
+    font-weight: var(--sidebar-header-fw);
+}

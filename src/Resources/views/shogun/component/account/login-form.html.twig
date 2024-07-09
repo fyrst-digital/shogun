@@ -73,7 +73,7 @@
 			<div class="{% if classes.username %}{{classes.username|join(' ')}}{% endif %}">
 
 				{% block shogun_component_account_login_form_username_label %}
-					<label for="LoginInputEmail">
+					<label class="form-label" for="LoginInputEmail">
 						{{ 'account.loginMailLabel'|trans|sw_sanitize }}
 					</label>
 				{% endblock %}
@@ -94,7 +94,7 @@
 			<div class="{% if classes.password %}{{classes.password|join(' ')}}{% endif %}">
 
 				{% block shogun_component_account_login_form_password_label %}
-					<label for="LoginInputPassword">
+					<label class="form-label" for="LoginInputPassword">
 						{{ 'account.loginPasswordLabel'|trans|sw_sanitize }}
 					</label>
 				{% endblock %}
