@@ -1,35 +1,18 @@
 {# @template-origin: storefront/component/account/login.html.twig #}
 
-{% set classes = {} %}
-{% if classes.form is not defined %}
-	{% set classes = classes|merge({
-		form: ['login-form', 'd-flex', 'flex-column', 'flex-wrap gap-3']
-	}) %}
-{% endif %}
-{% if classes.username is not defined %}
-	{% set classes = classes|merge({
-		username: ['login-form-username']
-	}) %}
-{% endif %}
-{% if classes.password is not defined %}
-	{% set classes = classes|merge({
-		password: ['login-form-password']
-	}) %}
-{% endif %}
-{% if classes.actions is not defined %}
-	{% set classes = classes|merge({
-		actions: ['login-form-actions','d-flex','flex-row','flex-wrap','align-items-center','justify-content-center','gap-2']
-	}) %}
-{% endif %}
-{% if classes.actionLogin is not defined %}
-	{% set classes = classes|merge({
-		actionLogin: ['flex-grow-0','flex-basis-auto','btn','btn-primary']
-	}) %}
-{% endif %}
-{% if classes.actionPasswordRecovery is not defined %}
-	{% set classes = classes|merge({
-		actionPasswordRecovery: ['flex-grow-1','flex-basis-0','btn','btn-sm','btn-link']
-	}) %}
+{% set defaultClasses = {
+    form: ['login-form', 'd-flex', 'flex-column', 'flex-wrap gap-3'],
+	username: ['login-form-username'],
+	password: ['login-form-password'],
+	actions: ['login-form-actions','d-flex','flex-row','flex-wrap','align-items-center','justify-content-center','gap-2'],
+	actionLogin: ['flex-grow-0','flex-basis-auto','btn','btn-primary'],
+	actionPasswordRecovery: ['flex-grow-1','flex-basis-0','btn','btn-sm','btn-link']
+} %}
+
+{% if classes is defined %}
+    {% set classes = classes|sh_merge_deep(defaultClasses) %}
+{% else %}
+    {% set classes = defaultClasses %}
 {% endif %}
 
 {% block shogun_component_account_login_form %}

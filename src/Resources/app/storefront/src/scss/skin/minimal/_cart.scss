@@ -1,0 +1,14 @@
+/** cart heading **/
+.cart-heading-title {
+    @extend .fw-semibold;
+    font-size: var(--font-size, 20px);
+}
+.cart-heading-products {
+    --badge-font-size: 14px;
+    --badge-font-weight: 400;
+}
+
+/** cart offcanvas **/
+.offcanvas-cart {
+    @extend .d-flex, .flex-column, .gap-3;
+}

@@ -1,0 +1,19 @@
+{% block shogun_component_cart_summary %}
+    <div class="cart-summary">
+        {% block shogun_component_cart_summary_list %}
+            <div class="cart-summary-list">
+                {% block shogun_component_cart_summary_item_total %}
+                    {% sw_include '@Storefront/shogun/component/cart/summary-item.html.twig'
+                        with {
+                            label: 'checkout.subtotalAmount'|trans|sw_sanitize,
+                            value: summary.price.positionPrice|currency,
+                            classes: {
+                                item: ['summary-item-total']
+                            }
+                        } 
+                    only %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

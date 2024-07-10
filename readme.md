@@ -160,6 +160,11 @@ Also the `classes` object is wrapped around a defined statement. So if you inclu
 } %}
 ```
 
+## Twig extensions
+
+- **`sh_merge_deep(source, target)`**
+  This filter merge two arrays recursivly. Under the hood it uses `array_merge_recursive()`
+
 ## Overview: Shogun template components
 
 - **`shogun/component/account/login-form.twig.html`**

@@ -1,0 +1,25 @@
+
+{% set defaultClasses = {
+    item: ['cart-summmary-item']
+} %}
+
+{% if classes is defined %}
+    {% set classes = classes|sh_merge_deep(defaultClasses) %}
+{% else %}
+    {% set classes = defaultClasses %}
+{% endif %}
+
+{% block shogun_component_cart_summary_item %}
+    <dl class="{{classes.item|join(' ')}}">
+        {% block shogun_component_cart_summary_label %}
+            <dt class="cart-summary-item-label">
+                {{ label|raw }}
+            </dt>
+        {% endblock %}
+        {% block shogun_component_cart_summary_value %}
+            <dd class="cart-summary-item-value">
+                {{ value }}
+            </dd>
+        {% endblock %}
+    </dl>
+{% endblock %}
