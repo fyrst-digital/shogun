@@ -1,0 +1,61 @@
+{% sw_extends '@Storefront/shogun/component/line-item/base.html.twig' %}
+
+{% block shogun_component_line_item_image_element %}
+    {% sw_include '@Storefront/storefront/component/line-item/element/image.html.twig' %}
+{% endblock %}
+
+{% block shogun_component_line_item_details %}
+
+    {% block shogun_component_line_item_product_variants %}
+        {% if lineItem.payload.options is not empty %}
+            Todo variants
+            {#% sw_include '@Storefront/storefront/component/line-item/element/variant-characteristics.html.twig' %#}
+        {% endif %}
+    {% endblock %}
+
+    {% block shogun_component_line_item_product_features %}
+        {% if lineItem.payload.features is not empty %}
+            Todo features
+            {#% sw_include '@Storefront/storefront/component/product/feature/list.html.twig' with {
+                features: lineItem.payload.features
+            } %#}
+        {% endif %}
+    {% endblock %}
+
+    {% block shogun_component_line_item_product_delivery_time %}
+        {% if config('core.cart.showDeliveryTime') %}
+            Todo delivery time
+            {#% sw_include '@Storefront/storefront/component/line-item/element/delivery-date.html.twig' %#}
+        {% endif %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block shogun_component_line_item_main %}
+    {{ parent() }}
+
+    {% block shogun_component_line_item_product_total_pricing %}
+        <div class="line-item-total-pricing">
+            {% block shogun_component_line_item_product_quantity %}
+                <div class="line-item-quantity">
+                    {% sw_include '@Storefront/shogun/component/quantity-input.html.twig' with {
+                        quantity: lineItem.quantity,
+                        size: 'sm',
+                        classes: {
+                            input: ['test']
+                        }
+                    } only %}
+                </div>
+            {% endblock %}
+            
+            {% block shogun_component_line_item_product_total_price %}
+                <div class="line-item-total-price">
+                    {# Shipping costs discounts always have a price of 0, which might be confusing, therefore we do not show those #}
+                    {% if lineItem.payload.discountScope != 'delivery' %}
+                        {{ lineItem.price.totalPrice|currency }}
+                    {% endif %}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

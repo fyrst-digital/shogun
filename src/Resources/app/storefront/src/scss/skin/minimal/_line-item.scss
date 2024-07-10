@@ -1,0 +1,24 @@
+.line-item {
+    @extend .d-flex, .flex-column, .flex-wrap, .gap-3;
+}
+.line-item-main {
+    @extend .d-flex, .flex-row, .flex-wrap, .gap-3;
+}
+.line-item-header {
+    @extend .d-flex, .flex-row, .flex-wrap, .gap-2;
+}
+.line-item-name {
+    flex: 1;
+}
+.line-item-actions {
+    flex: 0 auto;
+}
+.line-item-image {
+    flex: 0 auto;
+}
+.line-item-content {
+    flex: 1;
+}
+.line-item-total-pricing {
+    @extend .d-flex, .flex-row, .flex-wrap, .justify-content-between, .align-items-center, .gap-2;
+}

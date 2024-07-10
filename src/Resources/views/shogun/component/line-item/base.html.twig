@@ -1,0 +1,46 @@
+{% block shogun_component_line_item %}
+    <div class="line-item js-cart-item">
+
+        {% block shogun_component_line_item_main %}
+            <div class="line-item-main">
+                
+            {% block shogun_component_line_item_image %}
+                <div class="line-item-image">
+                    {% block shogun_component_line_item_image_element %}{% endblock %}
+                </div>
+            {% endblock %}
+                
+            {% block shogun_component_line_item_content %}
+                <div class="line-item-content">
+
+                {% block shogun_component_line_item_header %}
+                    <div class="line-item-header">
+
+                    {% block shogun_component_line_item_name %}
+                        <div class="line-item-name">
+                            Name
+                        </div>
+                    {% endblock %}
+
+                    {% block shogun_component_line_item_actions %}
+                        <div class="line-item-actions">
+
+                            {% block shogun_component_line_item_delete %}
+                            x
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+
+                    </div>
+                {% endblock %}
+
+                {% block shogun_component_line_item_details %}
+                {% endblock %}
+
+                </div>
+            {% endblock %}
+
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

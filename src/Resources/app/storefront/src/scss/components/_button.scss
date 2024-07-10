@@ -4,6 +4,12 @@
     /** @todo turn into css var **/
     --btn-icon-size: 20px;
     gap: var(--btn-gap);
+    
+    &.btn-sm,
+    .input-group-sm & {
+        /** @todo turn into css var **/
+        --btn-icon-size: 16px;
+    }
 
     .icon,
     .sh-icon {
