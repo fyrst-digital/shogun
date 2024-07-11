@@ -29,3 +29,25 @@
 .offcanvas-cart-actions {
     @extend .d-flex, .flex-column, .gap-3;
 }
+
+/** shipping costs calculation **/
+.shipping-calculation-form {
+    @extend .d-flex, .flex-column, .gap-3;
+}
+.shipping-calculation-selects {
+    @extend .d-flex, .flex-column, .gap-3;
+}
+.shipping-calculation-toogle-btn {
+    @extend .w-100;
+
+    .sh-icon {
+        transition: all 200ms;
+    }
+
+    &[aria-expanded="true"] {
+
+        .sh-icon {
+            transform: rotate(180deg);
+        }
+    }
+}

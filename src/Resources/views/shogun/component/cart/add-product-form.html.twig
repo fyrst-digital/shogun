@@ -1,0 +1,44 @@
+{% block shogun_component_add_product_form %}
+    <form action="{{ path('frontend.checkout.product.add-by-number') }}"
+        class="add-product-form"
+        method="post">
+
+        {% block shogun_component_add_product_form_redirect %}
+            <input type="hidden"
+                    name="redirectTo"
+                    value="frontend.checkout.cart.page">
+        {% endblock %}
+
+        {% block shogun_component_add_product_form_label %}
+            <label class="visually-hidden" for="addProductInput">
+                {{ 'checkout.addProductLabel'|trans|sw_sanitize }}
+            </label>
+        {% endblock %}
+        {% block shogun_component_add_product_form_input_group %}
+            <div class="input-group">
+
+                {% block shogun_component_add_product_form_input %}
+                    <input type="text"
+                        name="number"
+                        class="form-control"
+                        id="addProductInput"
+                        placeholder="{{ 'checkout.addProductPlaceholder'|trans|striptags }}"
+                        aria-label="{{ 'checkout.addProductLabel'|trans|striptags }}"
+                        aria-describedby="addProductButton"
+                        required="required">
+                {% endblock %}
+
+                {% block shogun_component_add_product_form_submit %}
+                    <button class="btn btn-secondary"
+                        type="submit"
+                        aria-labelledby="addProductInput"
+                        id="addProductButton">
+                        {% block shogun_component_add_product_form_submit_icon %}
+                            {{sh_icon('check')}}
+                        {% endblock %}
+                    </button>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </form>
+{% endblock %}
