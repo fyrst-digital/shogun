@@ -10,15 +10,30 @@
 .line-item-name {
     flex: 1;
 }
+.line-item-label {
+    @extend .fw-semibold;
+}
 .line-item-actions {
+    @extend .d-flex, .flex-row, .flex-wrap, .gap-2;
     flex: 0 auto;
 }
-.line-item-image {
+.line-item-action {
+    --btn-padding-x: 4px;
+    --btn-padding-y: 4px;
+}
+.line-item-image-container {
     flex: 0 auto;
 }
 .line-item-content {
+    @extend .d-flex, .flex-column, .flex-wrap, .gap-2;
     flex: 1;
 }
+.line-item-footer {
+    @extend .py-2;
+}
 .line-item-total-pricing {
-    @extend .d-flex, .flex-row, .flex-wrap, .justify-content-between, .align-items-center, .gap-2;
+    @extend .d-flex, .flex-row, .flex-wrap, .justify-content-end, .align-items-center, .gap-4;
+}
+.line-item-quantity {
+    @extend .d-flex, .flex-row, .flex-wrap, .justify-content-end;
 }

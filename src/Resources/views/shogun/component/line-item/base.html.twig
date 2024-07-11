@@ -1,11 +1,21 @@
+{% set defaultClasses = {
+    item: ['line-item','js-cart-item', 'line-item-' ~ lineItem.type]
+} %}
+
+{% if showRemoveButton is not defined %}
+    {% set showRemoveButton = true %}
+{% endif %}
+
+{% set classes = defaultClasses %}
+
 {% block shogun_component_line_item %}
-    <div class="line-item js-cart-item">
+    <div class="{{classes.item|join(' ')}}">
 
         {% block shogun_component_line_item_main %}
             <div class="line-item-main">
                 
             {% block shogun_component_line_item_image %}
-                <div class="line-item-image">
+                <div class="line-item-image-container">
                     {% block shogun_component_line_item_image_element %}{% endblock %}
                 </div>
             {% endblock %}
@@ -18,15 +28,14 @@
 
                     {% block shogun_component_line_item_name %}
                         <div class="line-item-name">
-                            Name
+                            {% block shogun_component_line_item_name_content %}{% endblock %}
                         </div>
                     {% endblock %}
 
                     {% block shogun_component_line_item_actions %}
                         <div class="line-item-actions">
 
-                            {% block shogun_component_line_item_delete %}
-                            x
+                            {% block shogun_component_line_item_actions_inner %}
                             {% endblock %}
                         </div>
                     {% endblock %}

@@ -16,6 +16,7 @@ const icons = {
       'check',
       'handbag-simple',
       'handbag',
+      'heart',
       'info',
       'list',
       'magnifying-glass',

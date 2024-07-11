@@ -1,5 +1,5 @@
 {% set defaultClasses = {
-    group: ['input-group','quantity-selector-group'],
+    group: ['input-group','quantity-selector-group', 'quantity-input'],
     decrease: ['btn','btn-light','btn-decrease','js-btn-minus'],
     increase: ['btn','btn-light','btn-increase','js-btn-plus'],
     input: ['form-control','text-center','js-quantity-selector','quantity-selector-group-input'],
@@ -17,7 +17,11 @@
     }) %}
 {% endif %}
 
-{% if purchaseSteps is defined %}
+{% if minQuantity is not defined %}
+    {% set minQuantity = 1 %}
+{% endif %}
+
+{% if purchaseSteps is not defined %}
     {% set purchaseSteps = 1 %}
 {% endif %}
 

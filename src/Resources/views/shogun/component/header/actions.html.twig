@@ -52,8 +52,12 @@
         {% endblock %}
 
         {% block shogun_component_actions_cart %}
+            {% set options = {
+                changeProductQuantityTriggerNumberSelector: '.quantity-selector-group-input'
+            } %}
             <div class="col-auto header-action header-cart"
-                data-off-canvas-cart="true">
+                data-off-canvas-cart="true"
+                data-off-canvas-cart-options="{{options|json_encode}}">
 
                 <a class="btn position-relative header-cart-btn header-actions-btn"
                     href="{{ path('frontend.checkout.cart.page') }}"

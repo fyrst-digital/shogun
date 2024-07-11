@@ -4,58 +4,92 @@
     {% sw_include '@Storefront/storefront/component/line-item/element/image.html.twig' %}
 {% endblock %}
 
+{% block shogun_component_line_item_name_content %}
+    {% sw_include '@Storefront/storefront/component/line-item/element/label.html.twig' with {
+        lineItemLink: displayMode !== 'order' or lineItem.productId ? seoUrl('frontend.detail.page', { productId: lineItem.referencedId }) : null,
+        lineItemModalLink: showLineItemModal ? path('widgets.quickview.minimal', { productId: lineItem.referencedId }) : false,
+    } %}
+{% endblock %}
+
+{% block shogun_component_line_item_actions_inner %}
+
+    {% block shogun_component_line_item_action_wishlist %}
+        {% if config('core.cart.wishlistEnabled') %}
+            {% sw_include '@Storefront/shogun/component/product/action-wishlist.html.twig' with {
+                showText: false,
+                size: 'sm',
+                productId: lineItem.referencedId,
+                classes: {
+                    action: ['line-item-action']
+                }
+            } %}
+        {% endif %}
+    {% endblock %}
+
+    {% block shogun_component_line_item_action_delete %}
+        {% if lineItem.removable and nestingLevel < 1 %}
+            {% sw_include '@Storefront/shogun/component/line-item/element/remove.html.twig' %}
+        {% endif %}
+    {% endblock %}
+
+{% endblock %}
+
 {% block shogun_component_line_item_details %}
 
-    {% block shogun_component_line_item_product_variants %}
-        {% if lineItem.payload.options is not empty %}
-            Todo variants
-            {#% sw_include '@Storefront/storefront/component/line-item/element/variant-characteristics.html.twig' %#}
-        {% endif %}
+    {% block shogun_component_line_item_product_body %}
+        <div class="line-item-body">
+            {% block shogun_component_line_item_product_variants %}
+                {% if lineItem.payload.options is not empty %}
+                    Todo variants
+                    {#% sw_include '@Storefront/storefront/component/line-item/element/variant-characteristics.html.twig' %#}
+                {% endif %}
+            {% endblock %}
+
+            {% block shogun_component_line_item_product_features %}
+                {% if lineItem.payload.features is not empty %}
+                    Todo features
+                    {#% sw_include '@Storefront/storefront/component/product/feature/list.html.twig' with {
+                        features: lineItem.payload.features
+                    } %#}
+                {% endif %}
+            {% endblock %}
+
+            {% block shogun_component_line_item_product_delivery_time %}
+                {% if config('core.cart.showDeliveryTime') %}
+                    Todo delivery time
+                    {#% sw_include '@Storefront/storefront/component/line-item/element/delivery-date.html.twig' %#}
+                {% endif %}
+            {% endblock %}
+        </div>
     {% endblock %}
 
-    {% block shogun_component_line_item_product_features %}
-        {% if lineItem.payload.features is not empty %}
-            Todo features
-            {#% sw_include '@Storefront/storefront/component/product/feature/list.html.twig' with {
-                features: lineItem.payload.features
-            } %#}
-        {% endif %}
-    {% endblock %}
-
-    {% block shogun_component_line_item_product_delivery_time %}
-        {% if config('core.cart.showDeliveryTime') %}
-            Todo delivery time
-            {#% sw_include '@Storefront/storefront/component/line-item/element/delivery-date.html.twig' %#}
-        {% endif %}
+    {% block shogun_component_line_item_product_footer %}
+        <div class="line-item-footer">
+            {% block shogun_component_line_item_product_total_pricing %}
+                <div class="line-item-total-pricing">
+                    {% block shogun_component_line_item_product_quantity %}
+                        <div class="line-item-quantity">
+                            {% sw_include '@Storefront/shogun/component/line-item/element/quantity.html.twig' 
+                            
+                            %}
+                        </div>
+                    {% endblock %}
+                    
+                    {% block shogun_component_line_item_product_total_price %}
+                        <div class="line-item-total-price">
+                            {# Shipping costs discounts always have a price of 0, which might be confusing, therefore we do not show those #}
+                            {% if lineItem.payload.discountScope != 'delivery' %}
+                                {{ lineItem.price.totalPrice|currency }}
+                            {% endif %}
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
     {% endblock %}
 
 {% endblock %}
 
 {% block shogun_component_line_item_main %}
     {{ parent() }}
-
-    {% block shogun_component_line_item_product_total_pricing %}
-        <div class="line-item-total-pricing">
-            {% block shogun_component_line_item_product_quantity %}
-                <div class="line-item-quantity">
-                    {% sw_include '@Storefront/shogun/component/quantity-input.html.twig' with {
-                        quantity: lineItem.quantity,
-                        size: 'sm',
-                        classes: {
-                            input: ['test']
-                        }
-                    } only %}
-                </div>
-            {% endblock %}
-            
-            {% block shogun_component_line_item_product_total_price %}
-                <div class="line-item-total-price">
-                    {# Shipping costs discounts always have a price of 0, which might be confusing, therefore we do not show those #}
-                    {% if lineItem.payload.discountScope != 'delivery' %}
-                        {{ lineItem.price.totalPrice|currency }}
-                    {% endif %}
-                </div>
-            {% endblock %}
-        </div>
-    {% endblock %}
 {% endblock %}
