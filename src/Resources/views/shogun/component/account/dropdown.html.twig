@@ -1,7 +1,11 @@
 {% block shogun_component_account_dropdown %}
     <div class="dropdown-menu dropdown-menu-end account-dropdown">
         {% if context.customer %}
-            {# @todo add template for logged in users #}
+            {% block shogun_component_account_dropdown_user_actions %}
+                {% sw_include '@Storefront/shogun/component/account/user-actions.html.twig' with {
+                    activeRoute: activeRoute
+                } %}
+            {% endblock %}
         {% else %}
             {% block shogun_component_account_dropdown_login_form %}
                 <div class="px-3 py-2">

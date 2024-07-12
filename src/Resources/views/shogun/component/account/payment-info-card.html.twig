@@ -1,0 +1,22 @@
+{% block shogun_component_account_card_payment_info %}
+    <div class="card account-card-payment-info">
+        <div class="card-body">
+            {% block page_account_overview_payment_title %}
+                <h4 class="card-title">
+                    {{ 'account.overviewPaymentHeader'|trans|sw_sanitize }}
+                </h4>
+            {% endblock %}
+
+            {% block page_account_overview_payment_content %}
+                <strong>{{ context.customer.defaultPaymentMethod.translated.name }}</strong>
+                <p>{{ context.customer.defaultPaymentMethod.description }}</p>
+            {% endblock %}
+
+            {% block page_account_overview_payment_actions %}
+                <div class="card-actions">
+                    {% block page_account_overview_payment_actions_content %}{% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% if userActions is not defined %}
+    {% set userActions = {
+        home: {
+            route: 'frontend.account.home.page',
+            label: 'account.overviewLink'|trans|striptags,
+            icon: 'squares-four'
+        },
+        profile: {
+            route: 'frontend.account.profile.page',
+            label: 'account.profileLink'|trans|sw_sanitize,
+            icon: 'pencil-simple-line'
+        },
+        payment: {
+            route: 'frontend.account.payment.page',
+            label: 'account.paymentLink'|trans|sw_sanitize,
+            icon: 'credit-card'
+        }
+    } %}
+{% endif %}
+
+{% block shogun_component_account_user_actions %}
+    {% if userActions is not empty %}  
+        <ul class="nav user-actions">
+
+            {% for action in userActions %}
+                {% block shogun_component_account_user_action_item %}
+                    <li class="nav-item user-action-item">
+
+                        {% block shogun_component_account_user_action_link %}
+                            <a href="{{path(action.route)}}"
+                                class="nav-link user-action-link{% if activeRoute is same as(action.route) %} active{% endif %}" 
+                                title="{{action.label}}"
+                                aria-current="page">
+
+                                {% block shogun_component_account_user_action_link_icon %}
+                                    {% if action.icon is defined %}
+                                        {{sh_icon(action.icon)}}
+                                    {% endif %}
+                                {% endblock %}
+
+                                {% block shogun_component_account_user_action_link_label %}
+                                    {{action.label}}
+                                {% endblock %}
+                            </a>
+                        {% endblock %}
+                    </li>
+                {% endblock %}
+            {% endfor %}
+
+            {% block shogun_component_account_user_action_item_logout %}
+                <li class="nav-item user-action-item user-action-logout">
+
+                    {% block shogun_component_account_user_action_logout_link %}
+                        <a href="{{ path('frontend.account.logout.page') }}"
+                            class="nav-link user-action-link" 
+                            title="{{ 'account.logout'|trans|sw_sanitize }}"
+                            aria-current="page">
+
+                            {% block shogun_component_account_user_action_logout_link_icon %}
+                            {% endblock %}
+
+                            {% block shogun_component_account_user_action_logout_link_label %}
+                                {{ 'account.logout'|trans|sw_sanitize }}
+                            {% endblock %}
+                        </a>
+                    {% endblock %}
+                </li>
+            {% endblock %}
+        </ul>
+    {% endif %}
+{% endblock %}

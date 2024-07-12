@@ -3,6 +3,28 @@
     --dropdown-min-width: 320px;
 }
 
+/** user account actions **/
+.user-actions {
+    @extend .flex-column, .gap-2;
+}
+.user-action-link {
+    @extend .d-flex, .flex-row, .gap-3, .align-items-center;
+    --nav-link-color: var(--body-color);
+    --nav-link-hover-color: var(--nav-link-color);
+    --nav-link-hover-bg-color: var(--gray-100);
+    --nav-link-hover-font-weight: 600;
+    --nav-link-active-color: var(--nav-link-hover-color);
+    --nav-link-active-bg-color: var(--nav-link-hover-bg-color);
+    --nav-link-active-font-weight: var(--nav-link-hover-font-weight);
+    --nav-link-icon-size: 20px;
+    --nav-link-icon-color: var(--gray-600);
+    transition: all 200ms;
+
+    .user-action-logout & {
+        @extend .justify-content-center, .border-top, .mt-2;
+    }
+}
+
 /** login and register card **/
 .login-card-header,
 .register-card-header {
@@ -10,30 +32,17 @@
 }
 
 /** register form **/
-.register-form {
-
-    /*
-    .field-salutation {
-        --form-group-column-end: span 6;
-    }
-    .field-personal-title {
-        --form-group-column-end: span 6;
-    }
-    .field-firstname {
-        --form-group-column-end: span 6;
-    }
-    .field-lastname {
-        --form-group-column-end: span 6;
-    }
-    .field-user-email,
-    .field-user-email-confirmation,
-    .field-user-password,
-    .field-user-password-confirmation {
-        --form-group-column-end: span 6;
-    }
-    */
-}
-
 .register-personal {
     --rows: auto-fit;
+}
+
+/** account page overview **/
+.account-overview {
+
+    .account-card-personal {
+        @extend .g-col-12, .g-col-lg-6;
+    }
+    .account-card-payment-info {
+        @extend .g-col-12, .g-col-lg-6;
+    }
 }
