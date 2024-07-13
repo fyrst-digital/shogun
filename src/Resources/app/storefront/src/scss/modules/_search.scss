@@ -1,6 +1,6 @@
 .search-suggest-product-image {
-    aspect-ratio: var(--product-image-aspect-ratio);
-    object-fit: var(--product-image-object-fit);
-    object-position: var(--product-image-object-position);
+    aspect-ratio: var(--product-image-aspect-ratio, 1 / 1);
+    object-fit: var(--product-image-object-fit, contain);
+    object-position: var(--product-image-object-position, center);
     background-color: var(--product-image-bg-color);
 }

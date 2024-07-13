@@ -1,7 +1,7 @@
 {% block shogun_component_search_suggest_item %}
     <a href="{{ seoUrl('frontend.detail.page', {productId: product.id}) }}"
         title="{{ product.translated.name }}"
-        class="search-suggest-item flex-grow-1 d-flex flex-wrap gap-3">
+        class="search-suggest-item text-decoration-none text-body g-col-12 d-flex flex-wrap gap-3">
 
         {% block shogun_component_search_suggest_item_image %}
             <div class="col-auto search-suggest-item-image-container">
@@ -37,7 +37,7 @@
             </div>
         {% endblock %}
 
-        <div class="col">
+        <div class="col search-suggest-content">
             {% block shogun_component_search_suggest_item_name %}
                 <div class="col search-suggest-product-name">
                     {{ product.translated.name }}
@@ -45,7 +45,7 @@
             {% endblock %}
 
             {% block shogun_component_search_suggest_itemt_price %}
-                <div class="col-auto search-suggest-product-price">
+                <div class="col-auto search-suggest-product-pricing">
                     {% set price = product.calculatedPrice %}
                     {% if product.calculatedPrices.count > 0 %}
                         {% set price = product.calculatedPrices.last %}
@@ -62,7 +62,7 @@
                         {{ 'listing.listingTextFrom'|trans|sw_sanitize }}
                     {% endif %}
                     <span class="search-suggest-product-price">
-                        {{ price.unitPrice|currency }}{{ 'general.star'|trans|sw_sanitize }}
+                        {{ price.unitPrice|currency }}
                     </span>
 
                     {% if price.referencePrice is not null %}
