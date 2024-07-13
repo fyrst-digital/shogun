@@ -1,4 +1,4 @@
-/** Header actions **/
+/** header actions **/
 .header-actions-btn {
     --btn-padding-y: var(--spacer-2xs);
     --btn-padding-x: var(--spacer-2xs);
@@ -16,4 +16,46 @@
     --badge-padding-x: var(--spacer-xs);
     /** @todo turn into css var **/
     --badge-font-size: 12px;
+}
+
+/** header search **/
+.header-search {
+    flex: 1 1 100%;
+}
+.header-search-collapse {
+    position: absolute;
+    inset: 0;
+    height: auto !important;
+    overflow: visible !important;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10;
+    background-color: var(--header-seach-collapse-bg-color);
+    transition: all 200ms;
+
+    &.show {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @include media-breakpoint-up( lg ) {
+        display: contents !important;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.header-search-input {
+    border-radius: var(--header-search-border-radius) !important;
+}
+.header-search-btn {
+    @extend .position-absolute;
+    inset: 0;
+    left: auto;
+    z-index: 10 !important;
+}
+.header-search-input-group {
+    flex: 1 0%;
+}
+.header-search-close {
+    @extend .d-lg-none;
 }

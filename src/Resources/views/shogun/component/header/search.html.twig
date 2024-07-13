@@ -1,0 +1,57 @@
+{% sw_extends '@Storefront/storefront/layout/header/search.html.twig' %}
+
+{% block layout_header_search %}
+    <div class="collapse header-search-collapse d-flex flex-row flex-wrap align-items-center"
+        id="searchCollapse">
+
+        <div class="header-search">
+
+            {% block layout_header_search_form %}
+                <form action="{{ path('frontend.search.page') }}"
+                    method="get"
+                    data-search-widget="true"
+                    data-search-widget-options="{{ searchWidgetOptions|json_encode }}"
+                    data-url="{{ path('frontend.search.suggest') }}?search="
+                    class="header-search-form">
+
+                    <div class="header-search-container d-flex flex-row flex-wrap gap-2">
+                        {% block layout_header_search_input_group %}
+                            <div class="input-group header-search-input-group">
+                                {% block layout_header_search_input %}
+                                    <input type="search"
+                                        name="search"
+                                        class="form-control header-search-input"
+                                        autocomplete="off"
+                                        autocapitalize="off"
+                                        placeholder="{{ 'header.searchPlaceholder'|trans|striptags }}"
+                                        aria-label="{{ 'header.searchPlaceholder'|trans|striptags }}"
+                                        value="{{ page.searchTerm }}">
+                                {% endblock %}
+
+                                {% block layout_header_search_button %}
+                                    <button type="submit"
+                                        class="btn header-search-btn"
+                                        aria-label="{{ 'header.searchButton'|trans|striptags }}">
+                                        {% block layout_header_search_button_icon %}
+                                            {{sh_icon('magnifying-glass')}}
+                                        {% endblock %}
+                                    </button>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+
+                        {% block layout_header_search_close %}
+                            <button class="btn header-search-close"
+                                data-sh-header-search="close">
+                                {% block layout_header_search_close_icon %}
+                                    {{sh_icon('x')}}
+                                {% endblock %}
+                            </button>
+                        {% endblock %}
+                    </div>
+
+                </form>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
