@@ -1,13 +1,14 @@
 /**
- * Style modules provide styling for shopware specific components. 
+ * Shogun style modules provide styling for e-commerce specific components. 
  * For example listing, product components, search and so on.
- * Mostly this styles add CSS variables to shopwares default classes you can and should use to customize your theme. This approach will avoid heavy CSS.
- * As always these modules are opt-in. You can set them all in once with `@import '~shogun/modules'` or you can import specific modules with `@import '~shogun/modules/listing'` for example
+ * Mostly this modules add CSS variables to shopware storefrints default classes you can and should use to customize your theme. This approach will avoid heavy CSS.
+ * As always these modules are opt-in. You can set them all in once with `@import '~shogun/scss/modules'` or you can import specific modules with `@import '~shogun/scss/modules/listing'` for example
 **/
 @import "checkout";
 @import "filter";
 @import "list-item";
 @import "listing";
+@import "navigation";
 @import "product";
 @import "quantity-input";
 @import "scroll-up";

@@ -28,7 +28,7 @@
     padding: var(--filter-range-padding-y) var(--filter-range-padding-x);
 }
 .filter-range-error {
-    @extend .text-style-muted;
+    @extend .form-text;
     padding: var(--filter-range-padding-y) var(--filter-range-padding-x);
 }
 .filter-range-min,

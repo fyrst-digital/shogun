@@ -1,0 +1,19 @@
+/** main navigation bar **/
+.main-navigation {
+    @extend .position-relative;
+    z-index: 10;
+}
+
+/** main navigation flyout **/
+.navigation-flyout {
+    @extend .position-absolute, .top-100, .start-0, .end-0;
+    z-index: 20;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 200ms;
+
+    &.is-open {
+        visibility: visible;
+        opacity: 1;
+    }
+}

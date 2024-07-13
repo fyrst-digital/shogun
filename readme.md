@@ -41,6 +41,21 @@ As always these modules are opt-in. You can set them all in once with `@import '
 #### shogun/modules/listing
 Provides additional CSS variables to listing classes
 
+## Start with style
+If you want to start with a good, minimal style to build upon, you can use this as a starting point:
+
+``` scss
+/** Shogun dependencies **/
+@import '~shogun/scss/utilities/index';
+@import '~shogun/scss/modules/index';
+@import '~shogun/scss/components/index';
+@import '~shogun/scss/icons';
+@import '~shogun/scss/tiny-slider';
+@import '~shogun/scss/skin/minimal/index';
+```
+
+This also includes styling for Shoguns template components. You can include them at any time in a progressive way.
+
 ### Icons
 Icons will be pure SVG in CSS icons because of some advantages over SVG in HTML.  
 All icons coming from shogun are prefixed with `sh` so the common class for shogun icons is `.sh-icon`.
