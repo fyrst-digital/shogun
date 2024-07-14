@@ -1,9 +1,11 @@
 .btn {
-    @extend .d-inline-flex, .align-items-center, .justify-content-center;
+    @extend .d-inline-flex;
     --btn-gap: var(--spacer-sm);
     /** @todo turn into css var **/
     --btn-icon-size: 20px;
     gap: var(--btn-gap);
+    justify-content: var(--btn-justify-content, center);
+    align-items: var(--btn-align-items, center);
     
     &.btn-sm,
     .input-group-sm & {

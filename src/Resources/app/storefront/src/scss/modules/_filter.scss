@@ -1,5 +1,10 @@
 .filter-panel {
+    display: var(--filter-panel-display, flex);
     gap: var(--filter-panel-gap-y) var(--filter-panel-gap-x);
+    padding: var(--filter-panel-padding-y, 0px) var(--filter-panel-padding-x, 0px);
+}
+.filter-panel-offcanvas-header {
+    padding: var(--filter-panel-padding-y, 0px) var(--filter-panel-padding-x, 0px);
 }
 .filter-panel-active-container {
     @extend .d-flex, .flex-row, .flex-wrap, .align-items-center;

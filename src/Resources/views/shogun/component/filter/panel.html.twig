@@ -1,7 +1,7 @@
 {% sw_extends '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
 
 {% block component_filter_panel_header %}
-    <div class="d-flex flex-wrap gap-3 p-4 align-items-center filter-panel-offcanvas-header">
+    <div class="d-flex flex-wrap align-items-center filter-panel-offcanvas-header">
         <div class="fs-5 fw-semibold filter-panel-offcanvas-only filter-panel-offcanvas-title">
             {{ "listing.filterTitleText"|trans }}
         </div>
@@ -13,13 +13,50 @@
 {% endblock %}
 
 {% block component_filter_panel_items_container %}
-    <div class="d-grid gap-3 filter-panel-items-container">
+    <div class="filter-panel-items-container">
         {% block component_filter_panel_items %}
             {{ parent() }}
         {% endblock %}
     </div>
 {% endblock %}
 
+{# manufacturer filter #}
+{% block component_filter_panel_item_manufacturer %}
+    {# @var manufacturers \Shopware\Core\Framework\DataAbstractionLayer\Search\AggregationResult\Metric\EntityResult #}
+    {% set manufacturers = listing.aggregations.get('manufacturer') %}
+    {% if not manufacturers.entities is empty %}
+        {% set manufacturersSorted = manufacturers.entities|sort((a, b) => a.translated.name|lower <=> b.translated.name|lower) %}
+
+        {% sw_include '@Storefront/shogun/component/filter/filter-multi-select.html.twig' with {
+            elements: manufacturersSorted,
+            sidebar: sidebar,
+            name: 'manufacturer',
+            displayName: 'listing.filterManufacturerDisplayName'|trans|sw_sanitize
+        } %}
+    {% endif %}
+{% endblock %}
+
+{# properties filter #}
+{% block component_filter_panel_item_properties %}
+    {# @var properties \Shopware\Core\Framework\DataAbstractionLayer\Search\AggregationResult\Metric\EntityResult #}
+    {% set properties = listing.aggregations.get('properties') %}
+
+    {% if not properties.entities is empty %}
+        {% for property in properties.entities %}
+            {% sw_include '@Storefront/shogun/component/filter/filter-multi-select.html.twig' with {
+                elements: property.options,
+                sidebar: sidebar,
+                name: 'properties',
+                displayName: property.translated.name,
+                displayType: property.displayType,
+                pluginSelector: 'filter-property-select',
+                propertyName: property.translated.name
+            } %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{# price filter #}
 {% block component_filter_panel_item_price %}
     {% set price = listing.aggregations.get('price') %}
 
@@ -37,6 +74,7 @@
     {% endif %}
 {% endblock %}
 
+{# rating filter #}
 {% block component_filter_panel_item_rating_select %}
     {% if listing.aggregations.get('rating').max > 0 %}
         {% sw_include '@Storefront/shogun/component/filter/filter-rating-select.html.twig' with {

@@ -1,8 +1,40 @@
 /** filter panel **/
 .filter-panel {
-    @extend .d-flex, .flex-column, .flex-wrap;
+    @extend .flex-column, .flex-wrap;
+    --filter-panel-display: none;
     --filter-panel-gap-y: var(--spacer-md);
     --filter-panel-gap-x: var(--spacer-md);
+
+    @include media-breakpoint-up( lg ) {
+        --filter-panel-display: flex;
+    }
+}
+.filter-panel-items-container {
+    @extend .grid;
+}
+.filter-panel-item {
+    @extend .g-col-12;
+}
+
+/** filter offcanvas **/
+.offcanvas-filter {
+    --offcanvas-height: 80vh;
+
+    .filter-panel {
+        --filter-panel-display: flex;
+        overflow-y: auto;
+        overflow-x: clip;
+    }
+    .filter-panel-items-container {
+        @extend .w-100;
+    }
+}
+.filter-panel-offcanvas-header {
+    @extend .d-none;
+
+    .offcanvas-filter & {
+        @extend .d-flex;
+    }
 }
 
 /** multi filter **/
