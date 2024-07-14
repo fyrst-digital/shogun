@@ -1,6 +1,7 @@
 .card {
     --card-inner-border-radius: calc(var(--card-border-radius) - (var(--card-border-width)));
     --card-header-line-height: var(--body-line-height);
+    gap: var(--card-gap, 0px);
     box-shadow: var(--card-box-shadow);
     max-width: var(--card-max-width);
 

@@ -1,0 +1,7 @@
+.pagination {
+    gap: var(--pagination-gap, var(--spacer-xs))
+}
+.page-link {
+    border-radius: var(--pagination-border-radius);
+    min-width: var(--pagination-min-w, auto);
+}

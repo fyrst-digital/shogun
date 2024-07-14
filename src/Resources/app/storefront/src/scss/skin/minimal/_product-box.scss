@@ -1,0 +1,12 @@
+.product-box-info {
+    @extend .d-flex, .flex-column;
+    --card-gap: var(--spacer-sm);
+}
+.product-box {
+
+    .product-name {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}

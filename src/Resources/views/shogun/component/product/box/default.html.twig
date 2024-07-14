@@ -42,59 +42,74 @@
             {% block component_product_box_content %}
 
                 {% block component_product_box_info %}
-                    <div class="card-body flex-fill product-info">
-                        {% block component_product_box_rating %}
-                            {% if config('core.listing.showReview') %}
-                                <div class="product-rating">
-                                    {% if product.ratingAverage %}
-                                        {% sw_include '@Storefront/shogun/component/review/rating.html.twig' with {
-                                            points: product.ratingAverage
-                                        } %}
+                    <div class="card-body flex-fill product-box-info">
+
+                        {% block component_product_box_header %}
+                            <div class="product-box-header">
+
+                                {% block component_product_box_rating %}
+                                    {% if config('core.listing.showReview') && product.ratingAverage %}
+                                        <div class="product-rating">
+                                            {% sw_include '@Storefront/shogun/component/review/rating.html.twig' with {
+                                                points: product.ratingAverage
+                                            } %}
+                                        </div>
                                     {% endif %}
-                                </div>
-                            {% endif %}
-                        {% endblock %}
+                                {% endblock %}
 
-                        {% block component_product_box_name %}
-                            <a href="{{ seoUrl('frontend.detail.page', {productId: id}) }}"
-                                class="product-name"
-                                title="{{ name }}">
-                                {{ name }}
-                            </a>
-                        {% endblock %}
-
-                        {% block component_product_box_variant_characteristics %}
-                            <div class="product-variant-characteristics">
-                                <div class="product-variant-characteristics-text">
-                                    {% if not displayParent %}
-                                        {% for variation in product.variation %}
-                                            {{ variation.group }}:
-                                            <span class="product-variant-characteristics-option">
-                                                {{ variation.option }}
-                                            </span>
-
-                                            {% if product.variation|last != variation %}
-                                                {{ ' | ' }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endif %}
-                                </div>
+                                {% block component_product_box_name %}
+                                    <a href="{{ seoUrl('frontend.detail.page', {productId: id}) }}"
+                                        class="product-name"
+                                        title="{{ name }}">
+                                        {{ name }}
+                                    </a>
+                                {% endblock %}
                             </div>
                         {% endblock %}
 
-                        {% block component_product_box_description %}
-                            <div class="product-description">
-                                {{ product.translated.description|striptags|raw }}
+                        {% block component_product_box_body %}
+                            <div class="product-box-body">
+
+                                {% block component_product_box_variant_characteristics %}
+                                    {% if not displayParent && product.variation %}
+                                        <div class="product-variant-characteristics">
+                                            <div class="product-variant-characteristics-text">
+                                                {% for variation in product.variation %}
+                                                    {{ variation.group }}:
+                                                    <span class="product-variant-characteristics-option">
+                                                        {{ variation.option }}
+                                                    </span>
+
+                                                    {% if product.variation|last != variation %}
+                                                        {{ ' | ' }}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+
+                                {% block component_product_box_description %}
+                                    <div class="product-description">
+                                        {{ product.translated.description|striptags|raw }}
+                                    </div>
+                                {% endblock %}
                             </div>
                         {% endblock %}
 
-                        {% block component_product_box_price %}
-                            {% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
+                        {% block component_product_box_footer %}
+                            <div class="product-box-footer">
+
+                                {% block component_product_box_price %}
+                                    {% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
+                                {% endblock %}
+
+                                {% block component_product_box_action %}
+                                    {% sw_include '@Storefront/storefront/component/product/card/action.html.twig' %}
+                                {% endblock %}
+                            </div>
                         {% endblock %}
 
-                        {% block component_product_box_action %}
-                            {% sw_include '@Storefront/storefront/component/product/card/action.html.twig' %}
-                        {% endblock %}
                     </div>
                 {% endblock %}
 

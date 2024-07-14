@@ -1,0 +1,8 @@
+.pagination {
+    @extend .m-0;
+}
+.page-link {
+    @extend .d-flex, .text-center, .justify-content-center;
+    line-height: 1;
+    cursor: pointer;
+}
