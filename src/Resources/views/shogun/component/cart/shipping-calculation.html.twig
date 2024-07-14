@@ -29,7 +29,7 @@
                     {% block shogun_component_shipping_calculation_country %}
                         {% if not context.customer %}
                             <div class="form-group">
-                                <label for="countryId">{{ 'checkout.shippingCountry'|trans|sw_sanitize }}</label>
+                                <label class="form-label" for="countryId">{{ 'checkout.shippingCountry'|trans|sw_sanitize }}</label>
                                 <select class="form-select" type="text" id="countryId" name="countryId">
                                     {% for country in page.countries %}
                                         <option value="{{ country.id }}"
@@ -44,7 +44,7 @@
 
                     {% block shogun_component_shipping_calculation_payment_method %}
                         <div class="form-group">
-                            <label for="paymentMethodId">{{ 'checkout.paymentMethod'|trans|sw_sanitize }}</label>
+                            <label class="form-label" for="paymentMethodId">{{ 'checkout.paymentMethod'|trans|sw_sanitize }}</label>
                             <select class="form-select" type="text" id="paymentMethodId" name="paymentMethodId">
                                 {% if context.paymentMethod.id not in page.paymentMethods.ids %}
                                     <option value="{{ context.paymentMethod.id }}"
@@ -65,7 +65,7 @@
 
                     {% block shogun_component_shipping_calculation_shipping_method %}
                         <div class="form-group">
-                            <label for="shippingMethodId">{{ 'checkout.shippingMethod'|trans|sw_sanitize }}</label>
+                            <label class="form-label" for="shippingMethodId">{{ 'checkout.shippingMethod'|trans|sw_sanitize }}</label>
                             <select class="form-select" type="text" id="shippingMethodId" name="shippingMethodId">
                                 {% if context.shippingMethod.id not in page.shippingMethods.ids %}
                                     <option value="{{ context.shippingMethod.id }}"

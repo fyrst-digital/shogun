@@ -5,10 +5,25 @@
 {% endblock %}
 
 {% block shogun_component_line_item_name_content %}
-    {% sw_include '@Storefront/storefront/component/line-item/element/label.html.twig' with {
-        lineItemLink: displayMode !== 'order' or lineItem.productId ? seoUrl('frontend.detail.page', { productId: lineItem.referencedId }) : null,
-        lineItemModalLink: showLineItemModal ? path('widgets.quickview.minimal', { productId: lineItem.referencedId }) : false,
-    } %}
+    {% set productLink = null %}
+    {% set label = lineItem.label|trans|sw_sanitize %}
+
+    {% if lineItem.type is same as('product') %}
+        {% set productLink = seoUrl('frontend.detail.page', { productId: lineItem.referencedId }) %}
+    {% endif %}
+
+    {% if productLink is not null %}
+        <a href="{{ productLink }}"
+            class="line-item-label product-name"
+            title="{{ label }}"
+        >
+            {{ label|raw }}
+        </a>
+    {% else %}
+        <span class="line-item-label product-name">
+            {{ label|raw }}
+        </span>
+    {% endif %}
 {% endblock %}
 
 {% block shogun_component_line_item_actions_inner %}
