@@ -4,3 +4,9 @@
 .cms-section-sidebar {
     @extend .g-0;
 }
+.cms-section-default {
+
+    &.boxed {
+        @extend .container;
+    }
+}

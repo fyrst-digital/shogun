@@ -10,3 +10,6 @@
         overflow: hidden;
     }
 }
+.product-image-wrapper {
+    @extend .position-relative;
+}

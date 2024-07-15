@@ -30,9 +30,12 @@
 
                     {% if config('core.cart.wishlistEnabled') %}
                         {% block component_product_box_wishlist_action %}
-                            {% sw_include '@Storefront/storefront/component/product/card/wishlist.html.twig' with {
-                                appearance: 'circle',
-                                productId: id
+                            {% sw_include '@Storefront/shogun/component/product/action-wishlist.html.twig' with {
+                                showText: false,
+                                productId: id,
+                                classes: {
+                                    action: ['product-box-wishlist-action']
+                                }
                             } %}
                         {% endblock %}
                     {% endif %}
