@@ -18,6 +18,8 @@ const icons = {
       'handbag-simple',
       'handbag',
       'heart',
+      'house-line',
+      'house-line-bold',
       'info',
       'list',
       'pencil-simple-line',

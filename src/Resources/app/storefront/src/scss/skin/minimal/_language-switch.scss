@@ -1,0 +1,13 @@
+.language-item-label {
+    @extend .d-flex, .align-items-center, .gap-2;
+    cursor: pointer;
+}
+.language-item-radio {
+    @extend .d-none;
+}
+.language-item {
+    
+    &.item-checked {
+        --dropdown-item-bg-color: var(--light);
+    }
+}
