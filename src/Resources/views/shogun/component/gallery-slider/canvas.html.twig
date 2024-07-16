@@ -1,0 +1,11 @@
+{% block shogun_component_gallery_slider_canvas %}
+    <div class="gallery-slider-canvas">
+        <div data-sh-gallery-slider="canvas">
+            {% for media in medias %}
+                {% sw_thumbnails 'gallery-slider-canvas-image' with {
+                    media: media
+                } %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

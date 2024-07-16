@@ -1,0 +1,10 @@
+{% use '@ShogunBundle/shogun/component/gallery-slider/thumbnails.html.twig' %}
+{% use '@ShogunBundle/shogun/component/gallery-slider/canvas.html.twig' %}
+
+{% block shogun_component_gallery_slider %}
+    <div class="gallery-slider"
+        data-sh-component="gallery-slider">
+        {{ block('shogun_component_gallery_slider_canvas') }}
+        {{ block('shogun_component_gallery_slider_thumbnails') }}
+    </div>
+{% endblock %}

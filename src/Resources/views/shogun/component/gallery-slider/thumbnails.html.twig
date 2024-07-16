@@ -1,0 +1,16 @@
+{% block shogun_component_gallery_slider_thumbnails %}
+    <div class="gallery-slider-thumbnails">
+        <div data-sh-gallery-slider="thumbnails">
+            {% for media in medias %}
+                <div class="gallery-slider-thumbnail">
+                    {% sw_thumbnails 'gallery-slider-thumbnail' with {
+                        media: media,
+                        sizes: {
+                            default: '200px'
+                        }
+                    } %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

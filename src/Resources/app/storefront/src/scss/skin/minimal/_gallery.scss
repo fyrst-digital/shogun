@@ -1,0 +1,16 @@
+.gallery-slider {
+    @extend .d-flex, .flex-row;
+}
+.gallery-slider-canvas {
+    @extend .order-2;
+}
+.gallery-slider-thumbnails {
+    //@extend .d-flex, .flex-column, .order-1;
+    height: 100%;
+}
+.gallery-slider-thumbnail {
+    > img {
+        @extend .img-fluid;
+        display: block;
+    }
+}
