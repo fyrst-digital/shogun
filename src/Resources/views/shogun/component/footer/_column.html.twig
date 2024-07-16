@@ -1,0 +1,32 @@
+{% set defaultClasses = {
+    column: ['footer-column'],
+    headline: ['footer-column-headline', 'footer-headline'],
+    content: ['footer-column-content-container']
+} %}
+
+{% set classes = defaultClasses %}
+
+{% block shogun_component_footer_column %}
+    <div class="{% block shogun_component_footer_column_classes %}{{ classes.column|join(' ') }}{% endblock %}">
+        
+        {% block shogun_component_footer_column_inner %}
+
+            {% block shogun_component_footer_column_headline %}
+                <div class="{{ classes.headline|join(' ') }}"
+                    role="listitem">
+
+                    {% block shogun_component_footer_column_headline_title %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block shogun_component_footer_column_content_container %}
+                <div class="{{ classes.content|join(' ') }}">
+
+                    {% block shogun_component_footer_column_content %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endblock %}
+    </div>
+{% endblock %}
