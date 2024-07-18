@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/component/review/review.html.twig' %}
+
+{% block utilities_offcanvas_meta %}
+{% endblock %}
+
+{% block utilities_offcanvas %}
+    {{ block('component_review_container') }}
+{% endblock %}
+
+{% block component_review_widget_container %}
+    {% sw_include '@Storefront/shogun/component/review/widget.html.twig' %}
+{% endblock %}
+
+{% block component_review_list_content %}
+    {% for review in reviews %}
+        <div class="product-detail-review-list-content">
+            {% sw_include '@Storefront/shogun/component/review/item.html.twig' %}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block component_review_list_action_language %}
+{% endblock %}

@@ -2,13 +2,43 @@
     {% set productName = page.product.translated.name %}
 {% endif %}
 
+{% if productManufacturer is not defined %}
+    {% set productManufacturer = page.product.manufacturer %}
+{% endif %}
+
 {% block shogun_component_product_header %}
     <div class="product-header">
 
-        {% block shogun_component_product_header_name %}
-            <h1 class="product-name">
-                {{productName}}
-            </h1>
+        {% block shogun_component_product_header_title %}
+            <div class="product-title">
+
+                {% block shogun_component_product_header_name %}
+                    <h1 class="product-name">
+                        {{productName}}
+                    </h1>
+                {% endblock %}
+
+                {% block shogun_component_product_header_manufacturer %}
+                    {% if productManufacturer %}
+                        <div class="product-manufacturer">
+
+                            {% if productManufacturer.media %}
+                                {% sw_thumbnails 'product-manufacturer-logo-thumbnails' with {
+                                    media: productManufacturer.media,
+                                    sizes: {
+                                        'default': '200px'
+                                    },
+                                    attributes:{
+                                        class: 'product-manufacturer-logo'
+                                    }
+                                } %}
+                            {% else %}
+                                {{productManufacturer.translated.name}}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+            </div>
         {% endblock %}
     </div>
 {% endblock %}

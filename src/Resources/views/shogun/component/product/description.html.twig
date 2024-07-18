@@ -1,0 +1,9 @@
+{% if description is not defined %}
+    {% set description = page.product.translated.description %}
+{% endif %}
+{% block shogun_component_product_description %}
+    <div class="product-description"
+        itemprop="description">
+        {{ description|raw }}
+    </div>
+{% endblock %}
