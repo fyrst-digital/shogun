@@ -17,8 +17,20 @@
     }) %}
 {% endif %}
 
+{% if inputName is not defined %}
+    {% set inputName = 'quantity' %}
+{% endif %}
+
+{% if quantity is not defined %}
+    {% set quantity = 1 %}
+{% endif %}
+
 {% if minQuantity is not defined %}
     {% set minQuantity = 1 %}
+{% endif %}
+
+{% if maxQuantity is not defined %}
+    {% set maxQuantity = 99 %}
 {% endif %}
 
 {% if purchaseSteps is not defined %}
@@ -44,7 +56,7 @@
             <input
                 {% if disabled is same as(true) %}disabled="disabled"{% endif %}
                 type="number"
-                name="quantity"
+                name="{{inputName}}"
                 class="{{classes.input|join(' ')}}"
                 min="{{ minQuantity }}"
                 max="{{ maxQuantity }}"
@@ -53,6 +65,12 @@
                 aria-label="{{ 'component.product.quantitySelect.label'|trans|striptags }}"
             />
         {% endblock %}
+
+        {% if unit %}
+            <span class="input-group-text">
+                {{unit}}
+            </span>
+        {% endif %}
 
         {% block shogun_component_quantity_input_increase %}
             <button

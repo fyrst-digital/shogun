@@ -1,0 +1,77 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
+
+{% block buy_widget_buy_form_inner %}
+    <form
+        id="productDetailPageBuyProductForm"
+        action="{{ formAction }}"
+        method="post"
+        class="buy-form"
+        data-add-to-cart="true">
+
+        {% set DOWNLOAD_STATE = constant('Shopware\\Core\\Content\\Product\\State::IS_DOWNLOAD') %}
+        {% set showQuantitySelect = not product.states is defined or DOWNLOAD_STATE not in product.states or (DOWNLOAD_STATE in product.states and product.maxPurchase !== 1) %}
+        {% set buyable = product.available and product.childCount <= 0 and product.calculatedMaxPurchase > 0 %}
+
+        {% block buy_widget_buy_container %}
+            {% if buyable %}
+
+                {% block buy_widget_buy_quantity_container %}
+                    {% if showQuantitySelect %}
+
+                        {% block buy_widget_buy_quantity_input_group %}
+                            {% set productUnit = false %}
+
+                            {% if product.translated.packUnit %}
+                                {% if product.minPurchase > 1 and product.translated.packUnitPlural %}
+                                    {% set productUnit = product.translated.packUnitPlural %}
+                                {% elseif product.translated.packUnit %}
+                                    {% set productUnit = product.translated.packUnit %}
+                                {% endif %}
+                            {% endif %}
+
+                            {% sw_include '@Storefront/shogun/component/quantity-input.html.twig' with {
+                                inputName: 'lineItems[' ~ product.id ~ '][quantity]',
+                                quantity: product.minPurchase,
+                                minQuantity: product.minPurchase,
+                                maxQuantity: product.calculatedMaxPurchase,
+                                purchaseSteps: product.purchaseSteps,
+                                unit: productUnit
+                            } only %}
+                        {% endblock %}
+
+                    {% endif %}
+                {% endblock %}
+
+                {% block buy_widget_buy_redirect_input %}
+                    {{ parent() }}
+                {% endblock %}
+
+                {% block buy_widget_buy_product_buy_info %}
+                    {{ parent() }}
+                {% endblock %}
+
+                {% block buy_widget_product_buy_meta %}
+                    {{ parent() }}
+                {% endblock %}
+
+                {% block buy_widget_buy_button_container %}
+                    {% block buy_widget_buy_button %}
+                        <button class="btn btn-primary btn-buy"
+                            title="{{ 'detail.addProduct'|trans|striptags }}"
+                            aria-label="{{ 'detail.addProduct'|trans|striptags }}">
+
+                            {% block buy_widget_buy_button_icon %}
+                                {{ sh_icon('shopping-cart-simple') }}
+                            {% endblock %}
+
+                            {% block buy_widget_buy_button_label %}
+                                {{ 'detail.addProduct'|trans|sw_sanitize }}
+                            {% endblock %}
+                        </button>
+                    {% endblock %}
+                {% endblock %}
+                </div>
+            {% endif %}
+        {% endblock %}
+    </form>
+{% endblock %}

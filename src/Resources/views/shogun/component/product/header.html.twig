@@ -1,0 +1,14 @@
+{% if productName is not defined %}
+    {% set productName = page.product.translated.name %}
+{% endif %}
+
+{% block shogun_component_product_header %}
+    <div class="product-header">
+
+        {% block shogun_component_product_header_name %}
+            <h1 class="product-name">
+                {{productName}}
+            </h1>
+        {% endblock %}
+    </div>
+{% endblock %}

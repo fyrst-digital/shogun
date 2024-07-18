@@ -1,0 +1,5 @@
+.gallery-slider {
+    --gallery-slider-thumbnail-w: 64px;
+    grid-template-columns: var(--gallery-slider-columns, minmax(0, 1fr));
+    gap: var(--gallery-slider-gap, var(--spacer-lg));
+}

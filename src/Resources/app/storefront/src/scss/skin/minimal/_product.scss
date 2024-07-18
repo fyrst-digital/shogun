@@ -1,0 +1,12 @@
+.buy-form {
+    @extend .d-flex, .flex-row, .flex-wrap, .gap-3;
+
+    .quantity-input {
+        flex: 0 auto;
+    }
+
+    .btn-buy {
+        white-space: nowrap;
+        flex: 1 0%;
+    }
+}

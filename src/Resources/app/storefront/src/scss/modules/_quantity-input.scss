@@ -1,4 +1,8 @@
 .quantity-input {
-    max-width: var(--quantity-input-max-w);
-    min-width: var(--quantity-input-min-w);
+    width: var(--quantity-input-w, auto);
+    
+    .quantity-selector-group-input {
+        max-width: var(--quantity-input-max-w, none);
+        min-width: var(--quantity-input-min-w);
+    }
 }

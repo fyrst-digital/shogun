@@ -1,11 +1,35 @@
 {% block shogun_component_gallery_slider_canvas %}
-    <div class="gallery-slider-canvas">
-        <div data-sh-gallery-slider="canvas">
-            {% for media in medias %}
-                {% sw_thumbnails 'gallery-slider-canvas-image' with {
-                    media: media
-                } %}
-            {% endfor %}
+    <div class="gallery-slider-canvas-container position-relative">
+
+        <div class="gallery-slider-canvas" data-sh-gallery-slider="canvas">
+            <div class="swiper-wrapper">
+                {% for media in medias %}
+                    <div class="gallery-slider-canvas-item swiper-slide">
+                        {% sw_thumbnails 'gallery-slider-canvas-image' with {
+                            media: media,
+                            attributes: {
+                                class: 'gallery-slider-canvas-image'
+                            }
+                        } %}
+                    </div>
+                {% endfor %}
+            </div>
+
         </div>
+
+        <button 
+            type="button"
+            class="slider-control-button"
+            data-sh-slider-control="prev">
+            {{sh_icon('caret-left')}}
+        </button>
+
+        <button
+            type="button"
+            class="slider-control-button"
+            data-sh-slider-control="next">
+            {{sh_icon('caret-right')}}
+        </button>
+        
     </div>
 {% endblock %}

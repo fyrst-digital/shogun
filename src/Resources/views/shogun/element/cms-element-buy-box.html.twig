@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-buy-box.html.twig' %}
+
+{% block element_buy_box_inner %}
+    {% sw_include '@Storefront/shogun/component/product/header.html.twig' %}
+    {% sw_include '@Storefront/shogun/component/product/buy-container.html.twig' with {
+        'product': element.data.product,
+        'configuratorSettings': element.data.configuratorSettings,
+        'totalReviews': element.data.totalReviews,
+        'elementId': element.id,
+        'pageType': cmsPage.type
+    } %}
+{% endblock %}

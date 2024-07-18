@@ -1,5 +1,5 @@
 import Plugin from 'src/plugin-system/plugin.class'
-import { tns } from 'tiny-slider';
+// import { tns } from 'tiny-slider';
 import Swiper from 'swiper';
 
 export default class GallerySlider extends Plugin {
@@ -9,39 +9,32 @@ export default class GallerySlider extends Plugin {
      * @type {*}
      */
     static options = {
-        initializedCls: 'js-slider-initialized',
-        containerSelector: '[data-base-slider-container=true]',
-        controlsSelector: '[data-base-slider-controls=true]',
-        slider: {
-            enabled: true,
-            responsive: {
-                xs: {},
-                sm: {},
-                md: {},
-                lg: {},
-                xl: {},
-                xxl: {},
-            },
-        },
+        canvasContainerSelector: '.gallery-slider-canvas-container',
+        canvasSelector: '[data-sh-gallery-slider="canvas"]',
+        thumbnailsSelector: '[data-sh-gallery-slider="thumbnails"]',
+        nextSelector: '[data-sh-slider-control="next"]',
+        prevSelector: '[data-sh-slider-control="prev"]'
     }
 
     init() {
-        console.log(Swiper);
-        this.canvasSliderElement = this.el.querySelector('[data-sh-gallery-slider="canvas"]')
-        this.thumbnailSliderElement = this.el.querySelector('[data-sh-gallery-slider="thumbnails"]')
-        this.thumbnailSlider = tns({
-            container: this.thumbnailSliderElement,
-            axis: "vertical",
-            nav: false,
-            loop: false,
-            rewind: true,
-            items: 4
-        })
-        this.canvasSlider = tns({
-            container: this.canvasSliderElement,
-            nav: false,
+        this.canvasContainerElement = this.el.querySelector(this.options.canvasContainerSelector)
+        this.canvasElement = this.el.querySelector(this.options.canvasSelector)
+        this.canvasNextButton = this.canvasContainerElement.querySelector(this.options.nextSelector)
+        this.canvasPrevButton = this.canvasContainerElement.querySelector(this.options.prevSelector)
+        
+        this.canvasSlider = new Swiper(this.canvasElement, {
             loop: false,
             rewind: true,
         })
+
+        this.canvasNextButton.addEventListener("click", (e) => {
+            this.canvasSlider.slideNext();
+        })
+
+        this.canvasPrevButton.addEventListener("click", (e) => {
+            this.canvasSlider.slidePrev();
+        })
+
+        console.log(this.canvasNextButton, this.canvasSlider)
     }
 }
