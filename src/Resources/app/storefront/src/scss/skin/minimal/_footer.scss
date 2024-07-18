@@ -1,3 +1,11 @@
 .footer-columns {
     @extend .grid;
 }
+.footer-headline-link {
+    color: inherit;
+}
+
+/** footer navigation **/
+.footer-link-list {
+    @extend .list-unstyled, .d-flex, .flex-column, .gap-2;
+}

@@ -4,7 +4,11 @@
     content: ['footer-column-content-container']
 } %}
 
-{% set classes = defaultClasses %}
+{% if classes is defined %}
+    {% set classes = classes|sh_merge_deep(defaultClasses) %}
+{% else %}
+    {% set classes = defaultClasses %}
+{% endif %}
 
 {% block shogun_component_footer_column %}
     <div class="{% block shogun_component_footer_column_classes %}{{ classes.column|join(' ') }}{% endblock %}">

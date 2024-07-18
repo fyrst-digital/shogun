@@ -1,3 +1,7 @@
 .footer-main {
     background-color: var(--footer-bg-color, var(--white));
 }
+/** footer navigation **/
+.footer-link {
+    color: var(--footer-link-color, inherit);
+}
