@@ -14,19 +14,6 @@
         {{ parent() }}
     {% endblock %}
 
-    {% block shogun_component_product_buy_container_prices %}
-        <div class="product-prices">
-
-            {% block buy_widget_price %}
-                {{ parent() }}
-            {% endblock %}
-
-            {% block buy_widget_tax %}
-                {{ parent() }}
-            {% endblock %}
-        </div>
-    {% endblock %}
-
     {% block buy_widget_reviews %}
         {% if product.ratingAverage > 0 and totalReviews > 0 and config('core.listing.showReview') %}
 
@@ -65,6 +52,19 @@
         {% endif %}
     {% endblock %}
 
+    {% block shogun_component_product_buy_container_prices %}
+        <div class="product-prices">
+
+            {% block buy_widget_price %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% block buy_widget_tax %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
     {% block buy_widget_delivery_informations %}
         {{ parent() }}
     {% endblock %}
@@ -82,19 +82,27 @@
             wishlist: config('core.cart.wishlistEnabled')
         } %}
 
-        {% if true in productActions|sh_unique %}
-            <div class="product-actions">
-                {% block shogun_component_product_buy_container_wishlist %}
-                    {% if productActions.wishlist %}
-                        {% sw_include '@Storefront/shogun/component/product/action-wishlist.html.twig' with {
-                            showText: true,
-                            size: 'sm',
-                            productId: product.id
-                        } %}
-                    {% endif %}
-                {% endblock %}
-            </div>
-        {% endif %}
+        {% block shogun_component_product_buy_container_actions_container %}
+            {% if true in productActions|sh_unique %}
+                <div class="product-actions">
+                    {% block shogun_component_product_buy_container_action_prepend %}
+                    {% endblock %}
+
+                    {% block shogun_component_product_buy_container_wishlist %}
+                        {% if productActions.wishlist %}
+                            {% sw_include '@Storefront/shogun/component/product/action-wishlist.html.twig' with {
+                                showText: true,
+                                size: 'sm',
+                                productId: product.id
+                            } %}
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block shogun_component_product_buy_container_action_append %}
+                    {% endblock %}
+                </div>
+            {% endif %}
+        {% endblock %}
     {% endblock %}
 {% endblock %}
 

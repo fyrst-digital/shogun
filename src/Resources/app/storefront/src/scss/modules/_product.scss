@@ -16,6 +16,12 @@
     font-size: var(--product-price-size, var(--body-font-size));
     font-weight: var(--product-price-weight, 500);
 }
+.product-price-pseudo {
+    color: var(--product-price-pseudo-color, var(--text-muted));
+    font-size: var(--product-price-pseudo-size, var(--body-font-size));
+    font-weight: var(--product-price-pseudo-weight, 500);
+    text-decoration: var(--product-price-pseudo-decoration, line-through);
+}
 .product-review-rating {
     gap: var(--review-point-gap-y) var(--review-point-gap-y);
 }
