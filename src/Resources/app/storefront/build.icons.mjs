@@ -9,6 +9,10 @@ import { locate } from '@iconify/json';
 */
 const icons = {
    'ph': [
+      'arrow-up',
+      'arrow-down',
+      'arrow-right',
+      'arrow-left',
       'caret-up',
       'caret-down',
       'caret-right',
