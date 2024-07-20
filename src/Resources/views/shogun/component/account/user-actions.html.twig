@@ -10,10 +10,20 @@
             label: 'account.profileLink'|trans|sw_sanitize,
             icon: 'pencil-simple-line'
         },
+        address: {
+            route: 'frontend.account.address.page',
+            label: 'account.addressLink'|trans|sw_sanitize,
+            icon: 'address-book'
+        },
         payment: {
             route: 'frontend.account.payment.page',
             label: 'account.paymentLink'|trans|sw_sanitize,
             icon: 'credit-card'
+        },
+        orders: {
+            route: 'frontend.account.order.page',
+            label: 'account.ordersLink'|trans|sw_sanitize,
+            icon: 'package'
         }
     } %}
 {% endif %}

@@ -9,6 +9,7 @@ import { locate } from '@iconify/json';
 */
 const icons = {
    'ph': [
+      'address-book',
       'arrow-up',
       'arrow-down',
       'arrow-right',
@@ -28,6 +29,7 @@ const icons = {
       'house-line-bold',
       'info',
       'list',
+      'package',
       'paper-plane-tilt',
       'pencil-simple-line',
       'phone',
