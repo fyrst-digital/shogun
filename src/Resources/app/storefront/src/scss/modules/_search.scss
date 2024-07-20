@@ -4,3 +4,6 @@
     object-position: var(--product-image-object-position, center);
     background-color: var(--product-image-bg-color);
 }
+.search-suggest {
+    max-width: var(--search-overlay-max-w, 100%);
+}
