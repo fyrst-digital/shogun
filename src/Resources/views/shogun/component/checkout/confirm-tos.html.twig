@@ -1,0 +1,67 @@
+{% if formId is not defined %}
+    {% set formId = 'confirmOrderForm' %}
+{% endif %}
+
+{% block shogun_component_confirm_tos %}
+    <div class="confirm-tos">
+    
+        {% block shogun_component_confirm_tos_header %}
+            <div class="confirm-tos-title">
+                {{ 'checkout.confirmTermsHeader'|trans|sw_sanitize }}
+            </div>
+        {% endblock %}
+
+        {% block shogun_component_confirm_tos_revocation_notice %}
+            <div class="revocation-notice">
+                {{ 'checkout.confirmRevocationNotice'|trans({
+                    '%url%': path('frontend.cms.page', { id: config('core.basicInformation.revocationPage') })
+                })|raw }}
+            </div>
+        {% endblock %}
+
+        {% block shogun_component_confirm_tos_control %}
+            <div class="form-check">
+                {% block shogun_component_confirm_tos_tos_control_checkbox %}
+                    <input type="checkbox"
+                            class="checkout-confirm-tos-checkbox form-check-input{% if formViolations.getViolations('/tos') is not empty %} is-invalid{% endif %}"
+                            required="required"
+                            id="tos"
+                            form="{{formId}}"
+                            name="tos">
+                {% endblock %}
+
+                {% block shogun_component_confirm_tos_control_label %}
+                    <label for="tos"
+                            class="checkout-confirm-tos-label custom-control-label">
+                        {{ 'checkout.confirmTermsText'|trans({
+                            '%url%': path('frontend.cms.page', { id: config('core.basicInformation.tosPage') })
+                        })|raw }}
+                    </label>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block shogun_component_confirm_tos_revocation_control %}
+            {% if page.showRevocation() %}
+                <div class="form-check">
+                    {% block shogun_component_confirm_tos_revocation_control_checkbox %}
+                        <input type="checkbox"
+                                class="checkout-confirm-revocation-checkbox form-check-input{% if formViolations.getViolations('/revocation') is not empty %} is-invalid{% endif %}"
+                                required="required"
+                                id="revocation"
+                                form="{{formId}}"
+                                name="revocation">
+                    {% endblock %}
+
+                    {% block shogun_component_confirm_tos_revocation_control_label %}
+                        <label for="revocation"
+                                class="checkout-confirm-revocation-label custom-control-label">
+                            {{ 'checkout.confirmRevocationTerms'|trans() }}
+                        </label>
+                    {% endblock %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+    </div>
+{% endblock %}
