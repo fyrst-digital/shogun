@@ -33,12 +33,20 @@
     width: 100%;
 }
 .gallery-slider-thumbnails {
-    @extend .d-none, .d-md-block;
+    @extend .d-none, .d-md-flex, .flex-column, .gap-3;
 }
 .gallery-slider-thumbnail {
+    @extend .p-1;
+    border-radius: var(--thumbnail-border-radius, var(--border-radius));
+
     > img {
         @extend .img-fluid;
         width: 100%;
         display: block;
+        cursor: pointer;
+    }
+
+    &.active {
+        box-shadow: 0 0 0 3px var(--thumnail-active-color, var(--primary));
     }
 }
