@@ -55,24 +55,21 @@
         <div class="line-item-body">
             {% block shogun_component_line_item_product_variants %}
                 {% if lineItem.payload.options is not empty %}
-                    Todo variants
-                    {#% sw_include '@Storefront/storefront/component/line-item/element/variant-characteristics.html.twig' %#}
+                    {% sw_include '@Storefront/storefront/component/line-item/element/variant-characteristics.html.twig' %}
                 {% endif %}
             {% endblock %}
 
             {% block shogun_component_line_item_product_features %}
                 {% if lineItem.payload.features is not empty %}
-                    Todo features
-                    {#% sw_include '@Storefront/storefront/component/product/feature/list.html.twig' with {
+                    {% sw_include '@Storefront/storefront/component/product/feature/list.html.twig' with {
                         features: lineItem.payload.features
-                    } %#}
+                    } %}
                 {% endif %}
             {% endblock %}
 
             {% block shogun_component_line_item_product_delivery_time %}
                 {% if config('core.cart.showDeliveryTime') %}
-                    Todo delivery time
-                    {#% sw_include '@Storefront/storefront/component/line-item/element/delivery-date.html.twig' %#}
+                    {% sw_include '@Storefront/shogun/component/line-item/element/delivery-date.html.twig' %}
                 {% endif %}
             {% endblock %}
         </div>

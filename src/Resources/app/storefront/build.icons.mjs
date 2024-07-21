@@ -45,6 +45,7 @@ const icons = {
       'star-fill',
       'star-half-fill',
       'star',
+      'truck',
       'user',
       'warning',
       'x',
