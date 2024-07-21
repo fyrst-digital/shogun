@@ -15,6 +15,10 @@
         gap: var(--badges-gap, var(--spacer-xs));
         padding: var(--badges-padding-y, var(--spacer-xs)) var(--badges-padding-x, var(--spacer-xs));
     }
+
+    .product-wishlist-remove {
+        @extend .position-absolute;
+    }
 }
 .product-image-wrapper {
     @extend .position-relative;

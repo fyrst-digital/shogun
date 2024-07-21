@@ -1,5 +1,6 @@
 /** header actions **/
 .header-actions-btn {
+    @extend .position-relative;
     --btn-padding-y: var(--spacer-2xs);
     --btn-padding-x: var(--spacer-2xs);
 

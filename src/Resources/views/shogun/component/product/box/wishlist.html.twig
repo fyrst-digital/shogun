@@ -1,0 +1,28 @@
+{% sw_extends '@Storefront/shogun/component/product/box/default.html.twig' %}
+
+{% block component_product_box_wishlist_action %}
+    <form action="{{ path('frontend.wishlist.product.delete', {id: id}) }}"
+            method="post"
+            class="product-wishlist-remove">
+
+        {% block component_product_wishlist_remove_redirect %}
+            <input type="hidden"
+                name="redirectTo"
+                value="frontend.wishlist.page">
+        {% endblock %}
+
+        {% block component_product_wishlist_remove_submit %}
+            <button type="submit" 
+                class="btn btn-sm btn-light product-wishlist-action product-wishlist-remove-action">
+
+                {% block component_product_wishlist_remove_submit_icon %}
+                    {{sh_icon('x')}}
+                {% endblock %}
+
+                {% block component_product_wishlist_remove_submit_label %}
+                    {{'wishlist.removeProduct'|trans}}
+                {% endblock %}
+            </button>
+        {% endblock %}
+    </form>
+{% endblock %}

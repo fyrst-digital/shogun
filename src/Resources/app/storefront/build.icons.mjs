@@ -25,6 +25,7 @@ const icons = {
       'handbag-simple',
       'handbag',
       'heart',
+      'heart-fill',
       'house-line',
       'house-line-bold',
       'info',

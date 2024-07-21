@@ -28,8 +28,8 @@
                         {% sw_include '@Storefront/shogun/component/product/box/cover.html.twig' %}
                     {% endblock %}
 
-                    {% if config('core.cart.wishlistEnabled') %}
-                        {% block component_product_box_wishlist_action %}
+                    {% block component_product_box_wishlist_action %}
+                        {% if config('core.cart.wishlistEnabled') %}
                             {% sw_include '@Storefront/shogun/component/product/action-wishlist.html.twig' with {
                                 showText: false,
                                 productId: id,
@@ -37,8 +37,8 @@
                                     action: ['product-box-wishlist-action']
                                 }
                             } %}
-                        {% endblock %}
-                    {% endif %}
+                        {% endif %}
+                    {% endblock %}
                 </div>
             {% endblock %}
 

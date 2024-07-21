@@ -10,3 +10,16 @@
         flex: 1 0%;
     }
 }
+.product-wishlist-action {
+
+    .wishlist-icon {
+        @extend .sh-icon, .icon-heart;
+    }
+    
+    &.product-wishlist-added {
+
+        .wishlist-icon {
+            @extend .icon-heart-fill;
+        }
+    }
+}
