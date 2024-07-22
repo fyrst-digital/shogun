@@ -1,5 +1,5 @@
 # Shogun - Boost up your Shopware 6 theme development
-This Bundle brings some boilerplates, components and styling to your theme development. All functions in this bundle are opt-in. So you can include only what you need
+This Bundle brings some boilerplates, components and styling to your theme development. All functions in this bundle are opt-in. So you can include only what you need. With Shogun you spend more time in building instead of fixing.
 
 ## Install and setup
 Add this bundle to your Shopware 6 project via composer `composer require fyrst/shogun`

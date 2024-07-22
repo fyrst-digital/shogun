@@ -8,6 +8,9 @@
 
                     {% sw_thumbnails 'gallery-slider-thumbnail' with {
                         media: media,
+                        attributes: {
+                            class: 'gallery-slider-thumbnail-image'
+                        },
                         sizes: {
                             default: '200px'
                         }

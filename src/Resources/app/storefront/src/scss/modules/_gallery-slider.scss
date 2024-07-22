@@ -3,3 +3,19 @@
     grid-template-columns: var(--gallery-slider-columns, minmax(0, 1fr));
     gap: var(--gallery-slider-gap, var(--spacer-lg));
 }
+.gallery-slider-canvas-image,
+.gallery-slider-thumbnail-image {
+    aspect-ratio: var(--product-image-aspect-ratio);
+    object-fit: var(--product-image-object-fit);
+    object-position: var(--product-image-object-position);
+    max-height: var(--product-image-max-h);
+}
+.gallery-slider-thumbnail {
+    border: var(--thumbnail-border-width, 1px) solid var(--thumbnail-border-color, transparent);
+    box-shadow: var(--thumbnail-shadow, var(--thumbnail-shadow-size, 0 0 0 3px) var(--thumbnail-shadow-color, transparent));
+
+    &.active {
+        --thumbnail-shadow-color: var(--thumbnail-shadow-active-color,  rgba(13, 110, 253, 0.25));
+        --thumbnail-border-color: var(--thumbnail-active-border-color, var(--primary));
+    }
+}
