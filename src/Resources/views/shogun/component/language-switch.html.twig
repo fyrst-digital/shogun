@@ -1,6 +1,11 @@
 {% sw_extends '@Storefront/storefront/layout/header/actions/language-widget.html.twig' %}
 
- {% block layout_header_actions_language_widget_form %}
+{% if showFlagLabel is not defined %}
+    {% set showFlagLabel = true %}
+{% endif %}
+
+{% block layout_header_actions_language_widget_form %}
+
     <form method="post"
             action="{{ path('frontend.checkout.switch-language') }}"
             class="language-form"
@@ -11,39 +16,68 @@
             {% set country = isoCode[1] %}
 
             <div class="languages-menu dropdown">
-                <button class="btn dropdown-toggle language-switch-btn"
+
+                {% block shogun_component_language_switch_button %} 
+                    <button class="btn dropdown-toggle language-switch-btn"
                         type="button"
                         id="languagesDropdown-{{ position }}"
                         data-bs-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">
-                    <div class="language-flag country-{{ country }} language-{{ language }}"></div>
-                </button>
+
+                        {% block shogun_component_language_switch_button_flag %} 
+                            <div class="language-flag">
+
+                                {% block shogun_component_language_switch_button_icon %} 
+                                    <img src="{{ asset('bundles/shogun/flags/'~ page.header.activeLanguage.translationCode.code ~'.svg', 'asset') }}"
+                                        class="language-flag-icon">
+                                {% endblock %}
+                                {% block shogun_component_language_switch_button_label %} 
+                                    {% if showFlagLabel %}
+                                        <span class="language-flag-label">
+                                            {{language|upper}}
+                                        </span>
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    </button>
+                {% endblock %}
 
                 {% block layout_header_actions_languages_widget_form_items %}
                     <div class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="languagesDropdown-{{ position }}">
                         {% for language in page.header.languages %}
-                            <div class="language-item dropdown-item{% if language.id is same as(page.header.activeLanguage.id) %} item-checked{% endif %}"
+
+                            {% block shogun_component_language_switch_item %} 
+                                <div class="language-item dropdown-item{% if language.id is same as(page.header.activeLanguage.id) %} item-checked{% endif %}"
                                     title="{{ language.translated.name }}">
-                                {% block layout_header_actions_languages_widget_form_items_flag %}
+
                                     {% set isoCode = language.translationCode.code|lower|split('-') %}
                                     {% set flagLanguage = isoCode[0] %}
                                     {% set flagCountry = isoCode[1] %}
 
-                                    <label class="language-item-label"
+                                    {% block layout_header_actions_languages_widget_form_items_flag %}
+                                        <label class="language-item-label"
                                             for="{{ position }}-{{ language.id }}">
-                                        <input id="{{ position }}-{{ language.id }}"
+
+                                            <input id="{{ position }}-{{ language.id }}"
                                                 class="language-item-radio"
                                                 value="{{ language.id }}"
                                                 name="languageId"
                                                 type="radio"
-                                            {% if language.id is same as(page.header.activeLanguage.id) %} checked{% endif %}>
-                                        <div class="language-item-icon language-flag country-{{ flagCountry }} language-{{ flagLanguage }}"></div>
-                                        {{ language.name }}
-                                    </label>
-                                {% endblock %}
-                            </div>
+                                                {% if language.id is same as(page.header.activeLanguage.id) %} checked{% endif %}>
+                                            {% block shogun_component_language_switch_item_flag_icon %} 
+                                                <img src="{{ asset('bundles/shogun/flags/'~ language.translationCode.code ~'.svg', 'asset') }}"
+                                                    class="language-item-icon">
+                                            {% endblock %}
+                                            {% block shogun_component_language_switch_item_flag_label %} 
+                                                {{ language.name }}
+                                            {% endblock %}
+                                        </label>
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
                         {% endfor %}
                     </div>
                 {% endblock %}

@@ -11,3 +11,6 @@
         --dropdown-item-bg-color: var(--light);
     }
 }
+.language-flag {
+    @extend .d-flex, .align-items-center, .flex-row;
+}

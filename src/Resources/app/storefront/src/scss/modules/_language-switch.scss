@@ -1,9 +1,9 @@
 .language-flag {
+    gap: var(--flag-gap, var(--spacer-xs));
+}
+.language-flag-icon,
+.language-item-icon {
     aspect-ratio: var(--flag-aspect-ratio, 4 / 3);
     width: var(--flag-width, 20px);
     border-radius: var(--flag-border-radius, var(--border-radius-sm));
-
-    &.country-de.language-de {
-        background-image: url("#{$sw-asset-public-url}/bundles/shogun/de.svg");
-    }
 }
