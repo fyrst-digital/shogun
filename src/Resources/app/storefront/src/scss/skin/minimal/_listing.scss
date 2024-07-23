@@ -1,5 +1,5 @@
 .cms-listing-row {
-    @extend .grid, .py-5;
+    @extend .grid;
 }
 .cms-element-product-listing {
     @extend .d-flex, .flex-column, .gap-3;

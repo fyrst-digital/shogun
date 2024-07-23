@@ -26,5 +26,8 @@
     gap: var(--review-point-gap-y) var(--review-point-gap-y);
 }
 .product-box-info {
-    gap: var(--card-gap);
+    gap: var(--product-info-gap, var(--card-gap));
+}
+.product-box-footer {
+    gap: var(--product-footer-gap, var(--spacer-xs));
 }

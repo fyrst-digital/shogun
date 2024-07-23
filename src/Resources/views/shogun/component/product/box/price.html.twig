@@ -13,11 +13,13 @@
         {% set isListPrice = price.listPrice.percentage > 0 %}
         {% set isRegulationPrice = price.regulationPrice != null %}
 
-        {% if displayFrom or (displayParent and hasDifferentPrice and totalVariants|length > 1) %}
-            {{ 'listing.listingTextFrom'|trans|sw_sanitize }}
-        {% endif %}
-
         <span class="product-price{% if isListPrice and not displayFrom and not displayFromVariants %} with-list-price{% endif %}">
+            {% if displayFrom or (displayParent and hasDifferentPrice and totalVariants|length > 1) %}
+                <span class="price-from-label">
+                    {{ 'listing.listingTextFrom'|trans|sw_sanitize }}
+                </span>
+            {% endif %}
+
             {{ price.unitPrice|currency }}{{ 'general.star'|trans|sw_sanitize }}
         </span>
 
@@ -32,6 +34,7 @@
                 {% if afterListPriceSnippetExists %}{{ 'listing.afterListPrice'|trans|trim|sw_sanitize }}{% endif %}
             </span>
         {% endif %}
+        
         {% if isRegulationPrice %}
             <span class="product-price with-regulation-price">
                 {% if isListPrice %}<br>{% endif %}<span class="regulation-price">{{ 'general.listPricePreviously'|trans({'%price%': price.regulationPrice.price|currency }) }}{{ 'general.star'|trans|sw_sanitize }}</span>
