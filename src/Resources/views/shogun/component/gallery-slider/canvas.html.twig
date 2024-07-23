@@ -14,22 +14,23 @@
                     </div>
                 {% endfor %}
             </div>
-
         </div>
 
-        <button 
-            type="button"
-            class="slider-control-button"
-            data-sh-slider-control="prev">
-            {{sh_icon('caret-left')}}
-        </button>
+        {% if medias|length > 1 %}
+            <button 
+                type="button"
+                class="slider-control-button"
+                data-sh-slider-control="prev">
+                {{sh_icon('caret-left')}}
+            </button>
 
-        <button
-            type="button"
-            class="slider-control-button"
-            data-sh-slider-control="next">
-            {{sh_icon('caret-right')}}
-        </button>
-        
+            <button
+                type="button"
+                class="slider-control-button"
+                data-sh-slider-control="next">
+                {{sh_icon('caret-right')}}
+            </button>
+        {% endif %}
+
     </div>
 {% endblock %}
