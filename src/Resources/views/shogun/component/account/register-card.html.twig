@@ -45,7 +45,7 @@
                             {% endblock %}
 
                             {% block component_account_register_company_fields %}
-                                {% sw_include '@Storefront/storefront/component/address/address-personal-company.html.twig' with {
+                                {% sw_include '@Storefront/shogun/component/address/address-personal-company.html.twig' with {
                                     prefix: 'billingAddress',
                                     address: data.get('billingAddress')
                                 } %}
@@ -107,19 +107,19 @@
 
                             {% block component_account_register_personal_account_fields %}
                                 <div class="row gap-3">
-                                    <div class="g-col-6 form-group field-user-email">
+                                    <div class="g-col-12 g-col-lg-6 form-group field-user-email">
                                         {{ formGroupMail }}
                                     </div>
                                     {% if config('core.loginRegistration.requireEmailConfirmation') %}
-                                        <div class="g-col-6 form-group field-user-email-confirmation">
+                                        <div class="g-col-12 g-col-lg-6 form-group field-user-email-confirmation">
                                             {{ formGroupMailConfirmation }}
                                         </div>
                                     {% endif %}
-                                    <div class="g-col-6 form-group field-user-password">
+                                    <div class="g-col-12 g-col-lg-6 form-group field-user-password">
                                         {{ formGroupPassword }}
                                     </div>
                                     {% if config('core.loginRegistration.requirePasswordConfirmation') %}
-                                        <div class="g-col-6 form-group field-user-password-confirmation">
+                                        <div class="g-col-12 g-col-lg-6 form-group field-user-password-confirmation">
                                             {{ formGroupPasswordConfirmation }}
                                         </div>
                                     {% endif %}
@@ -190,7 +190,7 @@
                                                     {% endblock %}
 
                                                     {% block component_account_register_address_shipping_fields_company %}
-                                                        {% sw_include '@Storefront/storefront/component/address/address-personal-company.html.twig' with {
+                                                        {% sw_include '@Storefront/shogun/component/address/address-personal-company.html.twig' with {
                                                             prefix: 'shippingAddress',
                                                             customToggleTarget: true,
                                                             address: data.get('shippingAddress')

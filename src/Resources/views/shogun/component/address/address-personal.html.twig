@@ -69,7 +69,7 @@
     {% endblock %}
 
     {% block component_address_personal_fields_name %}
-        <div class="row">
+        <div class="grid g-col-12 gap-3 fields-fullname">
             {% block component_address_personal_fields_first_name %}
                 <div class="g-col-6 form-group field-firstname">
 
@@ -146,9 +146,9 @@
         {% if (onlyCompanyRegistration or config('core.loginRegistration.showAccountTypeSelection')) and activeRoute == 'frontend.account.profile.page' %}
             <div class="js-field-toggle-contact-type-company{% if customToggleTarget %}-{{ prefix }}{% endif %}">
                 {% block component_address_personal_company_fields %}
-                    <div class="row">
+                    <div class="grid g-col-12">
                         {% block component_address_personal_company_name %}
-                            <div class="g-col-6 form-group field-company-name">
+                            <div class="g-col-12 form-group field-company-name">
                                 {% if formViolations.getViolations("/company") is not empty %}
                                     {% set violationPath = "/company" %}
                                 {% else %}
@@ -194,6 +194,16 @@
     {% endblock %}
 
     {% block component_address_personal_fields_birthday %}
-        {{ parent() }}
+        {% if showBirthdayField %}
+            <div class="fields-birthdate g-col-6">
+                {{ parent() }}
+            </div>
+        {% endif %}
     {% endblock %}
+{% endblock %}
+
+{% block component_address_personal_fields_birthday_label %}
+    <label for="{{ idPrefix ~ prefix }}personalBirthday" class="form-label">
+        {{ "account.personalBirthdayLabel"|trans|sw_sanitize }}{{ config('core.loginRegistration.birthdayFieldRequired') ? "general.required"|trans|sw_sanitize }}
+    </label>
 {% endblock %}
