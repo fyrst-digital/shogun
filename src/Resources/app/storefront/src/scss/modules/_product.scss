@@ -1,4 +1,5 @@
-.product-image {
+.product-image,
+.product-image-placeholder {
     aspect-ratio: var(--product-image-aspect-ratio);
     object-fit: var(--product-image-object-fit);
     object-position: var(--product-image-object-position);

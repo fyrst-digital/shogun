@@ -23,3 +23,15 @@
         }
     }
 }
+.product-image-placeholder {
+    @extend .img-fluid, .w-100, .d-flex, .align-items-center, .justify-content-center;
+
+    > * {
+        display: contents;
+    }
+
+    svg {
+        @extend .w-100;
+        height: auto;
+    }
+}
