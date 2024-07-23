@@ -1,0 +1,9 @@
+.loader {
+    @extend .spinner-border;
+    --spinner-border-width: 3px;
+
+    .modal-backdrop & {
+        @extend .position-absolute, .top-50, .start-50;
+        color: var(--white);
+    }
+}
