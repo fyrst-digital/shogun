@@ -17,4 +17,10 @@
     .sh-icon {
         font-size: var(--btn-icon-size);
     }
+
+    .loader {
+        --spinner-border-width: 2px;
+        --spinner-width: calc(var(--btn-icon-size) - var(--spinner-border-width));
+        --spinner-height: calc(var(--btn-icon-size) - var(--spinner-border-width));
+    }
 }
