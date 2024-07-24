@@ -73,15 +73,15 @@
         {% endblock %}
     {% endset %}
 
-    {% block shogun_component_address_form_zipcode %}
-        <div class="form-group g-col-8 g-col-lg-4 field-zipcode">
-            {{ cityField }}
-        </div>
-    {% endblock %}
-
     {% block shogun_component_address_form_city %}
         <div class="form-group g-col-4 g-col-lg-2 field-city">
             {{ zipcodeField }}
+        </div>
+    {% endblock %}
+
+    {% block shogun_component_address_form_zipcode %}
+        <div class="form-group g-col-8 g-col-lg-4 field-zipcode">
+            {{ cityField }}
         </div>
     {% endblock %}
 {% endblock %}

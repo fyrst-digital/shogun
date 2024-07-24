@@ -15,9 +15,6 @@
 .cart-summary-item {
     @extend .d-flex, .flex-row, .flex-wrap, .justify-content-between, .align-items-baseline, .m-0, .gap-2, .fw-semibold;
 }
-.cart-summary-item-label {
-    font-weight: inherit;
-}
 .cart-summary-item-value {
     @extend .m-0;
 }

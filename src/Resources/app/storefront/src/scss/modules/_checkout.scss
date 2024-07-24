@@ -4,9 +4,15 @@
     border: var(--sidebar-border-width) solid var(--sidebar-border-color);
     border-radius: var(--sidebar-border-radius);
 }
-
 .checkout-aside-summary-header,
 .checkout-aside-product-header {
     font-size: var(--sidebar-header-fs);
     font-weight: var(--sidebar-header-fw);
+}
+
+/** summaries **/
+.cart-summary-item-label,
+.cart-summary-item-value {
+    font-size: var(--summary-item-font-size);
+    font-weight: var(--summary-item-font-weight, inherit);
 }
