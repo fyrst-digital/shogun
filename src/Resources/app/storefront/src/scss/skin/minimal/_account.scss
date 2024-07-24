@@ -51,3 +51,12 @@
         @extend .g-col-12, .g-col-lg-6;
     }
 }
+
+/** address editor **/
+.address-editor-fieldset {
+    @extend .grid;
+
+    > .row {
+        display: contents;
+    }
+}
