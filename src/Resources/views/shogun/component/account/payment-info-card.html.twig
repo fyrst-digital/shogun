@@ -8,8 +8,10 @@
             {% endblock %}
 
             {% block page_account_overview_payment_content %}
-                <strong>{{ context.customer.defaultPaymentMethod.translated.name }}</strong>
-                <p>{{ context.customer.defaultPaymentMethod.description }}</p>
+                <div>
+                    <strong>{{ context.customer.defaultPaymentMethod.translated.name }}</strong><br/>
+                    {{ context.customer.defaultPaymentMethod.description }}
+                </div>
             {% endblock %}
 
             {% block page_account_overview_payment_actions %}

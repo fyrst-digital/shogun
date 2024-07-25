@@ -12,7 +12,7 @@
             {% endblock %}
 
             {% block page_account_overview_profile_content %}
-                <p>
+                <div>
                     {% if context.customer.salutation and context.customer.salutation.salutationKey != 'not_specified' %}
                         {{ context.customer.salutation.translated.displayName }}
                     {% endif %}
@@ -20,19 +20,19 @@
                         {{ context.customer.title }}<br>
                     {% endif %}
                     {{ context.customer.firstName }} {{ context.customer.lastName }}
-                </p>
+                </div>
             {% endblock %}
 
             {% block page_account_overview_profile_company %}
-                {% sw_include '@Storefront/storefront/component/account/customer-overview-personal-company.html.twig' with {
+                {#% sw_include '@Storefront/storefront/component/account/customer-overview-personal-company.html.twig' with {
                     customer: context.customer,
-                } %}
+                } %#}
             {% endblock %}
 
             {% block page_account_overview_profile_email %}
-                <p>
+                <div>
                     {{ context.customer.email }}
-                </p>
+                </div>
             {% endblock %}
 
             {% block page_account_overview_profile_actions %}
