@@ -7,7 +7,7 @@
     transition: all 200ms;
 
     &:hover {
-        --method-option-border-color: var(--method-option-hover-border-color)
+        --method-option-border-color: var(--method-option-hover-border-color);
     }
 }
 .method-option-input {
