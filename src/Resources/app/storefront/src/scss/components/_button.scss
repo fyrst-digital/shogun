@@ -24,3 +24,7 @@
         --spinner-height: calc(var(--btn-icon-size) - var(--spinner-border-width));
     }
 }
+
+.btn-buy {
+    @include button-variant($sw-color-buy-button, $sw-color-buy-button);
+}

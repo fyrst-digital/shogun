@@ -6,4 +6,8 @@
         @extend .position-absolute, .top-50, .start-50;
         color: var(--white);
     }
+
+    .offcanvas-body & {
+        @extend .position-absolute, .top-50, .start-50, .translate-middle;
+    }
 }
