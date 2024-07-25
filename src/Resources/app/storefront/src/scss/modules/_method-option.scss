@@ -1,0 +1,25 @@
+.method-option-label {
+    border: var(--method-option-border-width, 2px) solid var(--method-option-border-color, var(--border-color));
+    border-radius: var(--method-option-border-radius, var(--border-radius));
+    padding: var(--method-option-padding-y, var(--spacer-sm)) var(--method-option-padding-y, var(--spacer-lg));
+    gap: var(--method-option-gap-y, var(--spacer-xs)) var(--method-option-gap-x, var(--spacer-xs));
+    cursor: var(--method-option-cursor, pointer);
+    transition: all 200ms;
+
+    &:hover {
+        --method-option-border-color: var(--method-option-hover-border-color)
+    }
+}
+.method-option-input {
+    @extend .d-none;
+
+    &:checked {
+
+        + .method-option-label {
+            --method-option-border-color: var(--method-option-checked-border-color, var(--primary));
+        }
+    }
+}
+.method-option-content {
+    gap: var(--method-option-gap-y, var(--spacer-xs)) var(--method-option-gap-x, var(--spacer-xs));
+}
