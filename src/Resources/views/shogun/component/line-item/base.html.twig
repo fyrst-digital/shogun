@@ -6,7 +6,11 @@
     {% set showRemoveButton = true %}
 {% endif %}
 
-{% set classes = defaultClasses %}
+{% if classes is defined %}
+    {% set classes = classes|sh_merge_deep(defaultClasses) %}
+{% else %}
+    {% set classes = defaultClasses %}
+{% endif %}
 
 {% block shogun_component_line_item %}
     <div class="{{classes.item|join(' ')}}">

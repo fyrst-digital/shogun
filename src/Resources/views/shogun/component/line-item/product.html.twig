@@ -42,7 +42,7 @@
     {% endblock %}
 
     {% block shogun_component_line_item_action_delete %}
-        {% if lineItem.removable and nestingLevel < 1 %}
+        {% if showRemoveButton is same as(true) and lineItem.removable and nestingLevel < 1 %}
             {% sw_include '@Storefront/shogun/component/line-item/element/remove.html.twig' %}
         {% endif %}
     {% endblock %}

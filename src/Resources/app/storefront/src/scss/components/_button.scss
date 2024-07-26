@@ -26,5 +26,5 @@
 }
 
 .btn-buy {
-    @include button-variant($sw-color-buy-button, $sw-color-buy-button);
+    @include button-variant($sw-color-buy-button, $sw-color-buy-button, $sw-color-buy-button-text);
 }

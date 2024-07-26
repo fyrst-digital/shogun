@@ -14,6 +14,7 @@ const icons = {
       'arrow-down',
       'arrow-right',
       'arrow-left',
+      'arrows-clockwise',
       'caret-up',
       'caret-down',
       'caret-right',

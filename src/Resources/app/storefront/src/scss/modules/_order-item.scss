@@ -1,0 +1,10 @@
+.order-item-header-title-container {
+    gap: var(--item-header-gap-y, 0px) var(--item-header-gap-x, var(--spacer-md));
+}
+/** order item header summary **/
+.order-item-header-summary {
+    gap: var(--item-summary-gap-y, var(--spacer-md)) var(--item-summary-gap-x, var(--spacer-md));
+}
+.order-item-summary-item {
+    flex: var(--summary-item-grow, 0) var(--summary-item-basis, 100%);
+}
