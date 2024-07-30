@@ -2,6 +2,16 @@
     {% set formId = 'confirmOrderForm' %}
 {% endif %}
 
+{% if showTosOptin is not defined %}
+    {% set showTosOptin = true %}
+{% endif %}
+
+{% if tosSnippet is not defined %}
+    {% set tosSnippet = 'checkout.confirmTermsText'|trans({
+        '%url%': path('frontend.cms.page', { id: config('core.basicInformation.tosPage') })
+    }) %}
+{% endif %}
+
 {% block shogun_component_confirm_tos %}
     <div class="confirm-tos">
     
@@ -20,25 +30,32 @@
         {% endblock %}
 
         {% block shogun_component_confirm_tos_control %}
-            <div class="form-check">
-                {% block shogun_component_confirm_tos_tos_control_checkbox %}
-                    <input type="checkbox"
+            {% if showTosOptin is same as(true) %}
+                <div class="form-check">
+                    {% block shogun_component_confirm_tos_tos_control_checkbox %}
+                        <input type="checkbox"
                             class="checkout-confirm-tos-checkbox form-check-input{% if formViolations.getViolations('/tos') is not empty %} is-invalid{% endif %}"
                             required="required"
                             id="tos"
                             form="{{formId}}"
                             name="tos">
-                {% endblock %}
+                    {% endblock %}
 
-                {% block shogun_component_confirm_tos_control_label %}
-                    <label for="tos"
-                            class="checkout-confirm-tos-label custom-control-label">
-                        {{ 'checkout.confirmTermsText'|trans({
-                            '%url%': path('frontend.cms.page', { id: config('core.basicInformation.tosPage') })
-                        })|raw }}
-                    </label>
-                {% endblock %}
-            </div>
+                    {% block shogun_component_confirm_tos_control_label %}
+                        <label for="tos"
+                                class="checkout-confirm-tos-label custom-control-label">
+                            {{ tosSnippet|raw }}
+                        </label>
+                    {% endblock %}
+                </div>
+            {% else %}
+                {{ tosSnippet|raw }}
+                <input type="hidden" 
+                    id="tos"
+                    form="{{formId}}"
+                    name="tos" 
+                    value="1" />
+            {% endif %}
         {% endblock %}
 
         {% block shogun_component_confirm_tos_revocation_control %}
