@@ -12,6 +12,8 @@
 
             {% block component_product_box_image %}
                 <div class="card-body flex-grow-0 flex-shrink-0 d-flex justify-content-center align-items-center product-image-wrapper">
+                    {% block component_product_box_image_prepend %}{% endblock %}
+                    
                     {% block component_product_box_badges %}
                         {% sw_include '@Storefront/shogun/component/product/box/badges.html.twig' %}
                     {% endblock %}
@@ -39,6 +41,8 @@
                             } %}
                         {% endif %}
                     {% endblock %}
+
+                    {% block component_product_box_image_append %}{% endblock %}
                 </div>
             {% endblock %}
 
