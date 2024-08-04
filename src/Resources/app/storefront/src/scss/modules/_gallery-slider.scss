@@ -19,3 +19,6 @@
         --thumbnail-border-color: var(--thumbnail-active-border-color, var(--primary));
     }
 }
+.gallery-slider-canvas-container {
+    z-index: var(--gallery-slider-canvas-index, 5);
+}
