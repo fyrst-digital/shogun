@@ -1,5 +1,31 @@
 {% sw_extends '@Storefront/storefront/component/review/review.html.twig' %}
 
+{% block component_review_alert %}
+    {% if ratingSuccess == 1 %}
+        {% sw_include '@Storefront/shogun/component/alert.html.twig' with {
+            type: 'success',
+            content: 'detail.reviewFormSuccessAlert'|trans|sw_sanitize
+        } %}
+    {% elseif ratingSuccess == 2 %}
+        {% sw_include '@Storefront/shogun/component/alert.html.twig' with {
+            type: 'success',
+            content: 'detail.reviewFormSuccessUpdateAlert'|trans|sw_sanitize
+        } %}
+    {% elseif ratingSuccess == -1 %}
+        {% sw_include '@Storefront/shogun/component/alert.html.twig' with {
+            type: 'danger',
+            content: 'detail.reviewFormErrorAlert'|trans|sw_sanitize
+        } %}
+    {% endif %}
+{% endblock %}
+
+{% block component_review_list_empty %}
+    {% sw_include '@Storefront/shogun/component/alert.html.twig' with {
+        type: 'info',
+        content: 'detail.reviewListEmpty'|trans|sw_sanitize
+    } %}
+{% endblock %}
+
 {% block utilities_offcanvas_meta %}
 {% endblock %}
 
@@ -17,6 +43,22 @@
             {% sw_include '@Storefront/shogun/component/review/item.html.twig' %}
         </div>
     {% endfor %}
+{% endblock %}
+
+{% block component_review_form_container %}
+    <div class="collapse multi-collapse{% if ratingSuccess == -1 %} show{% endif %}"
+            id="review-form">
+
+        {% if context.customer and not context.customer.guest %}
+            <div class="product-detail-review-form">
+                {% sw_include '@Storefront/shogun/component/review/form.html.twig' %}
+            </div>
+        {% else %}
+            <div class="product-detail-review-login">
+                {% sw_include '@Storefront/storefront/component/review/review-login.html.twig' %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block component_review_list_action_language %}

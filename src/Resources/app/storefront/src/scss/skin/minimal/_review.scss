@@ -1,3 +1,27 @@
 .review-star {
     display: contents;
 }
+
+.product-detail-review-form-star {
+    display: contents;
+
+    .icon-review-star {
+        @extend .sh-icon, .icon-star;
+        color: var(--review-star-color, #E5C706);
+        cursor: pointer;
+
+        &:hover {
+            @extend .icon-star-fill;
+        }
+    }
+    
+    &.is-active {
+        .icon-review-star {
+            @extend .icon-star-fill;
+        }
+    }
+}
+
+.product-detail-review-form-radio {
+    @extend .d-none;
+}
