@@ -1,0 +1,45 @@
+{% set stepsDefault = {
+    register: {
+        index: 0,
+        icon: 'number-one-bold',
+        label: 'checkout.step.register',
+        status: 'active'
+    },
+    confirm: {
+        index: 1,
+        icon: 'number-two-bold',
+        label: 'checkout.step.confirm',
+        status: 'remaining'
+    }
+} %}
+
+{% if steps is defined %}
+    {% set steps = stepsDefault|replace_recursive(steps) %}
+{% else %}
+    {% set steps = stepsDefault %}
+{% endif %}
+
+{% block shogun_component_checkout_progress %}
+    <div class="checkout-progress">
+        {% for key, step in steps %}
+            {% block shogun_component_checkout_progress_item %}
+                <div class="checkout-progress-item progress-step-{{key}} progress-status-{{step.status}}">
+
+                    {% block shogun_component_checkout_progress_item_bar %}
+                        <div class="checkout-progress-bar">
+                            <span class="checkout-progress-icon">
+                                {{sh_icon(step.icon)}}
+                            </span>
+                        </div>
+                    {% endblock %}
+
+                    {% block shogun_component_checkout_progress_item_label %}
+                        <div class="checkout-progress-label">
+                            {{step.label|trans}}
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endfor %}
+    </div>
+{% endblock %}
