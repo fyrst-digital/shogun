@@ -1,0 +1,19 @@
+{
+  "name": "shogunbundle",
+  "version": "1.0.0",
+  "description": "This Bundle brings some boilerplates, components and styling to your theme development. All functions in this bundle are opt-in. So you can include only what you need. With Shogun you spend more time in building instead of fixing.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vitepress": "^1.3.2"
+  }
+}
