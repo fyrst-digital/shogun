@@ -10,7 +10,7 @@
     }
 }
 .header-actions-col {
-    @extend .ms-auto;
+    @extend .ms-auto, .d-flex, .justify-content-end, .align-items-center, .gap-2, .gap-lg-3;
 }
 .header-action-badge {
     --badge-padding-y: var(--spacer-2xs);

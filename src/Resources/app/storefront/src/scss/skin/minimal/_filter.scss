@@ -12,9 +12,10 @@
 .filter-panel-items-container {
     @extend .grid;
 }
-.filter-panel-item {
-    @extend .g-col-12;
+.filter-panel-active-container:not(:has(:first-child)) {
+    @extend .d-none;
 }
+
 
 /** filter offcanvas **/
 .offcanvas-filter {
