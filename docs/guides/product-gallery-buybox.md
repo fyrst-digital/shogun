@@ -1,4 +1,3 @@
-# How to implement a product gallery
 
 ## Template adjustment in custom theme
 Add the following to your custom theme's `/storefront/block/cms-block-gallery-buybox.html.twig`
@@ -6,6 +5,7 @@ Add the following to your custom theme's `/storefront/block/cms-block-gallery-bu
 ``` twig
 {% sw_extends '@Storefront/storefront/block/cms-block-gallery-buybox.html.twig' %}
 
+{# this includes the gallery cms-element component #}
 {% block block_gallery_buybox_column_left_inner %}  
     {% set templatePath = 'storefront' %}
 
@@ -20,6 +20,18 @@ Add the following to your custom theme's `/storefront/block/cms-block-gallery-bu
         startIndexSlider: 1
     } %}
 {% endblock %}
+
+{# this includes the buybox cms-element component #}
+{% block block_gallery_buybox_column_right_inner %}
+    {% set templatePath = 'storefront' %}
+
+    {% if element.type is same as('buy-box') %}
+        {% set templatePath = 'shogun' %}
+    {% endif %}
+
+    {% sw_include '@Storefront/' ~ templatePath ~ '/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+{% endblock %}
+
 ```
 
 # Inject JS Plugin

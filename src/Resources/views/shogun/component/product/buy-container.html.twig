@@ -56,7 +56,7 @@
         <div class="product-prices">
 
             {% block buy_widget_price %}
-                {{ parent() }}
+                {% sw_include '@Storefront/shogun/component/product/buy-prices.html.twig' %}
             {% endblock %}
 
             {% block buy_widget_tax %}
