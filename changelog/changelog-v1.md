@@ -1,4 +1,4 @@
-# unreleased
+# 1.2.0
 
 Since this release breaks CSS Styling that could be affect a custom theme it is threated as a minor version.
 
@@ -10,3 +10,4 @@ Since this release breaks CSS Styling that could be affect a custom theme it is 
 - Add CSS properties to `a` elements within `.footer-main`
 - Hide `.filter-panel-active-container` if there are no child elements
 - Switch bootstrap classes for `header-actions-col` from template to SCSS styling
+- Remove orphaned closing tag in `buy-form` template
