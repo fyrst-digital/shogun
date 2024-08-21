@@ -1,3 +1,10 @@
+# 1.2.1
+
+## Changelog
+
+- Add more icons
+- Change webpack config
+
 # 1.2.0
 
 Since this release breaks CSS Styling that could be affect a custom theme it is threated as a minor version.
