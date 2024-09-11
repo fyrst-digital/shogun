@@ -1,3 +1,9 @@
+# 1.2.2
+
+## Changelog
+
+- Add @Plugins keyword to `style` and `script` property of theme config
+
 # 1.2.1
 
 ## Changelog
