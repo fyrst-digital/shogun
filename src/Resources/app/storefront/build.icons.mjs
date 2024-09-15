@@ -46,6 +46,7 @@ const icons = {
       'package',
       'paper-plane-tilt',
       'pencil-simple-line',
+      'percent',
       'person-simple-ski',
       'person-simple-ski-bold',
       'phone',
