@@ -1,7 +1,7 @@
 {
     "name": "fyrst/shogun",
     "description": "Rocket start for custom theme development in Shopware 6. Pure Bootstrap by default with first class opt-in components",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "type": "symfony-bundle",
     "license": "MIT",
     "keywords": [
