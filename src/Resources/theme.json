@@ -14,10 +14,6 @@
                     "shogun": "app/storefront/src/"
                 }
             }
-        },
-        "@Plugins"
-    ],
-    "script": [
-        "@Plugins"
+        }
     ]
 }
