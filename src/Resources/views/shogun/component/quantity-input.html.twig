@@ -55,6 +55,7 @@
         {% block shogun_component_quantity_input_field %}
             <input
                 {% if disabled is same as(true) %}disabled="disabled"{% endif %}
+                {% if formName is defined %}form="{{formName}}"{% endif %}
                 type="number"
                 name="{{inputName}}"
                 class="{{classes.input|join(' ')}}"
