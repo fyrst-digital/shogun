@@ -14,6 +14,7 @@
 
     .wishlist-icon {
         @extend .sh-icon, .icon-heart;
+        font-size: var(--btn-icon-size);
     }
     
     &.product-wishlist-added {
