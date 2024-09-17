@@ -1,8 +1,18 @@
 {% sw_extends '@Storefront/storefront/component/product/card/wishlist.html.twig' %}
 
 {% set defaultClasses = {
-    action: ['btn','btn-sm','btn-light', 'product-wishlist-' ~  productId, 'product-wishlist-action', 'product-wishlist-not-added', 'product-wishlist-loading']
+    action: ['btn', 'product-wishlist-' ~  productId, 'product-wishlist-action', 'product-wishlist-not-added', 'product-wishlist-loading']
 } %}
+
+{% set defaultClasses = defaultClasses|sh_merge_deep({
+    action: ['btn-' ~ color|default('light')]
+}) %}
+
+{% if size is defined %}
+    {% set defaultClasses = defaultClasses|sh_merge_deep({
+        action: ['btn-' ~ size]
+    }) %}
+{% endif %}
 
 {% if classes is defined %}
     {% set classes = classes|sh_merge_deep(defaultClasses) %}
