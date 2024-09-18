@@ -1,7 +1,7 @@
 **/node_modules/*
 !**/node_modules/bootstrap
-!**/node_modules/swiper
 !**/node_modules/tiny-slider
+!**/node_modules/@splidejs
 /node_modules
 /docs/.vitepress/*
 !/docs/.vitepress/config.js

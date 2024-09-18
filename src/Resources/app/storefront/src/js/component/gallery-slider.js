@@ -1,6 +1,5 @@
 import Plugin from 'src/plugin-system/plugin.class'
-// import { tns } from 'tiny-slider';
-import Swiper from 'swiper';
+import Splide from '@splidejs/splide'
 
 export default class GallerySlider extends Plugin {
     /**
@@ -9,59 +8,47 @@ export default class GallerySlider extends Plugin {
      * @type {*}
      */
     static options = {
-        canvasContainerSelector: '.gallery-slider-canvas-container',
-        canvasSelector: '[data-sh-gallery-slider="canvas"]',
-        thumbnailsSelector: '[data-sh-gallery-slider="thumbnails"]',
-        thumbnailSelector: '[data-sh-gallery-slider="thumbnail"]',
-        nextSelector: '[data-sh-slider-control="next"]',
-        prevSelector: '[data-sh-slider-control="prev"]'
+        canavsSliderSelector: '.gallery-slider-canvas',
+        thumbnailSliderSelector: '.gallery-slider-thumbnails',
+        thumbnailContainerSelector: '.gallery-slider-thumbnails-container',
     }
 
     init() {
-        this.activeSlide = 0
-        this.canvasContainerElement = this.el.querySelector(this.options.canvasContainerSelector)
-        this.canvasElement = this.el.querySelector(this.options.canvasSelector)
-        this.canvasNextButton = this.canvasContainerElement.querySelector(this.options.nextSelector)
-        this.canvasPrevButton = this.canvasContainerElement.querySelector(this.options.prevSelector)
-        
-        this.thumbnailsElement = this.el.querySelector(this.options.thumbnailsSelector)
-        this.thumbnailElements = this.thumbnailsElement.querySelectorAll(this.options.thumbnailSelector)
-        this.setThumbnailActive(this.activeSlide)
+        this.canavsSliderElement = this.el.querySelector(this.options.canavsSliderSelector)
+        this.thumbnailSliderElement = this.el.querySelector(this.options.thumbnailSliderSelector)
+        this.thumbnailContainerElement = this.el.querySelector(this.options.thumbnailContainerSelector)
+        this.setHeight()
 
-        this.canvasSlider = new Swiper(this.canvasElement, {
-            loop: false,
+        this.canavsSlider = new Splide(this.canavsSliderElement, {
             rewind: true,
+            pagination: false,
+            arrows: true,
+        })
+        
+        this.thumbnailSlider = new Splide(this.thumbnailSliderElement, {
+            fixedWidth: 64,
+            fixedHeight: 64,
+            heightRatio: 1,
+            direction: 'ttb',
+            rewind: true,
+            gap: 10,
+            focus: 'center',
+            isNavigation: true,
+            arrows: false,
+            pagination: false,
+            wheel: true,
         })
 
-        this.canvasNextButton.addEventListener("click", (e) => {
-            this.canvasSlider.slideNext();
-        })
+        this.canavsSlider.sync(this.thumbnailSlider)
+        this.canavsSlider.mount()
+        this.thumbnailSlider.mount()
 
-        this.canvasPrevButton.addEventListener("click", (e) => {
-            this.canvasSlider.slidePrev();
-        })
-
-        this.thumbnailElements.forEach((thumbnail, index) => {
-            thumbnail.addEventListener("click", (e) => {
-                this.canvasSlider.slideTo(index)
-            })
-        });
-
-        this.canvasSlider.on("slideChange", (slider) => {
-            this.resetThumbnailsActiveClass()
-            this.setThumbnailActive(slider.activeIndex)
+        this.canavsSlider.on('resize', () => {
+            this.setHeight()
         })
     }
 
-    setThumbnailActive(index) {
-        this.activeSlide = index
-        this.activeThumbnail = this.thumbnailElements.item(index)
-        this.activeThumbnail.classList.add("active")
-    }
-
-    resetThumbnailsActiveClass() {
-        this.thumbnailElements.forEach((thumbnail) => {
-            thumbnail.classList.remove("active")
-        })
+    setHeight() {
+        this.thumbnailContainerElement.style.height = `${this.canavsSliderElement.offsetHeight}px`
     }
 }

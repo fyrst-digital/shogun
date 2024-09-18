@@ -1,22 +1,23 @@
 {% block shogun_component_gallery_slider_thumbnails %}
     <div class="gallery-slider-thumbnails-container">
-        <div class="gallery-slider-thumbnails" 
-            data-sh-gallery-slider="thumbnails">
-            {% for media in medias %}
-                <div class="gallery-slider-thumbnail"
-                    data-sh-gallery-slider="thumbnail">
-
-                    {% sw_thumbnails 'gallery-slider-thumbnail' with {
-                        media: media,
-                        attributes: {
-                            class: 'gallery-slider-thumbnail-image'
-                        },
-                        sizes: {
-                            default: '200px'
-                        }
-                    } %}
-                </div>
-            {% endfor %}
+        <div class="gallery-slider-thumbnails splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {% for media in medias %}
+                        <li class="gallery-slider-thumbnail splide__slide">
+                            {% sw_thumbnails 'gallery-slider-thumbnail' with {
+                                media: media,
+                                attributes: {
+                                    class: 'gallery-slider-thumbnail-image'
+                                },
+                                sizes: {
+                                    default: '200px'
+                                }
+                            } %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 {% endblock %}
