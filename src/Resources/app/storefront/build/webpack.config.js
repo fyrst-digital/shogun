@@ -1,4 +1,5 @@
-const path = require('path');
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = (params) => {
 
@@ -12,7 +13,17 @@ module.exports = (params) => {
         )
     )
 
-    console.log(params.config.resolve.modules)
+    const hasSplidePlugin = params.config.plugins.some(plugin => {
+        return plugin instanceof webpack.ProvidePlugin && plugin.definitions.Splide;
+    });
+
+    if (!hasSplidePlugin) {
+        params.config.plugins.push(
+            new webpack.ProvidePlugin({
+                Splide: '@splidejs/splide',
+            })
+        )
+    }
 
     return params.config; 
 }

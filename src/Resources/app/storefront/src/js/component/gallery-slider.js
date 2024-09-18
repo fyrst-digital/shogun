@@ -1,5 +1,4 @@
 import Plugin from 'src/plugin-system/plugin.class'
-import Splide from '@splidejs/splide'
 
 export default class GallerySlider extends Plugin {
     /**
@@ -19,13 +18,13 @@ export default class GallerySlider extends Plugin {
         this.thumbnailContainerElement = this.el.querySelector(this.options.thumbnailContainerSelector)
         this.setHeight()
 
-        this.canavsSlider = new Splide(this.canavsSliderElement, {
+        this.canavsSlider = new Splide.Splide(this.canavsSliderElement, {
             rewind: true,
             pagination: false,
             arrows: true,
         })
         
-        this.thumbnailSlider = new Splide(this.thumbnailSliderElement, {
+        this.thumbnailSlider = new Splide.Splide(this.thumbnailSliderElement, {
             fixedWidth: 64,
             fixedHeight: 64,
             heightRatio: 1,
