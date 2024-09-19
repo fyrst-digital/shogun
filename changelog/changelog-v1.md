@@ -1,13 +1,29 @@
+# 1.2.5
+
+## Changelog
+- Remove swiper-slider, add splide-slider and rework gallery-slider component
+- Set color and size properties in product/action-wishlist component. Set btn-icon-size CSS property to wishlist button
+- Add optional form attribute to quantit-input component
+- Adjust webpack config
+
+# 1.2.4
+
+## Changelog
+- Remove @Plugins keyword to `style` and `script` property of theme config
+
+# 1.2.3
+
+## Changelog
+- Add 'percent' icon
+
 # 1.2.2
 
 ## Changelog
-
 - Add @Plugins keyword to `style` and `script` property of theme config
 
 # 1.2.1
 
 ## Changelog
-
 - Add more icons
 - Change webpack config
 
@@ -16,7 +32,6 @@
 Since this release breaks CSS Styling that could be affect a custom theme it is threated as a minor version.
 
 ## Changelog
-
 - **Breaking:** Remove `g-col` utility extend from `.filter-panel-item` (_filter.scss) because it produces strange extend behavior. Also defining columns should be a matter of custom theme.
 - **Breaking:** Remove `.footer-link` from style module
 - Add `--footer-color` to `.footer-main`
