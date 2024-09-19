@@ -1,3 +1,8 @@
+# 1.2.6
+
+## Changelog
+- Fix gallery-slider focus mode if there are no hidden slides
+
 # 1.2.5
 
 ## Changelog

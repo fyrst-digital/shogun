@@ -31,11 +31,16 @@ export default class GallerySlider extends Plugin {
             direction: 'ttb',
             rewind: true,
             gap: 10,
-            focus: 'center',
+            focus: 1,
+            trimSpace: true,
             isNavigation: true,
             arrows: false,
             pagination: false,
             wheel: true,
+        })
+
+        this.thumbnailSlider.on('ready', (v) => {
+            this.changeFocusMode()
         })
 
         this.canavsSlider.sync(this.thumbnailSlider)
@@ -44,10 +49,31 @@ export default class GallerySlider extends Plugin {
 
         this.canavsSlider.on('resize', () => {
             this.setHeight()
+            this.changeFocusMode()
         })
+
     }
 
     setHeight() {
         this.thumbnailContainerElement.style.height = `${this.canavsSliderElement.offsetHeight}px`
+    }
+
+    changeFocusMode() {
+        const hiddenSlides = this.thumbnailSlider.Components.Elements.slides.filter((slide) => {
+            return !slide.classList.contains('is-visible')
+        })
+        
+        if (hiddenSlides.length < 1) {
+            /**
+             * @type {HTMLElement}
+             */
+            this.thumbnailSlider.options = {
+                focus: false
+            }
+        } else {
+            this.thumbnailSlider.options = {
+                focus: true
+            }
+        }
     }
 }
