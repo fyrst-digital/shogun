@@ -1,6 +1,11 @@
 # 1.2.6
 
 ## Changelog
+- Fix gallery-slider arrow controls behavior and style
+
+# 1.2.6
+
+## Changelog
 - Fix gallery-slider focus mode if there are no hidden slides
 
 # 1.2.5

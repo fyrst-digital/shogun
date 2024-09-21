@@ -5,12 +5,17 @@
         --gallery-slider-columns: var(--gallery-slider-thumbnail-w) minmax(0, 1fr);
     }
 }
-.gallery-slider-canvas-container {
+.gallery-slider-canvas {
     @extend .order-2;
     max-width: 100%;
 
     .slider-control-button {
         @extend .position-absolute, .translate-middle;
+
+        &:disabled {
+            opacity: 0;
+            visibility: hidden;
+        }
 
         &.control-prev {
             @extend .top-50, .start-0;
