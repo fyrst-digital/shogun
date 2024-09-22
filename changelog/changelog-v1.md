@@ -1,4 +1,9 @@
-# 1.2.6
+# 1.2.8
+
+## Changelog
+- Add line-item component for predictable template type control
+
+# 1.2.7
 
 ## Changelog
 - Fix gallery-slider arrow controls behavior and style

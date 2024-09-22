@@ -1,7 +1,7 @@
 {% sw_extends '@Storefront/storefront/page/account/order-history/order-detail-list.html.twig' %}
 
 {% block page_account_order_item_detail_line_item %}
-    {% sw_include '@Storefront/shogun/component/line-item/' ~ lineItem.type ~ '.html.twig' with {
+    {% sw_include '@Storefront/shogun/component/line-item/line-item.html.twig' with {
         lineItem: lineItem,
         autoSubmit: false,
         showRemoveButton: false,
