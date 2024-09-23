@@ -8,4 +8,9 @@
     .card-header {
         line-height: var(--card-header-line-height);
     }
+
+    .card-title {
+        font-size: var(--card-title-fs, var(--body-font-size));
+        font-weight: var(--card-title-fw, inherit);
+    }
 }

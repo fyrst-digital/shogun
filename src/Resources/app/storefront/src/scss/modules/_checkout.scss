@@ -3,11 +3,16 @@
     background-color: var(--sidebar-bg-color);
     border: var(--sidebar-border-width) solid var(--sidebar-border-color);
     border-radius: var(--sidebar-border-radius);
+
+    .cart-heading-title {
+        font-size: var(--sidebar-header-fs, 24px);
+        font-weight: var(--sidebar-header-fw, 600);
+    }
 }
 .checkout-aside-summary-header,
 .checkout-aside-product-header {
-    font-size: var(--sidebar-header-fs);
-    font-weight: var(--sidebar-header-fw);
+    font-size: var(--sidebar-header-fs, 20px);
+    font-weight: var(--sidebar-header-fw, 600);
 }
 
 /** summaries **/
@@ -15,4 +20,5 @@
 .cart-summary-item-value {
     font-size: var(--summary-item-font-size);
     font-weight: var(--summary-item-font-weight, inherit);
+    color: var(--summary-item-color, inherit);
 }

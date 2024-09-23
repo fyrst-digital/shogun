@@ -1,3 +1,10 @@
+# 1.2.9
+
+## Changelog
+- Add cart-title font size and weight CSS properties
+- Add cart-summary-item color CSS properties
+- Add method-option name and description color CSS properties
+
 # 1.2.8
 
 ## Changelog

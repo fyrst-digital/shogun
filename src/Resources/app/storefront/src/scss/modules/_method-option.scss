@@ -20,6 +20,16 @@
         }
     }
 }
+.method-option-name {
+    font-size: var(--method-option-name-fs, var(--body-font-size));
+    font-weight: var(--method-option-name-fw, inherit);
+    color: var(--method-option-name-color, inherit);
+}
+.method-option-description {
+    font-size: var(--method-option-description-fs, var(--body-font-size));
+    font-weight: var(--method-option-description-fw, inherit);
+    color: var(--method-option-description-color, inherit);
+}
 .method-option-content {
     gap: var(--method-option-gap-y, var(--spacer-xs)) var(--method-option-gap-x, var(--spacer-xs));
 }
