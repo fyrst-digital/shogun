@@ -1,4 +1,4 @@
-# 1.2.9
+# 1.2.10
 
 ## Changelog
 - Change checkout-progress component styling from grid to flexbox
