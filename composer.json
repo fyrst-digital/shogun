@@ -1,7 +1,7 @@
 {
     "name": "fyrst/shogun",
     "description": "Rocket start for custom theme development in Shopware 6. Pure Bootstrap by default with first class opt-in components",
-    "version": "1.2.9",
+    "version": "1.2.10",
     "type": "symfony-bundle",
     "license": "MIT",
     "keywords": [
@@ -35,6 +35,17 @@
         "allow-plugins": {
             "symfony/runtime": true
         }
+    },
+    "scripts": {
+        "npm-install-storefront": [
+            "npm --prefix ./src/Resources/app/storefront install"
+        ],
+        "post-install-cmd": [
+            "@npm-install-storefront"
+        ],
+        "post-update-cmd": [
+            "@npm-install-storefront"
+        ]
     },
     "autoload": {
         "psr-4": {

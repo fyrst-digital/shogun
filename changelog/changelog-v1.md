@@ -1,6 +1,12 @@
 # 1.2.9
 
 ## Changelog
+- Change checkout-progress component styling from grid to flexbox
+- Add npm install storefront script to composer, which will be triggered on post-install and post-update
+
+# 1.2.9
+
+## Changelog
 - Add cart-title font size and weight CSS properties
 - Add cart-summary-item color CSS properties
 - Add method-option name and description color CSS properties
