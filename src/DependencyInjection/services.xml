@@ -7,7 +7,6 @@
         <service id="Fyrst\ShogunBundle\Decorator\ThemeFileResolverDecorator" decorates="Shopware\Storefront\Theme\ThemeFileResolver">
             <argument type="service" id="Fyrst\ShogunBundle\Decorator\ThemeFileResolverDecorator.inner"/>
             <argument type="service" id="event_dispatcher"/>
-
         </service>
         <service id="Fyrst\ShogunBundle\Twig\ShIcon" public="true">
             <tag name="twig.extension"/>
