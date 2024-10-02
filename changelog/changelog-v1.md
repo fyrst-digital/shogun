@@ -1,3 +1,9 @@
+# 1.3.0
+
+## Changelog
+- Change webpack config to set an alias for Splide dependecy
+- Decorating `ThemeFileResolver` to add `ThemeResolveFilesEvent` which can be used to modify theme scripts and styles file collection
+
 # 1.2.10
 
 ## Changelog
