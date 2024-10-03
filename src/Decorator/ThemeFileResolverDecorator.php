@@ -23,6 +23,6 @@ class ThemeFileResolverDecorator extends ThemeFileResolver
 
         $files = $this->decorated->resolveFiles($themeConfig, $configurationCollection, $onlySourceFiles);
 
-        return $this->eventDispatcher->dispatch(new ThemeResolveFilesEvent($files))->getFiles();
+        return $this->eventDispatcher->dispatch(new ThemeResolveFilesEvent($files, $themeConfig, $configurationCollection))->getFiles();
     }
 }

@@ -15,5 +15,8 @@
                 }
             }
         }
+    ],
+    "script": [
+        "app/storefront/dist/storefront/js/shogun-bundle/shogun-bundle.js"
     ]
 }
