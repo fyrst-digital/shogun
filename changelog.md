@@ -1,5 +1,9 @@
 # 1.3.0
 
+## Breaking changes
+- Removal of some CSS classes in `search/suggest-item` component
+- Rename item pricing Twig block in `search/suggest-item` component because of typo error
+
 ## Changelog
 - Decorating `ThemeFileResolver` to add `ThemeResolveFilesEvent` which can be used to modify theme scripts and styles file collection
 - `search/suggest-item` component changes
