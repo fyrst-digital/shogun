@@ -1,8 +1,13 @@
 # 1.3.0
 
 ## Changelog
-- Change webpack config to set an alias for Splide dependecy
 - Decorating `ThemeFileResolver` to add `ThemeResolveFilesEvent` which can be used to modify theme scripts and styles file collection
+- `search/suggest-item` component changes
+  - Change to programatic CSS class definition
+  - Removal of some CSS classes. **This could be breaking in your custom theme**. Review the search suggest layout and set needed classes.
+  - Add more Twig blocks
+  - Add CSS property `product-image-max-w` to image element
+- Change webpack config to set an alias for Splide dependecy
 
 # 1.2.10
 

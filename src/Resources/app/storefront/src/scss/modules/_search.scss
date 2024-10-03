@@ -3,6 +3,7 @@
     object-fit: var(--product-image-object-fit, contain);
     object-position: var(--product-image-object-position, center);
     background-color: var(--product-image-bg-color);
+    max-width: var(--product-image-max-w, auto);
 }
 .search-suggest {
     max-width: var(--search-overlay-max-w, 100%);

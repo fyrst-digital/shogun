@@ -1,12 +1,45 @@
+{% set defaultClasses = {
+    item: ['search-suggest-item'],
+    imageContainer: ['col-auto', 'search-suggest-item-image-container'],
+    image: ['search-suggest-product-image', 'w-100', 'd-block'],
+    content: ['col', 'search-suggest-content'],
+    productName: ['search-suggest-product-name', 'col'],
+    productPricing: {
+        container: ['search-suggest-product-pricing', 'col-auto'],
+        price: ['search-suggest-product-price'],
+        referencePrice: ['search-suggest-product-reference-price'],
+        listPrice: ['search-suggest-product-list-price']
+    }
+} %}
+
+{% if classes is defined %}
+    {% set classes = classes|sh_merge_deep(defaultClasses) %}
+{% else %}
+    {% set classes = defaultClasses %}
+{% endif %}
+
+{% set price = product.calculatedPrice %}
+
+{% if product.calculatedPrices.count > 0 %}
+    {% set price = product.calculatedPrices.last %}
+{% endif %}
+
+{% if product.variantListingConfig.displayParent and product.parentId === null %}
+    {% set displayFromVariants = price.unitPrice !== product.calculatedCheapestPrice.unitPrice %}
+    {% set price = product.calculatedCheapestPrice %}
+{% endif %}
+
+{% set referencePrice = price.referencePrice %}
+
 {% block shogun_component_search_suggest_item %}
     <a href="{{ seoUrl('frontend.detail.page', {productId: product.id}) }}"
         title="{{ product.translated.name }}"
-        class="search-suggest-item text-decoration-none text-body g-col-12 d-flex flex-wrap gap-3">
+        class="{{ classes.item|join(' ') }}">
 
         {% block shogun_component_search_suggest_item_image %}
-            <div class="col-auto search-suggest-item-image-container">
+            <div class="{{ classes.imageContainer|join(' ') }}">
                 {% set attributes = {
-                    class: 'search-suggest-product-image w-100 d-block',
+                    class: classes.image|join(' '),
                     title: (product.cover.media.translated.title ?: '')
                 } %}
 
@@ -37,43 +70,51 @@
             </div>
         {% endblock %}
 
-        <div class="col search-suggest-content">
-            {% block shogun_component_search_suggest_item_name %}
-                <div class="col search-suggest-product-name">
-                    {{ product.translated.name }}
-                </div>
-            {% endblock %}
+        {% block shogun_component_search_suggest_item_content %}
+            <div class="{{ classes.content|join(' ') }}">
 
-            {% block shogun_component_search_suggest_itemt_price %}
-                <div class="col-auto search-suggest-product-pricing">
-                    {% set price = product.calculatedPrice %}
-                    {% if product.calculatedPrices.count > 0 %}
-                        {% set price = product.calculatedPrices.last %}
-                    {% endif %}
+                {% block shogun_component_search_suggest_item_name %}
+                    <div class="{{ classes.productName|join(' ') }}">
+                        {{ product.translated.name }}
+                    </div>
+                {% endblock %}
 
-                    {% if product.variantListingConfig.displayParent and product.parentId === null %}
-                        {% set displayFromVariants = price.unitPrice !== product.calculatedCheapestPrice.unitPrice %}
-                        {% set price = product.calculatedCheapestPrice %}
-                    {% endif %}
+                {% block shogun_component_search_suggest_item_pricing %}
+                    <div class="{{ classes.productPricing.container|join(' ') }}">
 
-                    {% set referencePrice = price.referencePrice %}
+                        {% block shogun_component_search_suggest_item_price_prefix %}
+                            {% if product.calculatedPrices.count > 1 or displayFromVariants %}
+                                {{ 'listing.listingTextFrom'|trans|sw_sanitize }}
+                            {% endif %}
+                        {% endblock %}
 
-                    {% if product.calculatedPrices.count > 1 or displayFromVariants %}
-                        {{ 'listing.listingTextFrom'|trans|sw_sanitize }}
-                    {% endif %}
-                    <span class="search-suggest-product-price">
-                        {{ price.unitPrice|currency }}
-                    </span>
+                        {% block shogun_component_search_suggest_item_price %}
+                            <span class="search-suggest-product-price">
+                                {{ price.unitPrice|currency }}
+                            </span>
+                        {% endblock %}
 
-                    {% if price.referencePrice is not null %}
-                        <br><small class="search-suggest-product-reference-price">({{ price.referencePrice.price|currency }}{{ 'general.star'|trans|sw_sanitize }} / {{ price.referencePrice.referenceUnit }}&nbsp;{{ price.referencePrice.unitName }})</small>
-                    {% endif %}
+                        {% block shogun_component_search_suggest_item_reference_price %}
+                            {% if price.referencePrice is not null %}
+                                <small class="search-suggest-product-reference-price">
+                                    ({{ price.referencePrice.price|currency }}
+                                    {{ 'general.star'|trans|sw_sanitize }} / {{ price.referencePrice.referenceUnit }}&nbsp;
+                                    {{ price.referencePrice.unitName }})
+                                </small>
+                            {% endif %}
+                        {% endblock %}
 
-                    {% if price.regulationPrice.price is not null %}
-                        <small class="search-suggest-product-list-price">{{ 'general.listPricePreviously'|trans({'%price%': price.regulationPrice.price|currency }) }}{{ 'general.star'|trans|sw_sanitize }}</small>
-                    {% endif %}
-                </div>
-            {% endblock %}
-        </div>
+                        {% block shogun_component_search_suggest_item_regulation_price %}
+                            {% if price.regulationPrice.price is not null %}
+                                <small class="search-suggest-product-list-price">
+                                    {{ 'general.listPricePreviously'|trans({'%price%': price.regulationPrice.price|currency }) }}
+                                    {{ 'general.star'|trans|sw_sanitize }}
+                                </small>
+                            {% endif %}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
     </a>
 {% endblock %}
