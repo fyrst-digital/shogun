@@ -177,11 +177,26 @@ Also the `classes` object is wrapped around a defined statement. So if you inclu
 
 ## Twig extensions
 
-- **`sh_merge_deep(source, target)`**
+- **`sh_merge_deep(array source, array target)`**
   This filter merge two arrays recursivly. Under the hood it uses `array_merge_recursive()`
+
+- **`sh_icon(string name)`**
+  Returns a span element with icon classes. For example `<span class="sh-icon icon-name"></span>`
+
+- **`sh_unique(array source, array target)`**
+  This filter force array values to be unique. Under the hood it uses `array_unique()`
+
+## Events
+
+Shogun provides additional Events you can work with.
+
+### `ThemeResolveFilesEvent`
+
+TBC
 
 ## Overview: Shogun template components
 
 - **`shogun/component/account/login-form.twig.html`**
 - **`shogun/component/account/login-card.twig.html`** (near feature complete)
 - **`shogun/component/account/register-card.twig.html`** (wip)
+- **`shogun/component/search/suggest-item.twig.html`**
