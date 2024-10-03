@@ -1,5 +1,7 @@
 {% sw_extends '@Storefront/storefront/element/cms-element-buy-box.html.twig' %}
 
+{% deprecated 'The override of detault cms-elements will be removed in future releases. More informations in issue #8' %}
+
 {% block element_buy_box_inner %}
     {% sw_include '@Storefront/shogun/component/product/header.html.twig' %}
     {% sw_include '@Storefront/shogun/component/product/buy-container.html.twig' with {

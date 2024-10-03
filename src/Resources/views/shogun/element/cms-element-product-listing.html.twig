@@ -1,5 +1,7 @@
 {% sw_extends '@Storefront/storefront/element/cms-element-product-listing.html.twig' %}
 
+{% deprecated 'The override of detault cms-elements will be removed in future releases. More informations in issue #8' %}
+
 {% block element_product_listing_wrapper %}
     {% sw_include '@Storefront/shogun/component/product/listing.html.twig' with {
         searchResult: searchResult,
