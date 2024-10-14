@@ -1,0 +1,21 @@
+{% set defaultClasses = {
+    button: ['btn', 'wishlist-action-btn']
+} %}
+
+{% if classes is defined %}
+    {% set classes = defaultClasses|sh_merge_deep(classes) %}
+{% else %}
+    {% set classes = defaultClasses %}
+{% endif %}
+
+{% block shogun_component_wishlist_action %}
+    <a class="{{ classes.button|join(' ') }}"
+        href="{{ path('frontend.wishlist.page') }}"
+        title="{{ 'header.wishlist'|trans|striptags }}"
+        aria-label="{{ 'header.wishlist'|trans|striptags }}">
+
+        {% block shogun_component_wishlist_action_widget %}
+            {% sw_include '@Storefront/shogun/component/wishlist/widget.html.twig' %}
+        {% endblock %}
+    </a>
+{% endblock %}

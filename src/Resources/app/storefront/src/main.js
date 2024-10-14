@@ -1,5 +1,7 @@
 const PluginManager = window.PluginManager
 
+console.log('ShogunBundle: main.js')
+
 PluginManager.register(
     'ShGallerySlider', 
     () => import('shogun/js/component/gallery-slider'), 

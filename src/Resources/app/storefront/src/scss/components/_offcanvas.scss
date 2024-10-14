@@ -1,3 +1,12 @@
 .offcanvas {
     border-radius: var(--offcanvas-border-radius, 0px);
 }
+
+.offcanvas-backdrop {
+    background-color: var(--offcanvas-backdrop-bg, var(--black));
+    backdrop-filter: blur(var(--offcanvas-backdrop-blur, 0px));
+
+    &.show {
+        opacity: var(--offcanvas-backdrop-opacity, 0.5);
+    }
+}

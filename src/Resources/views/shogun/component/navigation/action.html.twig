@@ -1,0 +1,22 @@
+{% set defaultClasses = {
+    button: ['btn', 'navigation-action-btn']
+} %}
+
+{% if classes is defined %}
+    {% set classes = defaultClasses|sh_merge_deep(classes) %}
+{% else %}
+    {% set classes = defaultClasses %}
+{% endif %}
+
+{% block shogun_component_navigation_action %}
+    <button
+        class="{{ classes.button|join(' ') }}"
+        type="button"
+        data-off-canvas-menu="true"
+        aria-label="{{ 'general.menuLink'|trans|striptags }}"
+    >
+        {% block shogun_component_navigation_action_icon %}
+            {{ sh_icon('list') }}
+        {% endblock %}
+    </button>
+{% endblock %}

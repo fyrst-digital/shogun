@@ -1,0 +1,34 @@
+{% set defaultClasses = {
+    button: ['btn', 'account-action-btn']
+} %}
+
+{% if classes is defined %}
+    {% set classes = defaultClasses|sh_merge_deep(classes) %}
+{% else %}
+    {% set classes = defaultClasses %}
+{% endif %}
+
+{% block shogun_component_account_action %}
+    <div class="dropdown">
+        {% block shogun_component_account_action_button %}
+            <button 
+                class="{{ classes.button|join(' ') }}"
+                type="button"
+                id="accountWidget"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="{{ 'account.myAccount'|trans|striptags }}"
+                title="{{ 'account.myAccount'|trans|striptags }}">
+                
+                {% block shogun_component_account_action_button_icon %}
+                    {{sh_icon('user')}}
+                {% endblock %}
+            </button>
+        {% endblock %}
+
+        {% block shogun_component_account_action_dropdown %}
+            {% sw_include '@Storefront/shogun/component/account/dropdown.html.twig' %}
+        {% endblock %}
+    </div>
+{% endblock %}

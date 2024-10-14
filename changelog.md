@@ -1,3 +1,32 @@
+# unreleased
+
+## Breaking changes
+- The bootstrap style inclusion is now opt-in. We removed it from theme.json and just provide a `shogun-bootstrap` alias that points to `app/storefront/node_modules/bootstrap/`.
+  That means from now on you must include the bootstrap styles in your custom themes `base.scss` (**not the `theme.json`**). 
+  Why we are making this? Better control what bootstrap components you want to include and override handling, make use of Bootstraps utilities API.
+  So the `@import` in you custom theme `base.scss` could look like this:
+  ``` scss
+  /** Bootstrap dependencies **/
+  @import '~shogun-bootstrap/scss/bootstrap';
+
+  /** Shogun dependencies **/
+  @import '~shogun/scss/utilities/index';
+  @import '~shogun/scss/modules/index';
+  @import '~shogun/scss/components/index';
+  @import '~shogun/scss/icons';
+  @import '~shogun/scss/tiny-slider';
+  @import '~shogun/scss/skin/minimal/index';
+  ```
+
+  Also you can only include single Bootstrap script modules in your `main.js` if you start from scratch (without `@Storefront` script dependecy in your `theme.json`)
+- Rename `account/account-widget` component to `account/action`
+
+## Changelog
+- Add `$enable-shogun-spacers` setting with default `false`. Must be opt-in in custom theme
+- Change bootstrap inclusion to be opt-in. See `Breaking changes` for details.
+- Add font-size utility `~shogun/utilites/font-size`
+- Rename `account/account-widget` component to `account/action`
+
 # 1.3.0
 
 ## Breaking changes

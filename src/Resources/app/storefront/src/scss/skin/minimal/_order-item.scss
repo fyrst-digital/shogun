@@ -13,7 +13,7 @@
     @extend .bg-info;
 }
 .order-item-header-title {
-    @extend .fs-5, .fw-semibold;
+    @extend .fs-5, .fw-semibold !optional;
     flex: 1 0%;
 
     @include media-breakpoint-up( sm ) {

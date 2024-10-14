@@ -1,0 +1,37 @@
+@function set-sh-spacer($enable-shogun-spacers, $sh-spacers) {
+    @if $enable-shogun-spacers {
+        @return map-get($sh-spacers, 'md');
+    } @else {
+        @return 1rem;
+    }
+}
+
+@function set-sh-spacers($enable-shogun-spacers, $spacer, $sh-spacers) {
+    @if $enable-shogun-spacers {
+        @return (
+            0: 0,
+            1: map-get($sh-spacers, '2xs'),
+            2: map-get($sh-spacers, 'xs'),
+            3: map-get($sh-spacers, 'sm'),
+            4: map-get($sh-spacers, 'md'),
+            5: map-get($sh-spacers, 'lg'),
+            6: map-get($sh-spacers, 'xl'),
+            7: map-get($sh-spacers, '2xl'),
+            8: map-get($sh-spacers, '3xl'),
+            9: map-get($sh-spacers, '4xl'),
+            10: map-get($sh-spacers, '5xl'),
+          );
+    } @else {
+        @return (
+            0: 0,
+            1: $spacer * .25,
+            2: $spacer * .5,
+            3: $spacer,
+            4: $spacer * 1.5,
+            5: $spacer * 3,
+        );
+    }
+}
+
+$spacer: set-sh-spacer($enable-shogun-spacers, $sh-spacers);
+$spacers: set-sh-spacers($enable-shogun-spacers, $spacer, $sh-spacers);
