@@ -1,20 +1,11 @@
 {% set icon = icon|default('list') %}
 {% set showLabel = showLabel|default(false) %}
-{% set replaceClasses = replaceClasses|default(false) %}
 
-{% set defaultClasses = {
+{% set classes = sh_define_classes({
     button: ['btn', 'navigation-action-btn'],
     icon: ['position-relative', 'd-flex', 'justify-content-center', 'align-items-center'],
     label: []
-} %}
-
-{% if classes is defined and replaceClasses is same as(false) %}
-    {% set classes = defaultClasses|sh_merge_deep(classes) %}
-{% elseif classes is defined and replaceClasses is same as(true) %}
-    {% set classes = defaultClasses|replace_recursive(classes) %}
-{% else %}
-    {% set classes = defaultClasses %}
-{% endif %}
+}, classes|default({}), replaceClasses|default(false)) %}
 
 {% block shogun_component_navigation_action %}
     <button

@@ -2,18 +2,12 @@
 {% set icon = icon|default('shopping-cart-simple') %}
 {% set showLabel = showLabel|default(false) %}
 
-{% set defaultClasses = {
+{% set classes = sh_define_classes({
     button: ['btn', 'cart-action-btn'],
     icon: ['position-relative', 'd-flex', 'justify-content-center', 'align-items-center'],
     badge: ['position-absolute', 'top-0', 'start-100', 'translate-middle', 'badge', 'rounded-pill'],
     label: []
-} %}
-
-{% if classes is defined %}
-    {% set classes = defaultClasses|sh_merge_deep(classes) %}
-{% else %}
-    {% set classes = defaultClasses %}
-{% endif %}
+}, classes|default({}), replaceClasses|default(false)) %}
 
 {% block shogun_component_cart_action %}
     <a class="{{ classes.button|join(' ') }}"
