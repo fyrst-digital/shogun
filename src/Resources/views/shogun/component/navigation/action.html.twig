@@ -1,9 +1,17 @@
+{% set icon = icon|default('list') %}
+{% set showLabel = showLabel|default(false) %}
+{% set replaceClasses = replaceClasses|default(false) %}
+
 {% set defaultClasses = {
-    button: ['btn', 'navigation-action-btn']
+    button: ['btn', 'navigation-action-btn'],
+    icon: ['position-relative', 'd-flex', 'justify-content-center', 'align-items-center'],
+    label: []
 } %}
 
-{% if classes is defined %}
+{% if classes is defined and replaceClasses is same as(false) %}
     {% set classes = defaultClasses|sh_merge_deep(classes) %}
+{% elseif classes is defined and replaceClasses is same as(true) %}
+    {% set classes = defaultClasses|replace_recursive(classes) %}
 {% else %}
     {% set classes = defaultClasses %}
 {% endif %}
@@ -16,7 +24,19 @@
         aria-label="{{ 'general.menuLink'|trans|striptags }}"
     >
         {% block shogun_component_navigation_action_icon %}
-            {{ sh_icon('list') }}
+            <span class="{{ classes.icon|join(' ') }}">
+                {% block shogun_component_navigation_action_icon_element %}
+                    {{ sh_icon(icon) }}
+                {% endblock %}
+            </span>
         {% endblock %}
+
+        {% block shogun_component_navigation_action_label %}
+            {% if showLabel %}
+                <span class="{{ classes.label|join(' ') }}">
+                    {{ 'general.menuLink'|trans|striptags }}
+                </span>
+            {% endif %}
+        {% endblock %} 
     </button>
 {% endblock %}

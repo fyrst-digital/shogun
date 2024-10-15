@@ -1,5 +1,10 @@
+{% set icon = icon|default('user') %}
+{% set showLabel = showLabel|default(false) %}
+
 {% set defaultClasses = {
-    button: ['btn', 'account-action-btn']
+    button: ['btn', 'account-action-btn'],
+    icon: ['position-relative', 'd-flex', 'justify-content-center', 'align-items-center'],
+    label: []
 } %}
 
 {% if classes is defined %}
@@ -10,6 +15,7 @@
 
 {% block shogun_component_account_action %}
     <div class="dropdown">
+
         {% block shogun_component_account_action_button %}
             <button 
                 class="{{ classes.button|join(' ') }}"
@@ -22,8 +28,20 @@
                 title="{{ 'account.myAccount'|trans|striptags }}">
                 
                 {% block shogun_component_account_action_button_icon %}
-                    {{sh_icon('user')}}
+                    <span class="{{ classes.icon|join(' ') }}">
+                        {% block shogun_component_account_action_button_icon_element %}
+                            {{sh_icon(icon)}}
+                        {% endblock %}
+                    </span>
                 {% endblock %}
+
+                {% block shogun_component_account_action_label %}
+                    {% if showLabel %}
+                        <span class="{{ classes.label|join(' ') }}">
+                            {{ 'account.myAccount'|trans|striptags }}
+                        </span>
+                    {% endif %}
+                {% endblock %} 
             </button>
         {% endblock %}
 

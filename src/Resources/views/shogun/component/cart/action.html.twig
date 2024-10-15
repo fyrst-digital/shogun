@@ -1,5 +1,12 @@
+{% set lineItemsQuantity = lineItemsQuantity|default(0) %}
+{% set icon = icon|default('shopping-cart-simple') %}
+{% set showLabel = showLabel|default(false) %}
+
 {% set defaultClasses = {
-    button: ['btn', 'cart-action-btn']
+    button: ['btn', 'cart-action-btn'],
+    icon: ['position-relative', 'd-flex', 'justify-content-center', 'align-items-center'],
+    badge: ['position-absolute', 'top-0', 'start-100', 'translate-middle', 'badge', 'rounded-pill'],
+    label: []
 } %}
 
 {% if classes is defined %}
@@ -16,8 +23,29 @@
         title="{{ 'checkout.cartTitle'|trans|striptags }}"
         aria-label="{{ 'checkout.cartTitle'|trans|striptags }}">
         
-        {% block shogun_component_cart_action_widget %}
-            {% sw_include '@Storefront/shogun/component/cart/cart-widget.html.twig' %}
+        {% block shogun_component_cart_action_icon %}
+            <span class="{{ classes.icon|join(' ') }}">
+
+                {% block shogun_component_wishlist_action_icon_element %}
+                    {{sh_icon(icon)}}
+                {% endblock %}
+
+                {% block shogun_component_cart_action_badge %}
+                    {% if lineItemsQuantity > 0 %}
+                        <span class="{{ classes.badge|join(' ') }}">
+                            {{ lineItemsQuantity }}
+                        </span>
+                    {% endif %}
+                {% endblock %}
+            </span>
         {% endblock %}
+
+        {% block shogun_component_cart_action_label %}
+            {% if showLabel %}
+                <span class="{{ classes.label|join(' ') }}">
+                    {{ 'checkout.cartTitle'|trans|striptags }}
+                </span>
+            {% endif %}
+        {% endblock %} 
     </a>
 {% endblock %}
