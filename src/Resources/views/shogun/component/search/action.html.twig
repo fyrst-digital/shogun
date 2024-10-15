@@ -1,0 +1,41 @@
+{% set icon = icon|default('magnifying-glass') %}
+{% set showLabel = showLabel|default(false) %}
+{% set collapseTarget = collapseTarget|default('searchCollapse') %}
+
+{% set defaultClasses = {
+    button: ['btn', 'search-toggle-btn', 'js-search-toggle-btn', 'collapsed'],
+    icon: ['position-relative', 'd-flex', 'justify-content-center', 'align-items-center'],
+    label: []
+} %}
+
+{% if classes is defined %}
+    {% set classes = defaultClasses|sh_merge_deep(classes) %}
+{% else %}
+    {% set classes = defaultClasses %}
+{% endif %}
+
+{% block shogun_component_search_action %}
+    <button 
+        class="{{ classes.button|join(' ') }}"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="{{ '#' ~ collapseTarget }}"
+        aria-expanded="false"
+        aria-controls="{{ collapseTarget }}"
+        aria-label="{{ 'header.searchButton'|trans|striptags }}">
+
+        {% block shogun_component_search_action_icon %}
+            <span class="{{ classes.icon|join(' ') }}">
+                {{ sh_icon(icon) }}
+            </span>
+        {% endblock %}
+
+        {% block shogun_component_wishlist_action_label %}
+            {% if showLabel %}
+                <span class="{{ classes.label|join(' ') }}">
+                    {{ 'header.searchButton'|trans|striptags }}
+                </span>
+            {% endif %}
+        {% endblock %} 
+    </button>
+{% endblock %}
