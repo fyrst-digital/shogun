@@ -10,6 +10,8 @@
 
 {% set icon = icon|default('heart') %}
 
+{% set showLabel = showLabel|default(false) %}
+
 {% set defaultClasses = {
     button: ['btn', 'wishlist-action-btn'],
     icon: ['position-relative', 'd-flex', 'justify-content-center', 'align-items-center'],
@@ -56,9 +58,11 @@
         {% endblock %}
 
         {% block shogun_component_wishlist_action_label %}
-            <span class="{{ classes.label|join(' ') }}">
-                {{ 'header.wishlist'|trans|striptags }}
-            </span>
+            {% if showLabel %}
+                <span class="{{ classes.label|join(' ') }}">
+                    {{ 'header.wishlist'|trans|striptags }}
+                </span>
+            {% endif %}
         {% endblock %} 
     </a>
 {% endblock %}
