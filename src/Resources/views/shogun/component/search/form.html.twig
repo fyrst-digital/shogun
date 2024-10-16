@@ -1,0 +1,51 @@
+{% set searchWidgetOptions = {
+    searchWidgetMinChars: page.header.activeLanguage.productSearchConfig.minSearchLength ?: 3
+} %}
+{% set icon = icon|default('magnifying-glass') %}
+{% set classes = sh_define_classes({
+    form: ['search-form'],
+    input: ['form-control', 'search-form-input'],
+    button: ['btn', 'search-form-btn'],
+}, classes|default({}), replaceClasses|default(false)) %}
+
+{% block shogun_component_search_form %}
+    <form 
+        action="{{ path('frontend.search.page') }}"
+        method="get"
+        data-search-widget="true"
+        data-search-widget-options="{{ searchWidgetOptions|json_encode }}"
+        data-url="{{ path('frontend.search.suggest') }}?search="
+        class="{{ classes.form|join(' ') }}">
+
+        {% block shogun_component_search_form_input %}
+            <input 
+                type="search"
+                name="search"
+                class="{{ classes.input|join(' ') }}"
+                autocomplete="off"
+                autocapitalize="off"
+                placeholder="{{ 'header.searchPlaceholder'|trans|striptags }}"
+                aria-label="{{ 'header.searchPlaceholder'|trans|striptags }}"
+                value="{{ page.searchTerm }}" />
+        {% endblock %}
+
+        {% block shogun_component_search_form_button %}
+            <button 
+                type="submit"
+                class="{{ classes.button|join(' ') }}"
+                aria-label="{{ 'header.searchButton'|trans|striptags }}">
+                
+                {% block shogun_component_search_form_button_icon %}
+                    {{ sh_icon(icon) }}
+                {% endblock %}
+            </button>
+        {% endblock %}
+
+        <button 
+            class="btn search-close-btn js-search-close-btn d-none"
+            type="button"
+            aria-label="{{ 'header.searchCloseButton'|trans|striptags }}">
+            {% sw_icon 'x' %}
+        </button>
+    </form>
+{% endblock %}
