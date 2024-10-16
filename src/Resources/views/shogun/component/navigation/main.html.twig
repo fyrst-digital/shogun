@@ -1,0 +1,67 @@
+{% set homeLabel = context.salesChannel.translated.homeName|default('general.homeLink'|trans) %}
+{% set activePath = page.header.navigation.active.path %}
+
+{% set classes = sh_define_classes({
+    bar: ['nav', 'main-navigation-menu'],
+    link: ['nav-link', 'main-navigation-link']
+}, classes|default({}), replaceClasses|default(false)) %}
+
+{% block shogun_component_navigation_main %}
+    <nav class="{{ classes.bar|join(' ') }}"
+        aria-label="{{ 'header.navigationAriaLabel'|trans|sw_sanitize }}"
+        itemscope="itemscope"
+        itemtype="http://schema.org/SiteNavigationElement">
+
+        {% block shogun_component_navigation_main_home %}
+            {% set classes = classes|sh_merge_deep({
+                link: ['home-link', controllerAction is same as('home') ? 'active' : null]
+            }) %}
+
+            {% if context.salesChannel.translated.homeEnabled %}
+                <a class="{{ classes.link|join(' ') }}"
+                    href="{{ path('frontend.home.page') }}"
+                    itemprop="url"
+                    data-nav-item="{{ context.salesChannel.navigationCategoryId }}"
+                    title="{{ homeLabel|striptags }}">
+                    <span class="d-contents" itemprop="name">{{ homeLabel|sw_sanitize }}</span>
+                </a>
+            {% endif %}
+        {% endblock %}
+
+        {% block shogun_component_navigation_main_items %}
+
+            {% for treeItem in page.header.navigation.tree %}
+                {% set itemTag = 'a' %}
+                {% set category = treeItem.category %}
+                {% set name = category.translated.name %}
+                {% set isFolder = category.type is same as('folder') ? true : false %}
+
+                {% if isFolder %}
+                    {% set itemTag = 'span' %}
+                {% endif %}
+
+                {% block shogun_component_navigation_main_item %}
+
+                    {% if category.id == page.header.navigation.active.id or category.id in activePath %}
+                        {% set classes = classes|sh_merge_deep({
+                            link: ['active']
+                        }) %}                
+                    {% endif %}
+
+                    <{{ itemTag|raw }} 
+                        {% if isFolder is same as(false) %}
+                            href="{{ category_url(category) }}"
+                        {% endif %}
+                        {% if isFolder is same as(false) and category_linknewtab(category) %}
+                            target="_blank"
+                        {% endif %}
+                        class="{{ classes.link|join(' ') }}"
+                        data-nav-item="{{ category.id }}">
+
+                        {{ name }}
+                    </{{ itemTag|raw }}>
+                {% endblock %}
+            {% endfor %}
+        {% endblock %}
+    </nav>
+{% endblock %}
