@@ -1,3 +1,12 @@
+{% set imageTitle = imageTitle|default(null) %}
+{% set imageAlt = imageAlt|default(null) %}
+
+{% set imageAttributes = {
+    class: 'search-suggest-product-image w-100 d-block',
+    title: imageTitle ?? product.cover.media.translated.title,
+    alt: imageAlt ?? product.cover.media.translated.title,
+} %}
+
 {% block shogun_component_search_suggest_item %}
     <a href="{{ seoUrl('frontend.detail.page', {productId: product.id}) }}"
         title="{{ product.translated.name }}"
@@ -5,28 +14,21 @@
 
         {% block shogun_component_search_suggest_item_image %}
             <div class="col-auto search-suggest-item-image-container">
-                {% set attributes = {
-                    class: 'search-suggest-product-image w-100 d-block',
-                    title: (product.cover.media.translated.title ?: '')
-                } %}
 
                 {% if product.cover.media.url and product.cover.media.isSpatialObject() == false %}
                     {% if product.cover.media.getMediaType().getName() === 'VIDEO' %}
                         {% sw_include '@Storefront/storefront/utilities/video.html.twig' with {
                             media: product.cover.media,
-                            attributes: attributes
+                            attributes: imageAttributes
                         } %}
                     {% else %}
-                        {% set attributes = attributes|merge({
-                            alt: (product.cover.media.translated.alt ?: '')
-                        }) %}
 
                         {% sw_thumbnails 'search-suggest-product-image-thumbnails' with {
                             media: product.cover.media,
                             sizes: {
                                 default: '100px'
                             },
-                            attributes: attributes
+                            attributes: imageAttributes
                         } %}
                     {% endif %}
                 {% else %}

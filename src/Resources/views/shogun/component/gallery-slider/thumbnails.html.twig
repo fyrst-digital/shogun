@@ -1,3 +1,19 @@
+{% set mediaAttributes = {
+    class: 'gallery-slider-thumbnail-image'
+} %}
+
+{% if mediaTitle %}
+    {% set mediaAttributes = mediaAttributes|replace_recursive({
+        title: mediaTitle
+    }) %}
+{% endif %}
+
+{% if mediaAlt %}
+    {% set mediaAttributes = mediaAttributes|replace_recursive({
+        alt: mediaAlt
+    }) %}
+{% endif %}
+
 {% block shogun_component_gallery_slider_thumbnails %}
     <div class="gallery-slider-thumbnails-container">
         <div class="gallery-slider-thumbnails splide">
@@ -7,9 +23,7 @@
                         <li class="gallery-slider-thumbnail splide__slide">
                             {% sw_thumbnails 'gallery-slider-thumbnail' with {
                                 media: media,
-                                attributes: {
-                                    class: 'gallery-slider-thumbnail-image'
-                                },
+                                attributes: mediaAttributes,
                                 sizes: {
                                     default: '200px'
                                 }

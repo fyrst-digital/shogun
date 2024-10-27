@@ -1,9 +1,14 @@
 {% sw_extends '@Storefront/storefront/element/cms-element-image-gallery.html.twig' %}
 
+{% set mediaTitle = mediaTitle|default(null) %}
+{% set mediaAlt = mediaAlt|default(null) %}
+
 {% block element_image_gallery_inner %}
     {% sw_include '@Storefront/shogun/component/gallery-slider/base.html.twig' 
         with {
-            medias: mediaItems
+            medias: mediaItems,
+            mediaTitle: mediaTitle,
+            mediaAlt: mediaAlt
         } only
     %}
 {% endblock %}

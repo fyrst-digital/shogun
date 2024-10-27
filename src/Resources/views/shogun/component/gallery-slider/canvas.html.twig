@@ -1,5 +1,21 @@
+{% set mediaAttributes = {
+    class: 'gallery-slider-canvas-image'
+} %}
+
+{% if mediaTitle %}
+    {% set mediaAttributes = mediaAttributes|replace_recursive({
+        title: mediaTitle
+    }) %}
+{% endif %}
+
+{% if mediaAlt %}
+    {% set mediaAttributes = mediaAttributes|replace_recursive({
+        alt: mediaAlt
+    }) %}
+{% endif %}
+
 {% block shogun_component_gallery_slider_canvas_container %}
-    <div class="gallery-slider-canvas-container position-relative">3trehgfg
+    <div class="gallery-slider-canvas-container position-relative">
 
         {% block shogun_component_gallery_slider_canvas %}
             <div class="gallery-slider-canvas splide">
@@ -27,9 +43,7 @@
                                     <li class="gallery-slider-canvas-item splide__slide">
                                         {% sw_thumbnails 'gallery-slider-canvas-image' with {
                                             media: media,
-                                            attributes: {
-                                                class: 'gallery-slider-canvas-image'
-                                            }
+                                            attributes: mediaAttributes
                                         } %}
                                     </li>
                                 {% endblock %}
