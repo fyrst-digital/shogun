@@ -1,5 +1,25 @@
 {% sw_extends '@Storefront/storefront/component/listing/filter/filter-range.html.twig' %}
 
+{% block component_filter_range %}
+    {% set classes = sh_define_classes({
+        panel: ['filter-range', 'filter-panel-item', sidebar ? 'd-grid' : 'dropdown']
+    }, classes|default({}), replaceClasses|default(false)) %}
+
+    <div class="{{ classes.panel|join(' ') }}"
+        role="listitem"
+        data-filter-range="true"
+        data-filter-range-options="{{ filterRangeOptions|json_encode }}">
+
+        {% block component_filter_range_toggle %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block component_filter_range_dropdown %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
 {% block component_filter_range_toggle_icon %}
     {{sh_icon('caret-down')}}
 {% endblock %}

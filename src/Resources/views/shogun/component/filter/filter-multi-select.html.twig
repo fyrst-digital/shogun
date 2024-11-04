@@ -1,5 +1,27 @@
 {% sw_extends '@Storefront/storefront/component/listing/filter/filter-multi-select.html.twig' %}
 
+{% block component_filter_multi_select %}
+
+    {% set classes = sh_define_classes({
+        panel: ['filter-multi-select', 'filter-multi-select-' ~ name, 'filter-panel-item', sidebar ? 'd-grid' : 'dropdown']
+    }, classes|default({}), replaceClasses|default(false)) %}
+
+    <div 
+        class="{{ classes.panel|join(' ') }}"
+        role="listitem"
+        data-{{ pluginSelector }}="true"
+        data-{{ pluginSelector }}-options='{{ dataPluginSelectorOptions|json_encode }}'>
+
+        {% block component_filter_multi_select_toggle %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block component_filter_multi_select_dropdown %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
 {% block component_filter_multi_select_toggle_icon %}
     {{sh_icon('caret-down')}}
 {% endblock %}

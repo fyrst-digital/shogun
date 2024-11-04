@@ -31,7 +31,10 @@
             elements: manufacturersSorted,
             sidebar: sidebar,
             name: 'manufacturer',
-            displayName: 'listing.filterManufacturerDisplayName'|trans|sw_sanitize
+            displayName: 'listing.filterManufacturerDisplayName'|trans|sw_sanitize,
+            classes: {
+                panel: panelColumnClasses|default(['g-col-12'])
+            },
         } %}
     {% endif %}
 {% endblock %}
@@ -50,7 +53,10 @@
                 displayName: property.translated.name,
                 displayType: property.displayType,
                 pluginSelector: 'filter-property-select',
-                propertyName: property.translated.name
+                propertyName: property.translated.name,
+                classes: {
+                    panel: panelColumnClasses|default(['g-col-12'])
+                },
             } %}
         {% endfor %}
     {% endif %}
@@ -70,6 +76,9 @@
             displayName: 'listing.filterPriceDisplayName'|trans|sw_sanitize,
             minInputValue: 0,
             maxInputValue: price.max,
+            classes: {
+                panel: panelColumnClasses|default(['g-col-12'])
+            },
         } %}
     {% endif %}
 {% endblock %}
@@ -81,7 +90,10 @@
             sidebar: sidebar,
             name: 'rating',
             pluginSelector: 'filter-rating-select',
-            displayName: 'listing.filterRatingDisplayName'|trans|sw_sanitize
+            displayName: 'listing.filterRatingDisplayName'|trans|sw_sanitize,
+            classes: {
+                panel: panelColumnClasses|default(['g-col-12'])
+            },
         } %}
     {% endif %}
 {% endblock %}
