@@ -1,0 +1,22 @@
+{% set classes = sh_define_classes({
+    button: ['btn', 'btn-outline-primary', 'w-100', 'd-lg-none', 'filter-panel-wrapper-toggle']
+}, classes|default({}), replaceClasses|default(false)) %}
+
+{% block shogun_component_filter_button %}
+    <button
+        class="{{ classes.button|join(' ') }}"
+        type="button"
+        data-off-canvas-filter="true"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-label="{{ 'general.menuLink'|trans }}"
+    >
+        {% block shogun_component_filter_button_icon %}
+            {{sh_icon('sliders-horizontal')}}
+        {% endblock %}
+
+        {% block shogun_component_filter_button_label %}
+            {{ 'listing.filterTitleText'|trans }}
+        {% endblock %}
+    </button>
+{% endblock %}
