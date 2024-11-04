@@ -25,6 +25,7 @@ const icons = {
       'clock',
       'credit-card',
       'envelope-simple',
+      'envelope-simple-bold',
       'handbag-simple',
       'handbag',
       'heart',
