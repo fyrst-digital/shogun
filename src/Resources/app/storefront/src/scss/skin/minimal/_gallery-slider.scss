@@ -41,3 +41,6 @@
         height: 100% !important;
     }
 }
+.gallery-slider-thumbnail-image {
+    @extend .d-block, .img-fluid;
+}

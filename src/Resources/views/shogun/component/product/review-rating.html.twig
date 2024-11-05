@@ -1,0 +1,34 @@
+{% if remoteClickOptions is not defined %}
+    {% set remoteClickOptions = {
+        selector: '#review-tab-' ~ product.id,
+        scrollToElement: true,
+        excludedViewports: ['XS']
+    } %}
+{% endif %}
+
+{% if reviewTabHref is not defined %}
+    {% set reviewTabHref = '#review-tab-' ~ product.id ~ '-pane' %}
+{% endif %}
+
+{% block shogun_component_product_review_rating %}
+    <div class="product-detail-reviews d-flex flex-wrap flex-row gap-2 align-items-center">
+        {% sw_include '@Storefront/shogun/component/review/rating.html.twig' with {
+            points: product.ratingAverage
+        } %}
+        <div class="product-review-label">
+            {{ 'detail.reviewLabelText'|trans({'%average%': product.ratingAverage})|sw_sanitize }}
+            <a
+                data-bs-toggle="tab"
+                class="product-detail-reviews-link product-review-link"
+                data-off-canvas-tabs="true"
+                data-remote-click="true"
+                data-remote-click-options="{{ remoteClickOptions|json_encode }}"
+                href="{{ reviewTabHref }}"
+                aria-controls="review-tab-pane"
+            >
+                {{ totalReviews }}
+                {{ 'detail.reviewLinkText'|trans({'%count%': totalReviews})|sw_sanitize }}
+            </a>
+        </div>
+    </div>
+{% endblock %}

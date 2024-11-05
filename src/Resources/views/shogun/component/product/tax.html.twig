@@ -1,0 +1,19 @@
+{% if context.taxState == 'gross' %}
+    {% set taxText = 'general.grossTaxInformation'|trans|sw_sanitize %}
+{% else %}
+    {% set taxText = 'general.netTaxInformation'|trans|sw_sanitize %}
+{% endif %}
+
+{% block shogun_component_product_tax %}
+    <div class="product-tax">
+        {% block shogun_component_product_tax_link %}
+            <a class="product-tax-link"
+                href="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}"
+                title="{{ taxText }}"
+                data-ajax-modal="true"
+                data-url="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}">
+                {{ taxText }}
+            </a>
+        {% endblock %}
+    </div>
+{% endblock %}
