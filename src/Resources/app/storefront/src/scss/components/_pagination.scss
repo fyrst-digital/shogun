@@ -5,3 +5,7 @@
     border-radius: var(--pagination-border-radius);
     min-width: var(--pagination-min-w, auto);
 }
+.page-link.active, 
+.active > .page-link {
+    font-weight: var(--pagination-active-font-weight, 600);
+}

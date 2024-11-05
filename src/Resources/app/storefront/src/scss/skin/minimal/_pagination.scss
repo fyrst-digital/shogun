@@ -3,8 +3,6 @@
 }
 .page-link {
     @extend .d-flex, .text-center, .justify-content-center;
-    --pagination-color: var(--body-color);
-    --pagination-hover-color: var(--body-color);
     font-weight: var(--pagination-font-weight, 500);
     line-height: 1;
     cursor: pointer;
