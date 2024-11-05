@@ -1,0 +1,33 @@
+{% sw_extends '@Storefront/storefront/component/product/card/action.html.twig' %}
+
+{% block component_product_box_action_inner %}
+
+    {% set classes = sh_define_classes({
+        btnBuy: ['btn', 'btn-buy'],
+        btnDetail: ['btn', 'btn-light', 'btn-detail'],
+    }, classes|default({}), replaceClasses|default(false)) %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block component_product_box_action_buy_button %}
+    {# @deprecated tag:v6.7.0 - Block will be removed, use component_product_box_action_buy_button instead #}
+    <button class="{{ classes.btnBuy|join(' ') }}"
+            title="{{ 'listing.boxAddProduct'|trans|striptags }}">
+
+        {% block page_product_detail_product_buy_button_label %}
+            {{ 'listing.boxAddProduct'|trans|sw_sanitize }}
+        {% endblock %}
+    </button>
+{% endblock %}
+
+{% block component_product_box_action_detail %}
+    <a href="{{ seoUrl('frontend.detail.page', {productId: id}) }}"
+        class="{{ classes.btnDetail|join(' ') }}"
+        title="{{ 'listing.boxProductDetails'|trans|striptags }}">
+
+        {% block component_product_box_action_detail_label %}
+            {{ 'listing.boxProductDetails'|trans|sw_sanitize }}
+        {% endblock %}
+    </a>
+{% endblock %}

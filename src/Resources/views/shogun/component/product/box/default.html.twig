@@ -1,6 +1,16 @@
 {% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
 
 {% block component_product_box %}
+
+    {% set classes = sh_define_classes({
+        box: ['card', 'product-box', layout ? 'box-' ~ layout : null],
+        imageWrapper: ['card-body', 'flex-grow-0', 'flex-shrink-0', 'd-flex', 'justify-content-center', 'align-items-center', 'product-image-wrapper'],
+        info: ['card-body', 'flex-fill', 'product-box-info'],
+        header: ['product-box-header'],
+        body: ['product-box-body'],
+        footer: ['product-box-footer'],
+    }, classes|default({}), replaceClasses|default(false)) %}
+
     {% if product %}
         {% set name = product.translated.name %}
         {% set id = product.id %}
@@ -8,10 +18,10 @@
         {% set variation = product.variation %}
         {% set displayParent = product.variantListingConfig.displayParent and product.parentId === null %}
 
-        <div class="card product-box box-{{ layout }}" data-product-information="{{ {id, name}|json_encode }}">
+        <div class="{{ classes.box|join(' ') }}" data-product-information="{{ {id, name}|json_encode }}">
 
             {% block component_product_box_image %}
-                <div class="card-body flex-grow-0 flex-shrink-0 d-flex justify-content-center align-items-center product-image-wrapper">
+                <div class="{{ classes.imageWrapper|join(' ') }}">
                     {% block component_product_box_image_prepend %}{% endblock %}
                     
                     {% block component_product_box_badges %}
@@ -49,10 +59,10 @@
             {% block component_product_box_content %}
 
                 {% block component_product_box_info %}
-                    <div class="card-body flex-fill product-box-info">
+                    <div class="{{ classes.info|join(' ') }}">
 
                         {% block component_product_box_header %}
-                            <div class="product-box-header">
+                            <div class="{{ classes.header|join(' ') }}">
 
                                 {% block component_product_box_rating %}
                                     {% if config('core.listing.showReview') && product.ratingAverage %}
@@ -75,7 +85,7 @@
                         {% endblock %}
 
                         {% block component_product_box_body %}
-                            <div class="product-box-body">
+                            <div class="{{ classes.body|join(' ') }}">
 
                                 {% block component_product_box_variant_characteristics %}
                                     {% if not displayParent && product.variation %}
@@ -105,14 +115,14 @@
                         {% endblock %}
 
                         {% block component_product_box_footer %}
-                            <div class="product-box-footer">
+                            <div class="{{ classes.footer|join(' ') }}">
 
                                 {% block component_product_box_price %}
                                     {% sw_include '@Storefront/shogun/component/product/box/price.html.twig' %}
                                 {% endblock %}
 
                                 {% block component_product_box_action %}
-                                    {% sw_include '@Storefront/storefront/component/product/card/action.html.twig' %}
+                                    {% sw_include '@Storefront/shogun/component/product/box/action.html.twig' %}
                                 {% endblock %}
                             </div>
                         {% endblock %}
