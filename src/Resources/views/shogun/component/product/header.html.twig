@@ -1,44 +1,52 @@
-{% if productName is not defined %}
-    {% set productName = page.product.translated.name %}
-{% endif %}
+{% set productName = productName|default(page.product.translated.name) %}
+{% set productNameTag = productNameTag|default('h1') %}
+{% set productManufacturer = productManufacturer|default(page.product.manufacturer) %}
 
-{% if productManufacturer is not defined %}
-    {% set productManufacturer = page.product.manufacturer %}
-{% endif %}
+{% set classes = sh_define_classes({
+    header: ['product-header'],
+    title: ['product-title'],
+    name: ['product-name'],
+    manufacturer: ['product-manufacturer'],
+    manufacturerLogo: ['product-manufacturer-logo'],
+}, classes|default({}), replaceClasses|default(false)) %}
 
 {% block shogun_component_product_header %}
-    <div class="product-header">
+    <div class="{{classes.header|join(' ')}}">
 
         {% block shogun_component_product_header_title %}
-            <div class="product-title">
+            {% if productName %}            
+                <div class="{{classes.title|join(' ')}}">
 
-                {% block shogun_component_product_header_name %}
-                    <h1 class="product-name">
-                        {{productName}}
-                    </h1>
-                {% endblock %}
+                    {% block shogun_component_product_header_name %}
+                        <{{ productNameTag|raw }} class="{{classes.name|join(' ')}}">
+                            {% block shogun_component_product_header_name_slot %}
+                                {{productName}}
+                            {% endblock %}
+                        </{{ productNameTag|raw }}>
+                    {% endblock %}
+                </div>
+            {% endif %}
+        {% endblock %}
 
-                {% block shogun_component_product_header_manufacturer %}
-                    {% if productManufacturer %}
-                        <div class="product-manufacturer">
+        {% block shogun_component_product_header_manufacturer %}
+            {% if productManufacturer %}
+                <div class="{{classes.manufacturer|join(' ')}}">
 
-                            {% if productManufacturer.media %}
-                                {% sw_thumbnails 'product-manufacturer-logo-thumbnails' with {
-                                    media: productManufacturer.media,
-                                    sizes: {
-                                        'default': '200px'
-                                    },
-                                    attributes:{
-                                        class: 'product-manufacturer-logo'
-                                    }
-                                } %}
-                            {% else %}
-                                {{productManufacturer.translated.name}}
-                            {% endif %}
-                        </div>
+                    {% if productManufacturer.media %}
+                        {% sw_thumbnails 'product-manufacturer-logo-thumbnails' with {
+                            media: productManufacturer.media,
+                            sizes: {
+                                'default': '200px'
+                            },
+                            attributes:{
+                                class: classes.manufacturerLogo|join(' ')
+                            }
+                        } %}
+                    {% else %}
+                        {{productManufacturer.translated.name}}
                     {% endif %}
-                {% endblock %}
-            </div>
+                </div>
+            {% endif %}
         {% endblock %}
     </div>
 {% endblock %}

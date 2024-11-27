@@ -26,6 +26,9 @@
 .product-review-rating {
     gap: var(--review-point-gap-y) var(--review-point-gap-y);
 }
+.product-buy-btn {
+    max-width: var(--product-buy-btn-max-w, none);
+}
 .product-box-info {
     gap: var(--product-info-gap, var(--card-gap));
 }

@@ -4,10 +4,15 @@
     {% set taxText = 'general.netTaxInformation'|trans|sw_sanitize %}
 {% endif %}
 
+{% set classes = sh_define_classes({
+    tax: ['product-tax'],
+    link: ['product-tax-link'],
+}, classes|default({}), replaceClasses|default(false)) %}
+
 {% block shogun_component_product_tax %}
-    <div class="product-tax">
+    <div class="{{classes.tax|join(' ')}}">
         {% block shogun_component_product_tax_link %}
-            <a class="product-tax-link"
+            <a class="{{classes.link|join(' ')}}"
                 href="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}"
                 title="{{ taxText }}"
                 data-ajax-modal="true"

@@ -1,11 +1,16 @@
 {% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
 
 {% block buy_widget_buy_form_inner %}
+    {% set classes = sh_define_classes({
+        form: ['buy-form'],
+        quantity: quantity|default({})
+    }, classes|default({}), replaceClasses|default(false)) %}
+
     <form
         id="productDetailPageBuyProductForm"
         action="{{ formAction }}"
         method="post"
-        class="buy-form"
+        class="{{ classes.form|join(' ') }}"
         data-add-to-cart="true">
 
         {% set DOWNLOAD_STATE = constant('Shopware\\Core\\Content\\Product\\State::IS_DOWNLOAD') %}
@@ -35,7 +40,8 @@
                                 minQuantity: product.minPurchase,
                                 maxQuantity: product.calculatedMaxPurchase,
                                 purchaseSteps: product.purchaseSteps,
-                                unit: productUnit
+                                unit: productUnit,
+                                classes: classes.quantity
                             } only %}
                         {% endblock %}
 
@@ -57,7 +63,7 @@
                 {% block buy_widget_buy_button_container %}
                 
                     {% block buy_widget_buy_button %}
-                        <button class="btn btn-buy"
+                        <button class="btn btn-buy product-buy-btn"
                             title="{{ 'detail.addProduct'|trans|striptags }}"
                             aria-label="{{ 'detail.addProduct'|trans|striptags }}">
 

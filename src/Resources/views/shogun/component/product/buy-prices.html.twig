@@ -5,8 +5,24 @@
     {% set isListPrice = price.listPrice.percentage > 0 %}
     {% set isRegulationPrice = price.regulationPrice != null %}
 
+    {% set classes = sh_define_classes({
+        price: ['product-price'],
+    }, classes|default({}), replaceClasses|default(false)) %}
+
+    {% if isListPrice %}
+        {% set classes = classes|sh_merge_deep({
+            price: ['with-list-price'],
+        }) %}
+    {% endif %}
+
+    {% if isRegulationPrice %}
+        {% set classes = classes|sh_merge_deep({
+            price: ['with-regulation-price'],
+        }) %}
+    {% endif %}
+
     {% block shogun_component_product_buy_price %}
-        <div class="product-detail-price{% if isListPrice %} with-list-price{% endif %}{% if isRegulationPrice %} with-regulation-price{% endif %}">
+        <div class="{{classes.price|join(' ')}}">
             {{ price.unitPrice|currency }}{{ 'general.star'|trans|sw_sanitize }}
         </div>
     {% endblock %}

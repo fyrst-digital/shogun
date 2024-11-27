@@ -1,15 +1,9 @@
-{% set defaultClasses = {
+{% set classes = sh_define_classes({
     group: ['input-group','quantity-selector-group', 'quantity-input'],
-    decrease: ['btn','btn-light','btn-decrease','js-btn-minus'],
-    increase: ['btn','btn-light','btn-increase','js-btn-plus'],
-    input: ['form-control','text-center','js-quantity-selector','quantity-selector-group-input'],
-} %}
-
-{% if classes is defined %}
-    {% set classes = classes|sh_merge_deep(defaultClasses) %}
-{% else %}
-    {% set classes = defaultClasses %}
-{% endif %}
+    decrease: ['btn','btn-decrease','js-btn-minus'],
+    increase: ['btn','btn-increase','js-btn-plus'],
+    input: ['form-control','text-center','js-quantity-selector','quantity-selector-group-input', 'quantity-input-control'],
+}, classes|default({}), replaceClasses|default(false)) %}
 
 {% if size is defined && size is same as('sm') %}
     {% set classes = classes|sh_merge_deep({
