@@ -1,5 +1,6 @@
 .form-control {
     color: var(--input-color, var(--body-color));
+    padding: var(--input-padding-y, var(--spacer-xs)) var(--input-padding-x, var(--spacer-lg));
     background-color: var(--input-bg, var(--body-bg));
     border-width: var(--input-border-width, var(--border-width));
     border-color: var(--input-border-color, var(--border-color));
@@ -14,4 +15,8 @@
     &::placeholder {
         color: var(--input-placeholder-color, inherit);
     }
+}
+
+.form-select {
+    padding: var(--input-padding-y, var(--spacer-xs)) var(--input-padding-x, var(--spacer-lg));
 }

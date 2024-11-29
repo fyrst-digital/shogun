@@ -1,5 +1,6 @@
 .offcanvas {
     border-radius: var(--offcanvas-border-radius, 0px);
+    gap: var(--offcanvas-gap, 0px);
 }
 
 .offcanvas-backdrop {

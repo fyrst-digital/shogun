@@ -1,6 +1,17 @@
+{% set classes = sh_define_classes({
+    heading: [
+        'cart-heading',
+        'd-flex',
+        'flex-row',
+        'flex-wrap',
+        'align-items-baseline',
+        'justify-content-between'
+    ]
+}, classes|default({}), replaceClasses|default(false)) %}
+
 {% block shogun_component_cart_heading %} 
 
-    <div class="cart-heading d-flex flex-row flex-wrap align-items-baseline justify-content-between">
+    <div class="{{classes.heading|join(' ')}}">
         {% block shogun_component_cart_heading_title %}
             <div class="cart-heading-title">
                 {{ 'checkout.cartHeader'|trans|sw_sanitize }}

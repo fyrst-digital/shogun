@@ -1,14 +1,19 @@
+{% set classes = sh_define_classes({
+    form: ['shipping-calculation-form'],
+    collapseBtn: ['btn', 'cart-shipping-costs-btn'],
+}, classes|default({}), replaceClasses|default(false)) %}
+
 {% block shogun_component_shipping_calculation %}
     <form name="precalc"
         method="post"
         action="{{ path('frontend.checkout.configure') }}"
-        class="shipping-calculation-form"
+        class="{{ classes.form|join(' ') }}"
         data-form-auto-submit="true">
 
         {% block shogun_component_shipping_calculation_trigger %}
             {% set PHYSICAL_STATE = constant('Shopware\\Core\\Content\\Product\\State::IS_PHYSICAL') %}
             {% if page.cart.lineItems.hasLineItemWithState(PHYSICAL_STATE) %}
-                <a class="btn btn-light cart-shipping-costs-btn shipping-calculation-toogle-btn"
+                <a class="{{ classes.collapseBtn|join(' ') }}"
                     data-bs-toggle="collapse"
                     href="#collapseShippingCost"
                     role="button"

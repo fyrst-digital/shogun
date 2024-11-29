@@ -1,7 +1,12 @@
+{% set classes = sh_define_classes({
+    container: ['cart-summary'],
+    list: ['cart-summary-list']
+}, classes|default({}), replaceClasses|default(false)) %}
+
 {% block shogun_component_cart_summary %}
-    <div class="cart-summary">
+    <div class="{{classes.container|join(' ')}}">
         {% block shogun_component_cart_summary_list %}
-            <div class="cart-summary-list">
+            <div class="{{classes.list|join(' ')}}">
 
                 {% block shogun_component_cart_summary_item_total %}
                     {% if showTotal is not same as(false) %}

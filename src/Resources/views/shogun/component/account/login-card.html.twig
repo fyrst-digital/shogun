@@ -1,19 +1,35 @@
 {% sw_extends '@Storefront/storefront/component/account/login.html.twig' %}
 
 {% block component_account_login %}
-    <div class="card login-card">
+
+    {% set cardHeaderTag = cardHeaderTag|default('div') %}
+
+    {% set classes = sh_define_classes({
+        card: ['card', 'login-card'],
+        cardHeader: ['card-header', 'login-card-header'],
+        cardBody: ['card-body', 'login-card-body'],
+        loginForm: {}
+    }, classes|default({}), replaceClasses|default(false)) %}
+
+    <div class="{{classes.card|join(' ')}}">
 
         {% block component_account_login_header %}
             {% if cardTitle %}
-                <h4 class="card-header login-card-header">
-                    {{ cardTitle }}
-                </h4>
+                <{{cardHeaderTag|raw}} 
+                    class="{{classes.cardHeader|join(' ')}}">
+
+                    {% block component_account_login_header_slot %}
+                        {{ cardTitle }}
+                    {% endblock %}
+                </{{cardHeaderTag|raw}}>
             {% endif %}
         {% endblock %}
 
         {% block component_account_login_form %}
-            <div class="card-body login-card-body">
-                {% sw_include '@Storefront/shogun/component/account/login-form.html.twig' %}
+            <div class="{{classes.cardBody|join(' ')}}">
+                {% sw_include '@Storefront/shogun/component/account/login-form.html.twig' with {
+                    classes: classes.loginForm
+                } %}
             </div>
         {% endblock %}
 

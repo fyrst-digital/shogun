@@ -1,15 +1,10 @@
-{% set defaultClasses = {
-    item: ['line-item','js-cart-item', 'line-item-' ~ lineItem.type]
-} %}
+{% set classes = sh_define_classes({
+    item: ['line-item','js-cart-item', 'line-item-' ~ lineItem.type],
+    removeBtn: []
+}, classes|default({}), replaceClasses|default(false)) %}
 
 {% if showRemoveButton is not defined %}
     {% set showRemoveButton = true %}
-{% endif %}
-
-{% if classes is defined %}
-    {% set classes = classes|sh_merge_deep(defaultClasses) %}
-{% else %}
-    {% set classes = defaultClasses %}
 {% endif %}
 
 {% block shogun_component_line_item %}
