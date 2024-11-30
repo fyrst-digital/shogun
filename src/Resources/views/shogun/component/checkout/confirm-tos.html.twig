@@ -12,6 +12,10 @@
     }) %}
 {% endif %}
 
+{% set classes = sh_define_classes({
+    container: ['confirm-tos'],
+}, classes|default({}), replaceClasses|default(false)) %}
+
 {% block shogun_component_confirm_tos %}
     <div class="confirm-tos">
     

@@ -1,4 +1,5 @@
 .method-option-label {
+    background-color: var(--method-option-bg, transparent);
     border: var(--method-option-border-width, 2px) solid var(--method-option-border-color, var(--border-color));
     border-radius: var(--method-option-border-radius, var(--border-radius));
     padding: var(--method-option-padding-y, var(--spacer-sm)) var(--method-option-padding-y, var(--spacer-lg));
@@ -17,6 +18,8 @@
 
         + .method-option-label {
             --method-option-border-color: var(--method-option-checked-border-color, var(--primary));
+            --method-option-bg: var(--method-option-checked-bg, transparent);
+            --method-option-name-color: var(--method-option-checked-name-color, inherit);
         }
     }
 }
