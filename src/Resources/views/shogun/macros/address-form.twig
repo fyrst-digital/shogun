@@ -1,0 +1,147 @@
+{% macro field(
+    name, 
+    label, 
+    placeholder, 
+    prefix, 
+    type = 'text', 
+    required = true, 
+    classes = {}) %}
+
+    {% set classes = sh_define_classes({
+        wrapper: ['form-group'],
+        label: ['form-label'],
+        input: ['form-control'],
+    }, classes|default({}), replaceClasses|default(false)) %}
+
+    {% set violationPath = null %}
+
+    {% if formViolations.getViolations('/' ~ name) is not empty %}
+        {% set violationPath = '/' ~ name %}
+    {% elseif formViolations.getViolations("/#{prefix}/" ~ name) is not empty %}
+        {% set violationPath = "/#{prefix}/" ~ name %}
+    {% endif %}
+
+    {% if required and not violationPath %}
+        {% set requiredMessage = 'error.VIOLATION::IS_BLANK_ERROR'|trans({ '%field%': label|trans|sw_sanitize }) %}
+    {% endif %}
+
+    {% if violationPath %}
+        {% set classes = classes|sh_merge_deep({
+            input: ['is-invalid']
+        }) %}
+    {% endif %}
+
+    <div class="{{classes.wrapper|join(' ')}}">
+
+        <label class="{{classes.label|join(' ')}}" 
+            for="{{ idPrefix ~ prefix }}{{ name|capitalize }}">
+
+            {{ label|trans|sw_sanitize }}
+            {% if required %}{{ 'general.required'|trans|sw_sanitize }}{% endif %}
+        </label>
+
+        <input type="{{ type }}"
+            class="{{classes.input|join(' ')}}"
+            autocomplete="{% if prefix == 'shippingAddress' %}shipping {% elseif prefix == 'billingAddress' %}billing {% endif %}address-line1"
+            id="{{ idPrefix ~ prefix }}{{ name|capitalize }}"
+            placeholder="{{ placeholder|trans|striptags }}"
+            name="{{ prefix }}[{{ name }}]"
+            value="{{ data.get(name) }}"
+            {% if required %}data-form-validation-required{% endif %}
+            {% if requiredMessage is defined %}data-form-validation-required-message="{{ requiredMessage }}"{% endif %}
+            {% if required %}required="required"{% endif %}>
+
+        {% if violationPath %}
+            {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' %}
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro select_field(
+    name, 
+    label, 
+    placeholder, 
+    options = [],
+    optionPlaceholder = false,
+    attributes = {},
+    prefix,
+    required = true, 
+    classes = {}) %}
+
+    {% set classes = sh_define_classes({
+        wrapper: ['form-group'],
+        label: ['form-label'],
+        select: ['form-select'],
+    }, classes|default({}), replaceClasses|default(false)) %}
+
+    {% set violationPath = null %}
+
+    {% if formViolations.getViolations('/' ~ name) is not empty %}
+        {% set violationPath = '/' ~ name %}
+    {% elseif formViolations.getViolations("/#{prefix}/" ~ name) is not empty %}
+        {% set violationPath = "/#{prefix}/" ~ name %}
+    {% endif %}
+
+    {% if required and not violationPath %}
+        {% set requiredMessage = 'error.VIOLATION::IS_BLANK_ERROR'|trans({ '%field%': label|trans|sw_sanitize }) %}
+    {% endif %}
+
+    {% if violationPath %}
+        {% set classes = classes|sh_merge_deep({
+            input: ['is-invalid']
+        }) %}
+    {% endif %}
+
+    <div class="{{classes.wrapper|join(' ')}}">
+
+        <label class="{{classes.label|join(' ')}}" 
+            for="{{ idPrefix ~ prefix }}{{ name|capitalize }}">
+
+            {{ label|trans|sw_sanitize }}
+            {% if required %}{{ 'general.required'|trans|sw_sanitize }}{% endif %}
+        </label>
+
+        <select 
+            class="{{classes.select|join(' ')}}"
+            id="{{ idPrefix ~ prefix }}{{ name|capitalize }}"
+            name="{{ prefix }}[{{ name }}]"
+            {% if attributes|length > 0 %}
+                {% for attribute, value in attributes %}
+                    {{ attribute }}="{{ value }}"
+                {% endfor %}
+            {% endif %}
+            {% if requiredMessage is defined %}data-form-validation-required-message="{{ requiredMessage }}"{% endif %}
+            {% if required %}required="required"{% endif %}>
+
+            {% if optionPlaceholder is same as(true) %}
+                <option value=""
+                        selected="selected"
+                        data-placeholder-option="true">
+                    {{ placeholder|trans|sw_sanitize }}
+                </option>
+            {% endif %}
+
+            {% if options|length > 0 %}   
+                {% for option in options %}
+                    <option 
+                        value="{{ option.value }}" 
+                        {% if option.disabled is same as(true) %}
+                            disabled
+                        {% endif %}
+                        {% if option.disabled is same as(true) %}
+                            disabled
+                        {% endif %}
+                        {% if option.selected is same as(true) %}
+                            selected
+                        {% endif %}>
+                        {{ option.label }}
+                    </option>
+                {% endfor %}
+            {% endif %}
+        </select>
+
+        {% if violationPath %}
+            {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' %}
+        {% endif %}
+    </div>
+{% endmacro %}

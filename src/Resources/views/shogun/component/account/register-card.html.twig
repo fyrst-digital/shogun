@@ -15,7 +15,14 @@
             container: ['register-address'],
             billing: {
                 container: ['register-billing'],
-                title: []
+                title: [],
+                form: {
+                    fields: {
+                        countryState: {
+                            wrapper: ['d-none']
+                        },
+                    },
+                },
             },
         },
     }, classes|default({}), replaceClasses|default(false)) %}
@@ -164,13 +171,13 @@
                                     {% endblock %}
 
                                     {% block component_account_register_address_billing_fields %}
-                                        <div class="grid gap-3">
-                                            {% sw_include '@Storefront/shogun/component/address/address-form.html.twig' with {
-                                                prefix: 'billingAddress',
-                                                data: data.get('billingAddress'),
-                                                showNoShippingPostfix: true,
-                                            } %}
-                                        </div>
+ 
+                                        {% sw_include '@Storefront/shogun/component/address/address-form.html.twig' with {
+                                            prefix: 'billingAddress',
+                                            data: data.get('billingAddress'),
+                                            showNoShippingPostfix: true,
+                                            classes: classes.address.billing.form
+                                        } %}
                                     {% endblock %}
                                 </div>
                             {% endblock %}
@@ -198,14 +205,15 @@
                                             {% endblock %}
 
                                             {% block component_account_register_address_shipping_fields %}
-                                                <div class="grid gap-3">
+
                                                     {% block component_account_register_address_shipping_fields_personal %}
                                                         {% sw_include '@Storefront/shogun/component/address/address-personal.html.twig' with {
                                                             prefix: 'shippingAddress',
                                                             data: data.get('shippingAddress'),
                                                             hideCustomerTypeSelect: false,
                                                             customToggleTarget: true,
-                                                            accountType: data.get('shippingAddress').get('accountType')
+                                                            accountType: data.get('shippingAddress').get('accountType'),
+                                                            classes: classes.personalAddress
                                                         } %}
                                                     {% endblock %}
 
@@ -223,9 +231,10 @@
                                                             data: data.get('shippingAddress'),
                                                             showNoShippingPostfix: true,
                                                             disableNonShippableCountries: true,
+                                                            classes: classes.address.billing.form
                                                         } %}
                                                     {% endblock %}
-                                                </div>
+
                                             {% endblock %}
 
                                         </div>
