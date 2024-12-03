@@ -1,0 +1,29 @@
+{% set classes = sh_define_classes({
+    card: ['card'],
+    header: ['card-header'],
+    body: ['card-body'],
+    footer: ['card-footer'],
+}, classes|default({}), replaceClasses|default(false)) %}
+
+{% block shogun_component_card %}
+    <div class="{{classes.card|join(' ')}}">
+    
+        {% block shogun_component_card_header %}
+            <div class="{{classes.header|join(' ')}}">
+                {% block shogun_component_card_header_slot %}Title{% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block shogun_component_card_body %}
+            <div class="{{classes.body|join(' ')}}">
+                {% block shogun_component_card_body_slot %}Body{% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block shogun_component_card_footer %}
+            <div class="{{classes.footer|join(' ')}}">
+                {% block shogun_component_card_footer_slot %}Footer{% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

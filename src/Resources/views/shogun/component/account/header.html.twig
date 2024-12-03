@@ -1,0 +1,33 @@
+{% set classes = sh_define_classes({
+    header: ['account-header'],
+    title: ['account-header'],
+    description: ['account-header'],
+}, classes|default({}), replaceClasses|default(false)) %}
+
+{% set title = title|default(null) %}
+{% set description = description|default(null) %}
+
+{% block shogun_component_account_header %}
+    <header class="{{classes.header|join(' ')}}">
+
+        {% block shogun_component_account_header_title %}
+            {% if title is not empty %}
+                <h1 class="{{classes.title|join(' ')}}">
+                    {% block shogun_component_account_header_title_slot %}
+                        {{ title }}
+                    {% endblock %}
+                </h1>
+            {% endif %}
+        {% endblock %}
+
+        {% block shogun_component_account_header_description %}
+            {% if description is not empty %}
+                <div class="{{classes.description|join(' ')}}">
+                    {% block shogun_component_account_header_description_slot %}
+                        {{ description }}
+                    {% endblock %}
+                </div>
+            {% endif %}
+        {% endblock %}
+    </header>
+{% endblock %}

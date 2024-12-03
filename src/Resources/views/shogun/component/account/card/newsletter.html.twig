@@ -1,0 +1,28 @@
+{% sw_extends '@Storefront/shogun/component/card.html.twig' %}
+
+{# @deprecated tag:v6.7.0 - default payment method of a customer will be removed #}
+
+{% block shogun_component_card %}
+
+    {% set classes = classes|sh_merge_deep({
+        card: ['account-card', 'account-card-newsletter'],
+    }) %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block shogun_component_card_header_slot %}
+    {{ 'account.newsletterTitle'|trans|sw_sanitize }}
+{% endblock %}
+
+{% block shogun_component_card_body_slot %}
+
+    {% block shogun_account_newsletter %}
+        <div class="js-newsletter-wrapper">
+            {% sw_include '@Storefront/storefront/page/account/newsletter.html.twig' with { newsletterAccountPagelet: page.getNewsletterAccountPagelet() } %}
+        </div>
+    {% endblock %}
+{% endblock %}
+
+{% block shogun_component_card_footer %}
+{% endblock %}

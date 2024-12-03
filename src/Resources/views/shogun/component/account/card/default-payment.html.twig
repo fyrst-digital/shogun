@@ -1,0 +1,39 @@
+{% sw_extends '@Storefront/shogun/component/card.html.twig' %}
+
+{# @deprecated tag:v6.7.0 - default payment method of a customer will be removed #}
+
+{% block shogun_component_card %}
+
+    {% set classes = classes|sh_merge_deep({
+        card: ['account-card', 'account-card-default-payment'],
+        paymentTitle: [],
+        paymentDescription: [],
+    }) %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block shogun_component_card_header_slot %}
+    {{ 'account.overviewPaymentHeader'|trans|sw_sanitize }}
+{% endblock %}
+
+{% block shogun_component_card_body_slot %}
+
+    {% block shogun_account_default_payment %}
+
+        {% block shogun_account_default_payment_title %}
+            <div class="{{classes.paymentTitle|join(' ')}}">
+                {{ context.customer.defaultPaymentMethod.translated.name }}
+            </div>
+        {% endblock %}
+        
+        {% block shogun_account_default_payment_description %}
+            <div class="{{classes.paymentDescription|join(' ')}}">
+                {{ context.customer.defaultPaymentMethod.translated.description }}
+            </div>
+        {% endblock %}
+    {% endblock %}
+{% endblock %}
+
+{% block shogun_component_card_footer %}
+{% endblock %}

@@ -3,7 +3,7 @@
         {% if context.customer %}
             {% block shogun_component_account_dropdown_user_actions %}
                 {% sw_include '@Storefront/shogun/component/account/user-actions.html.twig' with {
-                    activeRoute: activeRoute
+                    activeRoute: activeRoute,
                 } %}
             {% endblock %}
         {% else %}

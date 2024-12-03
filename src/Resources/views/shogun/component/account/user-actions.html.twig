@@ -1,3 +1,11 @@
+{% set classesItem = ['nav-item', 'user-action-item'] %}
+{% set classes = sh_define_classes({
+    nav: ['nav', 'user-actions'],
+    item: classesItem,
+    itemLogout: classesItem|merge(['user-action-logout']),
+    link: ['nav-link', 'user-action-link'],
+}, classes|default({}), replaceClasses|default(false)) %}
+
 {% if userActions is not defined %}
     {% set userActions = {
         home: {
@@ -30,15 +38,22 @@
 
 {% block shogun_component_account_user_actions %}
     {% if userActions is not empty %}  
-        <ul class="nav user-actions">
+        <ul class="{{classes.nav|join(' ')}}">
 
             {% for action in userActions %}
                 {% block shogun_component_account_user_action_item %}
-                    <li class="nav-item user-action-item">
+                    <li class="{{classes.item|join(' ')}}">
 
                         {% block shogun_component_account_user_action_link %}
+
+                            {% if activeRoute is same as(action.route) %}
+                                {% set classes = classes|sh_merge_deep({
+                                    link: ['active']
+                                }) %}
+                            {% endif %}
+
                             <a href="{{path(action.route)}}"
-                                class="nav-link user-action-link{% if activeRoute is same as(action.route) %} active{% endif %}" 
+                                class="{{classes.link|join(' ')}}" 
                                 title="{{action.label}}"
                                 aria-current="page">
 
@@ -58,11 +73,11 @@
             {% endfor %}
 
             {% block shogun_component_account_user_action_item_logout %}
-                <li class="nav-item user-action-item user-action-logout">
+                <li class="{{classes.itemLogout|join(' ')}}">
 
                     {% block shogun_component_account_user_action_logout_link %}
                         <a href="{{ path('frontend.account.logout.page') }}"
-                            class="nav-link user-action-link" 
+                            class="{{classes.link|join(' ')}}" 
                             title="{{ 'account.logout'|trans|sw_sanitize }}"
                             aria-current="page">
 

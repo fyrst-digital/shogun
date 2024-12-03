@@ -1,0 +1,53 @@
+{% sw_extends '@Storefront/shogun/component/card.html.twig' %}
+
+{% block shogun_component_card %}
+
+    {% set classes = classes|sh_merge_deep({
+        card: ['account-card', 'account-card-profile'],
+        profileList: ['list-unstyled'],
+        profileItem: [],
+    }) %}
+
+    {% set profile = {
+        general: {
+            salutation: context.customer.salutation.salutationKey != 'not_specified' ? context.customer.salutation.translated.salutation : null,
+            title: context.customer.title,
+            fullName: context.customer.firstName ~ ' ' ~ context.customer.lastName,
+            email: context.customer.email|decodeIdnEmail,
+        },
+        company: {
+            name: context.customer.company,
+            department: context.customer.defaultBillingAddress.department,
+            vatId: context.customer.vatIds|length > 0 ? context.customer.vatIds.first.vatId : null,
+        },
+    } %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block shogun_component_card_header_slot %}
+    {{ 'account.overviewProfileHeader'|trans|sw_sanitize }}
+{% endblock %}
+
+{% block shogun_component_card_body_slot %}
+
+    {% block shogun_account_profile %}
+        {% for key, item in profile|filter(value => value|sh_values_length > 0) %}
+
+            {% block shogun_account_profile_list %}
+                <ul class="{{classes.profileList|join(' ')}}">
+                    {% for key, value in item|filter(value => value is not empty) %}
+                        {% block shogun_account_profile_item %}
+                            <li class="{{classes.profileItem|join(' ')}}">
+                                {{ value }}
+                            </li>
+                        {% endblock %}
+                    {% endfor %}
+                </ul>
+            {% endblock %}
+        {% endfor %}
+    {% endblock %}
+{% endblock %}
+
+{% block shogun_component_card_footer %}
+{% endblock %}

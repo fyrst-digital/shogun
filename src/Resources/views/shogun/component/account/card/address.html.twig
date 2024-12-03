@@ -1,0 +1,45 @@
+{% sw_extends '@Storefront/shogun/component/card.html.twig' %}
+
+{% block shogun_component_card %}
+
+    {% if addressActions is not defined %}
+        {% set addressActions = false %}
+    {% endif %}
+
+    {% if title is not defined %}
+        {% set title = 'account.overviewBillingHeader'|trans|sw_sanitize %}
+    {% endif %}
+
+    {% set address = address|default(null) %}
+
+    {% set classes = classes|sh_merge_deep({
+        card: ['account-card', 'account-card-newsletter'],
+    }) %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block shogun_component_card_header %}
+    {% if title is not same as(false) %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block shogun_component_card_header_slot %}
+    {{ title }}
+{% endblock %}
+
+{% block shogun_component_card_body_slot %}
+
+    {% block shogun_account_address %}
+        {% sw_include '@Storefront/storefront/component/address/address.html.twig' with {address: context.customer.defaultBillingAddress} %}
+    {% endblock %}
+{% endblock %}
+
+{% block shogun_component_card_footer %}
+    {% if addressActions is same as(true) %}
+        <div class="card-footer">
+            {% sw_include '@Storefront/storefront/page/account/addressbook/address-actions.html.twig' %}
+        </div>
+    {% endif %}
+{% endblock %}
