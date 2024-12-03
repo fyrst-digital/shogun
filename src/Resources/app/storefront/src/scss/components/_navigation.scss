@@ -18,6 +18,11 @@
         color: var(--nav-link-active-color);
         background-color: var(--nav-link-active-bg-color);
         font-weight: var(--nav-link-active-font-weight);
+
+        .icon, 
+        .sh-icon {
+            color: var(--nav-link-active-icon-color);
+        }
     }
 
     .icon, 
