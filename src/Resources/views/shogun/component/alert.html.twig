@@ -1,14 +1,32 @@
 {% sw_extends '@Storefront/storefront/utilities/alert.html.twig' %}
 
 {% block utilities_alert %}
+
+    {% set classes = sh_define_classes({
+        container: ['d-flex', 'flex-wrap', 'align-items-center', 'gap-3', 'alert', 'd-flex', 'align-items-center'],
+    }, classes|default({}), replaceClasses|default(false)) %}
+
     {% if type is same as('error') %}
         {% set type = 'danger' %}
     {% endif %}
 
+    {% if type %}
+        {% set classes = classes|sh_merge_deep({
+            container: ['alert-' ~ type],
+        }) %}
+    {% endif %}
+
+
+    {% if dismissible %}
+        {% set classes = classes|sh_merge_deep({
+            container: ['alert-dismissible', 'fade', 'show'],
+        }) %}
+    {% endif %}
+
     <div role="alert"
-         {# @deprecated tag:v6.7.0 - Class `alert-has-icon` will be removed. Use helper classes `d-flex align-items-center` directly in the template like documented by Bootstrap. #}
-         class="d-flex flex-wrap align-items-center gap-3 alert {% if type %}alert-{{ type }}{% endif %}{% if dismissible %} alert-dismissible fade show{% endif %}{% if icon != 'error' %} {% if feature('ACCESSIBILITY_TWEAKS') %}d-flex align-items-center{% else %}alert-has-icon{% endif %}{% endif %}">
-        
+        {# @deprecated tag:v6.7.0 - Class `alert-has-icon` will be removed. Use helper classes `d-flex align-items-center` directly in the template like documented by Bootstrap. #}
+        class="{{classes.container|join(' ')}}">
+    
         {% block utilities_alert_icon %}
             {% set iconName = 'x' %}
 

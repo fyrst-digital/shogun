@@ -1,17 +1,12 @@
 {% set icon = icon|default('user') %}
 {% set showLabel = showLabel|default(false) %}
 
-{% set defaultClasses = {
+{% set classes = sh_define_classes({
     button: ['btn', 'account-action-btn'],
     icon: ['position-relative', 'd-flex', 'justify-content-center', 'align-items-center'],
-    label: []
-} %}
-
-{% if classes is defined %}
-    {% set classes = defaultClasses|sh_merge_deep(classes) %}
-{% else %}
-    {% set classes = defaultClasses %}
-{% endif %}
+    label: [],
+    accountDropdown: {}
+}, classes|default({}), replaceClasses|default(false)) %}
 
 {% block shogun_component_account_action %}
     <div class="dropdown">
@@ -46,7 +41,9 @@
         {% endblock %}
 
         {% block shogun_component_account_action_dropdown %}
-            {% sw_include '@Storefront/shogun/component/account/dropdown.html.twig' %}
+            {% sw_include '@Storefront/shogun/component/account/dropdown.html.twig' with {
+                classes: classes.accountDropdown
+            } %}
         {% endblock %}
     </div>
 {% endblock %}

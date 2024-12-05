@@ -1,5 +1,12 @@
+{% set classes = sh_define_classes({
+    container: ['dropdown-menu', 'dropdown-menu-end', 'account-dropdown'],
+    register: ['d-grid', 'p-3'],
+    registerBtn: ['btn', 'btn-primary'],
+    loginForm: {}
+}, classes|default({}), replaceClasses|default(false)) %}
+
 {% block shogun_component_account_dropdown %}
-    <div class="dropdown-menu dropdown-menu-end account-dropdown">
+    <div class="{{classes.container|join(' ')}}">
         {% if context.customer %}
             {% block shogun_component_account_dropdown_user_actions %}
                 {% sw_include '@Storefront/shogun/component/account/user-actions.html.twig' with {
@@ -8,9 +15,9 @@
             {% endblock %}
         {% else %}
             {% block shogun_component_account_dropdown_login_form %}
-                <div class="px-3 py-2">
-                    {% sw_include '@Storefront/shogun/component/account/login-form.html.twig'  %}
-                </div>
+                {% sw_include '@Storefront/shogun/component/account/login-form.html.twig' with {
+                    classes: classes.loginForm,
+                } %}
             {% endblock %}
             {% block shogun_component_account_dropdown_register_divider %}
                 <div class="divider">
@@ -22,11 +29,11 @@
                 </div>
             {% endblock %}
             {% block shogun_component_account_dropdown_register %}
-                <div class="d-grid p-3">
+                <div class="{{classes.register|join(' ')}}">
                     {% block shogun_component_account_dropdown_register_action %}
                         <a href="{{ path('frontend.account.login.page') }}"
                             title="{{ 'account.orRegisterLink'|trans|striptags }}"
-                            class="btn btn-primary">
+                            class="{{classes.registerBtn|join(' ')}}">
                             {{ 'account.orRegisterLink'|trans|sw_sanitize }}
                         </a>
                     {% endblock %}

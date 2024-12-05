@@ -1,6 +1,7 @@
 {# @template-origin: storefront/component/account/login.html.twig #}
 
 {% set classes = sh_define_classes({
+	alert: {},
 	form: ['login-form',],
 	username: ['login-form-username'],
 	password: ['login-form-password'],
@@ -26,23 +27,22 @@
 		{% endblock %}
 
 		{% block shogun_component_account_login_form_error %}
+			{% set alertType = 'danger' %}
+			{% set alertMessage = 'account.loginBadCredentials'|trans|sw_sanitize %}
+			
+			{% if errorSnippet != null %}
+				{% set alertMessage = errorSnippet|trans|sw_sanitize %}
+			{% elseif waitTime != null %}
+				{% set alertType = 'info' %}
+				{% set alertMessage = 'account.loginThrottled'|trans({'%seconds%': waitTime})|sw_sanitize %}		
+			{% endif %}
+
 			{% if loginError %}
-				{% if errorSnippet != null %}
-					{% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
-						type: 'danger',
-						content: errorSnippet|trans|sw_sanitize
-					} %}
-				{% elseif waitTime != null %}
-					{% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
-						type: 'info',
-						content: 'account.loginThrottled'|trans({'%seconds%': waitTime})|sw_sanitize
-					} %}
-				{% else %}
-					{% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
-						type: 'danger',
-						content: 'account.loginBadCredentials'|trans|sw_sanitize
-					} %}
-				{% endif %}
+				{% sw_include '@Storefront/shogun/component/alert.html.twig' with {
+					type: alertType,
+					content: alertMessage,
+					classes: classes.alert
+				} %}
 			{% endif %}
 		{% endblock %}
 
