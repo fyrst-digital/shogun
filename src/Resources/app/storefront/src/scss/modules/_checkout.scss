@@ -16,6 +16,9 @@
 }
 
 /** summaries **/
+.cart-summary-list {
+    max-width: var(--summary-list-max-w, none);
+}
 .cart-summary-item-label,
 .cart-summary-item-value {
     font-size: var(--summary-item-font-size);

@@ -1,0 +1,60 @@
+{% set classes = sh_define_classes({
+    list: ['order-detail-summary-list', 'cart-summary-list'],
+}, classes|default({}), replaceClasses|default(false)) %}
+
+{% block shogun_component_order_item_details_summary %}
+    <div class="{{classes.list|join(' ')}}">
+
+        {% block shogun_component_order_item_details_summary_shipping_costs %}
+            {% if order.deliveries|length > 0 %}
+                {% sw_include '@Storefront/shogun/component/cart/summary-item.html.twig'
+                    with {
+                        label: 'account.orderItemShippingcosts'|trans|sw_sanitize,
+                        value: order.shippingTotal|currency(order.currency.isoCode),
+                        classes: {
+                            item: ['summary-item-shipping']
+                        }
+                    } 
+                only %}
+            {% endif %}
+        {% endblock %}
+
+        {% block shogun_component_order_item_details_summary_amount %}
+            {% set totalAmountLabel = 'account.orderItemTotal'|trans|sw_sanitize %}
+            {% set totalAmountValue = order.amountTotal|currency(order.currency.isoCode) %}
+
+            {% if order.isTaxFree %}
+                {% set totalAmountLabel = 'account.orderItemNetTotal'|trans|sw_sanitize %}
+                {% set totalAmountValue = order.amountNet|currency(order.currency.isoCode) %}
+            {% endif %}
+
+            {% sw_include '@Storefront/shogun/component/cart/summary-item.html.twig'
+                with {
+                    label: totalAmountLabel,
+                    value: totalAmountValue,
+                    classes: {
+                        item: ['summary-item-grand-total']
+                    }
+                } 
+            only %}
+        {% endblock %}
+
+        {% block shogun_component_order_item_details_summary_vat %}
+            {% if not order.isTaxFree %}
+                {% for calculatedTax in order.price.calculatedTaxes %}
+                    {% sw_include '@Storefront/shogun/component/cart/summary-item.html.twig'
+                        with {
+                            label: 'checkout.summaryTax'|trans({
+                                '%rate%':  calculatedTax.taxRate
+                            })|sw_sanitize,
+                            value: calculatedTax.tax|currency(order.currency.isoCode),
+                            classes: {
+                                item: ['summary-item-tax-total']
+                            }
+                        } 
+                    only %}
+                {% endfor %}
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}

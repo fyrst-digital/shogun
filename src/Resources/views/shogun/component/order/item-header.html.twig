@@ -1,0 +1,61 @@
+{% set storefrontTemplate = '@Storefront/storefront/page/account/order-history/order-item.html.twig' %}
+
+{% set classes = sh_define_classes({
+    container: ['card-header', 'order-item-header'],
+    title: ['order-item-header-title'],
+    status: ['order-item-status'],
+    orderNumber: ['order-table-header-order-number'],
+    contextMenu: {},
+}, classes|default({}), replaceClasses|default(false)) %}
+
+{% block shogun_component_order_item_header %}
+    <div class="{{classes.container|join(' ')}}">
+        {% set states = [
+            ORDER_TRANSACTION_STATE_FAILED,
+            ORDER_TRANSACTION_STATE_REMINDED,
+            ORDER_TRANSACTION_STATE_UNCONFIRMED,
+            ORDER_TRANSACTION_STATE_CANCELLED
+        ] %}
+
+        {% set orderState = order.stateMachineState.technicalName %}
+        {% set orderPaymentState = order.transactions.last.stateMachineState.technicalName %}
+
+        {% set isPaymentNeeded = orderPaymentState in states and orderState != ORDER_STATE_CANCELLED %}
+
+        {% block page_account_order_item_heading_title_container %}
+            <div class="order-item-header-title-container">
+
+                {% block page_account_order_item_heading_title %}
+                    <div class="{{classes.title|join(' ')}}">
+                        {{ 'account.orderHeadline'|trans|sw_sanitize }} {{ order.orderDateTime|format_date('short', locale=app.request.locale) }}
+                    </div>
+                {% endblock %}
+
+                {% block page_account_order_item_status %}
+                    <div class="{{classes.status|join(' ')}}">
+                        {% if isPaymentNeeded %}
+                            {{ block('page_account_order_item_status_badge_payment_process_needed', storefrontTemplate) }}
+                        {% else %}
+                            {{ block('page_account_order_item_status_badge', storefrontTemplate) }}
+                        {% endif %}
+                    </div>
+                {% endblock %}
+
+                {% block page_account_order_item_order_number_col %}
+                    <div class="{{classes.orderNumber|join(' ')}}">
+                        {% block page_account_order_item_order_number %}
+                            {{ 'account.orderNumber'|trans|sw_sanitize }} {{ order.orderNumber|sw_sanitize }}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+
+        {% endblock %}
+
+        {% block page_account_order_item_context_menu_col %}
+            {% sw_include '@Storefront/shogun/component/order/item-context-menu.html.twig' with {
+                classes: classes.contextMenu,
+            } %}
+        {% endblock %}
+    </div>
+{% endblock %}

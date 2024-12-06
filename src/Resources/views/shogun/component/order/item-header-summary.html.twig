@@ -1,0 +1,86 @@
+{% set classes = sh_define_classes({
+    container: ['card-body', 'order-item-header-summary'],
+    summaryContainer: [],
+    toggleDetails: {
+        container: [],
+        button: ['btn', 'order-hide-btn', 'collapsed']
+    },
+    summary: {
+        item: ['order-item-summary-item']
+    }
+}, classes|default({}), replaceClasses|default(false)) %}
+
+{% block shogun_component_order_item_header_summary %}
+    <div class="{{classes.container|join(' ')}}">
+
+        {% block shogun_component_order_item_header_summary_items %}
+            <div class="{{classes.summaryContainer|join(' ')}}">
+            
+                {% block shogun_component_order_item_header_summary_shipping_status %}
+                    {% if order.deliveries|length > 0 %}
+                        {% sw_include '@Storefront/shogun/component/order/summary-item.html.twig' with {
+                            label: 'account.orderShippingStatus'|trans|sw_sanitize,
+                            value: order.deliveries|first.stateMachineState.translated.name,
+                            classes: classes.summary,
+                        } %}
+                    {% endif %}
+                {% endblock %}
+
+                {% block shogun_component_order_item_header_summary_payment_status %}
+                    {% sw_include '@Storefront/shogun/component/order/summary-item.html.twig' with {
+                        label: 'account.orderPaymentStatus'|trans|sw_sanitize,
+                        value: order.transactions|last.stateMachineState.translated.name,
+                        classes: classes.summary,
+                    } %}
+                {% endblock %}
+
+                {% block shogun_component_order_item_header_summary_payment_method %}
+                    {% sw_include '@Storefront/shogun/component/order/summary-item.html.twig' with {
+                        label: 'account.orderPaymentMethod'|trans|sw_sanitize,
+                        value: order.transactions|last.paymentMethod.translated.name,
+                        classes: classes.summary,
+                    } %}
+                {% endblock %}
+
+                {% block shogun_component_order_item_header_summary_shipping_method %}
+                    {% if order.deliveries|length > 0 %}
+                        {% sw_include '@Storefront/shogun/component/order/summary-item.html.twig' with {
+                            label: 'account.orderShippingMethod'|trans|sw_sanitize,
+                            value: order.deliveries|first.shippingMethod.translated.name,
+                            classes: classes.summary,
+                        } %}
+                    {% endif %}
+                {% endblock %}
+
+                {% block shogun_component_order_item_header_summary_user_comment %}
+                    {% if order.customerComment %}
+                        {% sw_include '@Storefront/shogun/component/order/summary-item.html.twig' with {
+                            label: 'checkout.customerCommentHeader'|trans|sw_sanitize,
+                            value: order.customerComment|sw_sanitize|nl2br,
+                            classes: classes.summary,
+                        } %}
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block shogun_component_order_item_header_summary_toggle_details %}
+            <div class="{{classes.toggleDetails.container|join(' ')}}">
+
+                {% block shogun_component_order_item_header_summary_toggle_details_button %}
+                    <button 
+                        class="{{classes.toggleDetails.button|join(' ')}}"
+                        type="submit"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#order{{ order.orderNumber }}"
+                        aria-expanded="false"
+                        aria-controls="collapseExample">
+                        {% block shogun_component_order_item_header_summary_toggle_details_button_slot %}
+                            {{ 'account.orderActionView'|trans|sw_sanitize }}
+                        {% endblock %}
+                    </button>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

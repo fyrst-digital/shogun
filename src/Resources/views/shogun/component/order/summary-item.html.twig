@@ -1,24 +1,20 @@
-{% set defaultClasses = {
-    item: ['order-item-summary-item']
-} %}
-
-{% if classes is defined %}
-    {% set classes = classes|sh_merge_deep(defaultClasses) %}
-{% else %}
-    {% set classes = defaultClasses %}
-{% endif %}
+{% set classes = sh_define_classes({
+    item: ['order-item-summary-item'],
+    label: ['order-item-summary-item-label'],
+    value: ['order-item-summary-item-value'],
+}, classes|default({}), replaceClasses|default(false)) %}
 
 {% block shogun_component_order_item_summary_item %}
     <div class="{{ classes.item|join(' ') }}">
 
         {% block shogun_component_order_item_summary_item_label %}
-            <div class="order-item-summary-item-label">
+            <div class="{{ classes.label|join(' ') }}">
                 {{ label|raw }}
             </div>
         {% endblock %}
 
         {% block shogun_component_order_item_summary_item_value %}
-            <div class="order-item-summary-item-value">
+            <div class="{{ classes.value|join(' ') }}">
                 {{ value|raw }}
             </div>
         {% endblock %}

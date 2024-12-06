@@ -1,0 +1,89 @@
+{% set storefrontTemplate = '@Storefront/storefront/page/account/order-history/order-item.html.twig' %}
+
+{% set classes = sh_define_classes({
+    container: ['order-table-header-context-menu-wrapper'],
+    toggleBtn: ['btn', 'dropdown-toggle'],
+    dropdown: ['dropdown-menu', 'dropdown-menu-end'],
+    actionBtn: ['dropdown-item'],
+}, classes|default({}), replaceClasses|default(false)) %}
+
+{% block shogun_component_order_item_context_menu %}
+    <div class="{{classes.container|join(' ')}}">
+
+        {% block shogun_component_order_item_context_menu_toggle_button %}
+            <button class="{{classes.toggleBtn|join(' ')}}"
+                    type="button"
+                    id="accountOrderDropdown"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-label="{{ 'account.orderActions' }}">
+                {{'orderItem.moreOptions'|trans}}
+            </button>
+        {% endblock %}
+
+        {% block shogun_component_order_item_context_menu_dropdown %}
+            <div 
+                class="{{classes.dropdown|join(' ')}}"
+                aria-labelledby="accountOrderDropdown">
+
+                {% block shogun_component_order_item_action_change_payment %}
+                    {% set actionLabelSnippet = 'account.orderContextMenuChangePayment' %}
+                    {% set actionIcon = 'pencil-simple-line' %}
+
+                    {% if isPaymentNeeded %}
+                        {% set actionLabelSnippet = 'account.orderStatusActionCompletePayment' %}
+                        {% set actionIcon = 'check' %}
+                    {% endif %}
+
+                    <a class="{{classes.actionBtn|join(' ')}}"
+                        href="{{ path('frontend.account.edit-order.page', { orderId: order.id }) }}">
+                        {{sh_icon(actionIcon)}}
+                        {{ actionLabelSnippet|trans|sw_sanitize }}
+                    </a>
+                {% endblock %}
+
+                {% block shogun_component_order_item_action_repeat_order %}
+
+                    {% set action = path('frontend.checkout.line-item.add') %}
+
+                    {% block shogun_component_order_item_action_repeat_order_form %}
+                        <form action="{{ action }}"
+                                id="orderDetailForm-{{ order.Id }}"
+                                method="post"
+                                data-add-to-cart="true"
+                                style="display: contents !important;">
+
+                                <input type="hidden" name="redirectTo" value="frontend.cart.offcanvas">
+
+                            {{ block('page_account_order_item_context_menu_reorder_form_line_items_input', storefrontTemplate) }}
+
+                            {% block shogun_component_order_item_action_repeat_order_button %}
+                                <button 
+                                    class="{{classes.actionBtn|join(' ')}}" 
+                                    type="submit">
+                                    {{sh_icon('arrows-clockwise')}}
+                                    {{ 'account.orderContextMenuReorder'|trans|sw_sanitize }}
+                                </button>
+                            {% endblock %}
+                        </form>
+                    {% endblock %}
+                {% endblock %}
+
+                {% block shogun_component_order_item_action_cancel_order %}
+                    {% if orderState != ORDER_STATE_CANCELLED and config('core.cart.enableOrderRefunds') %}
+                        <button 
+                            type="button"
+                            class="{{classes.actionBtn|join(' ')}}"
+                            data-bs-toggle="modal"
+                            data-bs-target="#order-{{ order.id }}">
+                            {{sh_icon('x')}}
+                            {{ 'account.editOrderCancelOrderButton'|trans|sw_sanitize }}
+                        </button>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+    </div>
+{% endblock %}

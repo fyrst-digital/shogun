@@ -1,12 +1,14 @@
 {% sw_extends '@Storefront/storefront/page/account/order-history/order-detail-list.html.twig' %}
 
 {% block page_account_order_item_detail_line_item %}
+    {% set classes = sh_define_classes({
+        item: ['order-line-item']
+    }, classes|default({}), replaceClasses|default(false)) %}
+
     {% sw_include '@Storefront/shogun/component/line-item/line-item.html.twig' with {
         lineItem: lineItem,
         autoSubmit: false,
         showRemoveButton: false,
-        classes: {
-            item: ['order-line-item']
-        }
+        classes: classes
     } only %}
 {% endblock %}
