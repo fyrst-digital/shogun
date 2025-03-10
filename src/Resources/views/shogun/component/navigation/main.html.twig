@@ -39,7 +39,6 @@
                 <a class="{{ classes.link|join(' ') }}"
                     href="{{ path('frontend.home.page') }}"
                     itemprop="url"
-                    data-nav-item="{{ context.salesChannel.navigationCategoryId }}"
                     title="{{ homeLabel|striptags }}">
                     <span class="d-contents" itemprop="name">{{ homeLabel|sw_sanitize }}</span>
                 </a>
@@ -73,9 +72,10 @@
                         {% if isFolder is same as(false) and category_linknewtab(category) %}
                             target="_blank"
                         {% endif %}
-                        class="{{ classes.link|join(' ') }}"
-                        data-nav-item="{{ category.id }}">
-
+                        {% if treeItem.children is not empty %}
+                            data-nav-item="{{ category.id }}"
+                        {% endif %}
+                        class="{{ classes.link|join(' ') }}">
                         {{ name }}
                     </{{ itemTag|raw }}>
                 {% endblock %}

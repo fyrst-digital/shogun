@@ -1,3 +1,9 @@
+# 1.5.1
+
+## Changelog
+
+- component(navigation): fix and build js module, remove item selector if children is empty
+
 # 1.5.0
 
 Since there are breaking changes, this will be a minor release.

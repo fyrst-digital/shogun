@@ -66,8 +66,6 @@ export default class NavigationFlyout extends PluginBaseClass {
 
     onNavigationEnter(event) {
 
-        console.log('onNavigationEnter', event)
-
         if (this._timeout) {
             clearTimeout(this._timeout)
             this._timeout = null
@@ -75,10 +73,9 @@ export default class NavigationFlyout extends PluginBaseClass {
     }
 
     onNavigationLeave(event) {
-        console.log('onNavigationLeave', event.toElement, this.el.contains(event.toElement))
 
         if (!this.el.contains(event.toElement)) {
-            //this._removeNavigationContainer()
+            this._removeNavigationContainer()
         }
     }
 
@@ -121,7 +118,7 @@ export default class NavigationFlyout extends PluginBaseClass {
         event.preventDefault()
 
         if (event.toElement !== this.navigationContainer) {
-            // this._removeNavigationContainer(event)
+            this._removeNavigationContainer(event)
         }
     }
 
