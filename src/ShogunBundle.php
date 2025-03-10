@@ -19,6 +19,7 @@ class ShogunBundle extends Bundle implements ThemeInterface
         parent::build($container);
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/DependencyInjection'));
         $loader->load('services.xml');
+        #$loader->import('routes.xml');
 
         $container->addCompilerPass(new DisableTemplateCachePass());
         $container->addCompilerPass(new StorefrontMigrationReplacementCompilerPass());

@@ -1,3 +1,18 @@
+# 1.5.0
+
+Since there are breaking changes, this will be a minor release.
+
+## Breaking Changes
+
+We introduce a new navigation flyout navigation that works async and on demand. **Therefore things have changed in navigation templates and styling.** most breaking is the removal of navigation styles and a rework of the `navigation/flyout` and `navigation/main` component template.
+
+## Changelog
+
+- **Style**: Remove navigation skin/minimal styling
+- **Component**: Rework `navigation/flyout` and `navigation/main` template
+- **Component**: Adding `navigation/categories` template
+- **Javascript**: Adding `navigation-flyout` module to handle the new flyout navigation behavior
+
 # 1.4.0
 
 Since there are breaking changes, this will be a minor release.
