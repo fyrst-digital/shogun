@@ -10,6 +10,16 @@
             <argument type="service" id="event_dispatcher"/>
         </service>
 
+        <service id="Fyrst\ShogunBundle\Storefront\Controller\NavigationController" public="true">
+            <argument type="service" id="Shopware\Core\Content\Category\Service\NavigationLoader"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <call method="setTwig">
+                <argument type="service" id="twig"/>
+            </call>
+        </service>
+
         <service id="Fyrst\ShogunBundle\Twig\ShIcon" public="true">
             <tag name="twig.extension"/>
         </service>

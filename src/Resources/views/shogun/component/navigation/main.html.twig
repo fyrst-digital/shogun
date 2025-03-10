@@ -1,5 +1,19 @@
 {% set homeLabel = context.salesChannel.translated.homeName|default('general.homeLink'|trans) %}
+
 {% set activePath = page.header.navigation.active.path %}
+
+{% set flyoutDefaults = {
+    active: false,
+    options: {
+        path: path('frontend.shogun.navigation.flyout')
+    }
+} %}
+
+{% if flyout is defined %}
+    {% set flyout = flyoutDefaults|replace_recursive(flyout) %}
+{% else %}
+    {% set flyout = flyoutDefaults %}
+{% endif %}
 
 {% set classes = sh_define_classes({
     bar: ['nav', 'main-navigation-menu'],
@@ -9,6 +23,10 @@
 {% block shogun_component_navigation_main %}
     <nav class="{{ classes.bar|join(' ') }}"
         aria-label="{{ 'header.navigationAriaLabel'|trans|sw_sanitize }}"
+        {% if flyout.active %}
+            data-navigation-flyout="true"
+            data-navigation-flyout-options="{{ flyout.options|json_encode }}"
+        {% endif %}
         itemscope="itemscope"
         itemtype="http://schema.org/SiteNavigationElement">
 

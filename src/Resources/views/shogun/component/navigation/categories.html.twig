@@ -1,0 +1,51 @@
+{% block shogun_component_navigation_categories %}
+
+    {% if not level %}
+        {% set level = 0 %}
+    {% endif %}
+
+    {% for treeItem in navigationTree %}
+        {% set category = treeItem.category %}
+        {% set categoryId = category.id %}
+        {% set categoryName = category.translated.name %}
+        {% set categoryUrl = category_url(category) %}
+        {% set htmlTag = 'a' %}
+        {% set hasHref = true %}
+
+        {% if category.type is same as('folder') %}
+            {% set htmlTag = 'span' %}
+            {% set hasHref = false %}
+        {% endif %}
+
+        {% block shogun_component_navigation_categories_item %}
+            <div class="navigation-category level-{{ level }}">
+
+                {% block shogun_component_navigation_categories_title %}
+                    <div class="navigation-category-title">
+
+                        {% block shogun_component_navigation_categories_link %}
+                            <{{ htmlTag|raw }} 
+                                {% if hasHref %}
+                                    href="{{ categoryUrl }}"
+                                {% endif %} 
+                                class="navigation-category-link">
+                                {{ categoryName }}
+                            </{{ htmlTag|raw }}>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                {% block shogun_component_navigation_categories_recursion %}
+                    {% if treeItem.children is not empty %}
+                        <div class="navigation-category-children">
+                            {% sw_include '@Storefront/shogun/component/navigation/categories.html.twig' with {
+                                navigationTree: treeItem.children,
+                                level: level + 1
+                            } only %}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    {% endfor %}
+{% endblock %}
