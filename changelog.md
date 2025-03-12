@@ -1,8 +1,14 @@
+# 1.5.2
+
+## Changelog
+
+- **styling(icons)**: add bold variants for `arrow-*` and `caret-*`
+
 # 1.5.1
 
 ## Changelog
 
-- component(navigation): fix and build js module, remove item selector if children is empty
+- **component(navigation)**: fix and build js module, remove item selector if children is empty
 
 # 1.5.0
 
