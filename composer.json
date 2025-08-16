@@ -1,8 +1,8 @@
 {
     "name": "fyrst/shogun",
     "description": "Rocket start for custom theme development in Shopware 6. Pure Bootstrap by default with first class opt-in components",
-    "version": "1.5.2",
-    "type": "symfony-bundle",
+    "version": "2.0.0",
+    "type": "shopware-bundle",
     "license": "MIT",
     "keywords": [
         "bootstrap",
@@ -27,8 +27,8 @@
         "issues": "https://gitlab.com/fyrst/shogun/-/issues"
     },
     "require": {
-        "shopware/core": "^6.6.0",
-        "shopware/storefront": "^6.6.0"
+        "shopware/core": "~6.7",
+        "shopware/storefront": "~6.7"
     },
     "config": {
         "sort-packages": true,
@@ -46,6 +46,9 @@
         "post-update-cmd": [
             "@npm-install-storefront"
         ]
+    },
+    "extra": {
+        "shopware-bundle-name": "ShogunBundle"
     },
     "autoload": {
         "psr-4": {

@@ -5,11 +5,13 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
 
+        <!-- decorators -->
         <service id="Fyrst\ShogunBundle\Decorator\ThemeFileResolverDecorator" decorates="Shopware\Storefront\Theme\ThemeFileResolver">
             <argument type="service" id="Fyrst\ShogunBundle\Decorator\ThemeFileResolverDecorator.inner"/>
             <argument type="service" id="event_dispatcher"/>
         </service>
 
+        <!-- controllers-->
         <service id="Fyrst\ShogunBundle\Storefront\Controller\NavigationController" public="true">
             <argument type="service" id="Shopware\Core\Content\Category\Service\NavigationLoader"/>
             <call method="setContainer">
@@ -20,6 +22,7 @@
             </call>
         </service>
 
+        <!-- twig extensions -->
         <service id="Fyrst\ShogunBundle\Twig\ShIcon" public="true">
             <tag name="twig.extension"/>
         </service>
