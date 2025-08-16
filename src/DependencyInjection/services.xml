@@ -22,6 +22,12 @@
             </call>
         </service>
 
+        <!-- subscribers -->
+        <service id="Fyrst\ShogunBundle\Subscriber\ThemeSubscriber" public="true">
+            <argument type="service" id="kernel"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
         <!-- twig extensions -->
         <service id="Fyrst\ShogunBundle\Twig\ShIcon" public="true">
             <tag name="twig.extension"/>

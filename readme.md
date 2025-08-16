@@ -64,3 +64,39 @@ class AcmeAwesomeTheme extends Plugin implements ThemeInterface
 ```
 
 Now just install and activate your plugin and you are ready to go.
+
+## Shogun as dependency
+
+### Resolve Shogun Bundle in your Theme
+
+Shogun is aliased in the storefront webpack config. So you can import Javascript modules from Shogun like this:  
+`import ...`
+
+In SCSS you can import utilities from Shogun like this:  
+`@import '~/shogun/scss/mixins/vars'`
+
+Notice that at the moment you can only import SCSS styles only in a theme because of the scssphp compiler. You also have to resolve shogun in your theme config. So change your `theme.json` style section from:
+
+``` json
+{
+    "style": [
+        "app/storefront/src/scss/base.scss"
+    ]
+}
+```
+
+To:
+
+``` json
+{
+    "style": [
+        {
+            "app/storefront/src/scss/base.scss": {
+                "resolve": {
+                    "shogun": ""
+                }
+            },
+        }
+    ]
+}
+```
