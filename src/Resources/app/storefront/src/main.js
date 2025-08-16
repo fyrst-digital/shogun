@@ -1,9 +1,13 @@
-const PluginManager = window.PluginManager
+/**
+ * Just an example on how to include shogun js modules
+ */
 
-console.log('ShogunBundle: main.js')
+// const PluginManager = window.PluginManager
 
-PluginManager.register(
-    'ShGallerySlider', 
-    () => import('shogun/js/component/gallery-slider'), 
-    '[data-sh-component="gallery-slider"]'
-)
+// console.log('ShogunBundle: main.js')
+
+// PluginManager.register(
+//     'ShGallerySlider', 
+//     () => import('shogun/js/component/gallery-slider'), 
+//     '[data-sh-component="gallery-slider"]'
+// )

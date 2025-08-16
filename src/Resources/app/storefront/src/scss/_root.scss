@@ -1,7 +1,0 @@
-:root {
-    @include cssVarByMap(spacer, $sh-spacers);
-    @include cssVarByMap(font-size, $sh-font-sizes);
-    //--btn-buy-bg-color: #{$sw-color-buy-button};
-    //--btn-buy-color: #{$sw-color-buy-button-text};
-    //--btn-buy-bg-color: #{$sw-color-buy-button};
-}

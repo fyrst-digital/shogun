@@ -6,7 +6,10 @@
 }, classes|default({}), replaceClasses|default(false)) %}
 
 {% block shogun_component_account_dropdown %}
-    <div class="{{classes.container|join(' ')}}">
+    <div 
+        class="{{classes.container|join(' ')}}"
+        aria-labelledby="accountWidget">
+        
         {% if context.customer %}
             {% block shogun_component_account_dropdown_user_actions %}
                 {% sw_include '@Storefront/shogun/component/account/user-actions.html.twig' with {

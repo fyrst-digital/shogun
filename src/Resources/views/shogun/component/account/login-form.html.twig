@@ -17,13 +17,15 @@
 		class="{{classes.form|join(' ')}}">
 
 		{% block shogun_component_account_login_form_parameter %}
-			<input type="hidden"
-					name="redirectTo"
-					value="{{ redirectTo }}">
+			<input 
+				type="hidden"
+				name="redirectTo"
+				value="{{ redirectTo }}">
 
-			<input type="hidden"
-					name="redirectParameters"
-					value="{{ redirectParameters }}">
+			<input 
+				type="hidden"
+				name="redirectParameters"
+				value="{{ redirectParameters }}">
 		{% endblock %}
 
 		{% block shogun_component_account_login_form_error %}

@@ -1,9 +1,0 @@
-/**
- * @deprecated
- * use bootstrap nativ `.form-text` instead
-**/
-.text-style-muted {
-    @extend .text-body-tertiary;
-    font-size: 14px;
-    font-weight: 600;
-}

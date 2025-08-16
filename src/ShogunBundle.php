@@ -10,9 +10,8 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Shopware\Storefront\DependencyInjection\DisableTemplateCachePass;
 use Shopware\Storefront\DependencyInjection\StorefrontMigrationReplacementCompilerPass;
-use Shopware\Storefront\Framework\ThemeInterface;
 
-class ShogunBundle extends Bundle implements ThemeInterface
+class ShogunBundle extends Bundle
 {
     public function build(ContainerBuilder $container): void
     {

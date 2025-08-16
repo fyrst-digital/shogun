@@ -1,9 +1,0 @@
-.pagination {
-    @extend .m-0, .flex-wrap, .justify-content-center;
-}
-.page-link {
-    @extend .d-flex, .text-center, .justify-content-center;
-    font-weight: var(--pagination-font-weight, 500);
-    line-height: 1;
-    cursor: pointer;
-}
