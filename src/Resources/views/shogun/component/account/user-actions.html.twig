@@ -1,9 +1,6 @@
-{% set classesItem = ['nav-item', 'user-action-item'] %}
 {% set classes = sh_define_classes({
-    nav: ['nav', 'user-actions'],
-    item: classesItem,
-    itemLogout: classesItem|merge(['user-action-logout']),
-    link: ['nav-link', 'user-action-link'],
+    nav: ['list-group', 'user-actions'],
+    item: ['list-group-item', 'list-group-item-action', 'user-action-item'],
 }, classes|default({}), replaceClasses|default(false)) %}
 
 {% if userActions is not defined %}
@@ -23,11 +20,6 @@
             label: 'account.addressLink'|trans|sw_sanitize,
             icon: 'address-book'
         },
-        payment: {
-            route: 'frontend.account.payment.page',
-            label: 'account.paymentLink'|trans|sw_sanitize,
-            icon: 'credit-card'
-        },
         orders: {
             route: 'frontend.account.order.page',
             label: 'account.ordersLink'|trans|sw_sanitize,
@@ -38,59 +30,56 @@
 
 {% block shogun_component_account_user_actions %}
     {% if userActions is not empty %}  
-        <ul class="{{classes.nav|join(' ')}}">
+        <div class="{{classes.nav|join(' ')}}">
 
             {% for action in userActions %}
                 {% block shogun_component_account_user_action_item %}
-                    <li class="{{classes.item|join(' ')}}">
 
-                        {% block shogun_component_account_user_action_link %}
+                    {% block shogun_component_account_user_action_link %}
 
-                            {% if activeRoute is same as(action.route) %}
-                                {% set classes = classes|sh_merge_deep({
-                                    link: ['active']
-                                }) %}
-                            {% endif %}
+                        {% if activeRoute is same as(action.route) %}
+                            {% set classes = classes|sh_merge_deep({
+                                item: ['active']
+                            }) %}
+                        {% endif %}
 
-                            <a href="{{path(action.route)}}"
-                                class="{{classes.link|join(' ')}}" 
-                                title="{{action.label}}"
-                                aria-current="page">
+                        <a href="{{path(action.route)}}"
+                            class="{{classes.item|join(' ')}}" 
+                            title="{{action.label}}"
+                            aria-current="page">
 
-                                {% block shogun_component_account_user_action_link_icon %}
-                                    {% if action.icon is defined %}
-                                        {{sh_icon(action.icon)}}
-                                    {% endif %}
-                                {% endblock %}
+                            {% block shogun_component_account_user_action_link_icon %}
+                                {% if action.icon is defined %}
+                                    {{sh_icon(action.icon)}}
+                                {% endif %}
+                            {% endblock %}
 
-                                {% block shogun_component_account_user_action_link_label %}
-                                    {{action.label}}
-                                {% endblock %}
-                            </a>
-                        {% endblock %}
-                    </li>
+                            {% block shogun_component_account_user_action_link_label %}
+                                {{action.label}}
+                            {% endblock %}
+                        </a>
+                    {% endblock %}
+
                 {% endblock %}
             {% endfor %}
 
             {% block shogun_component_account_user_action_item_logout %}
-                <li class="{{classes.itemLogout|join(' ')}}">
 
-                    {% block shogun_component_account_user_action_logout_link %}
-                        <a href="{{ path('frontend.account.logout.page') }}"
-                            class="{{classes.link|join(' ')}}" 
-                            title="{{ 'account.logout'|trans|sw_sanitize }}"
-                            aria-current="page">
+                {% block shogun_component_account_user_action_logout_link %}
+                    <a href="{{ path('frontend.account.logout.page') }}"
+                        class="{{classes.item|join(' ')}}" 
+                        title="{{ 'account.logout'|trans|sw_sanitize }}"
+                        aria-current="page">
 
-                            {% block shogun_component_account_user_action_logout_link_icon %}
-                            {% endblock %}
+                        {% block shogun_component_account_user_action_logout_link_icon %}
+                        {% endblock %}
 
-                            {% block shogun_component_account_user_action_logout_link_label %}
-                                {{ 'account.logout'|trans|sw_sanitize }}
-                            {% endblock %}
-                        </a>
-                    {% endblock %}
-                </li>
+                        {% block shogun_component_account_user_action_logout_link_label %}
+                            {{ 'account.logout'|trans|sw_sanitize }}
+                        {% endblock %}
+                    </a>
+                {% endblock %}
             {% endblock %}
-        </ul>
+        </div>
     {% endif %}
 {% endblock %}

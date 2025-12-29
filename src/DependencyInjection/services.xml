@@ -6,10 +6,10 @@
     <services>
 
         <!-- decorators -->
-        <service id="Fyrst\ShogunBundle\Decorator\ThemeFileResolverDecorator" decorates="Shopware\Storefront\Theme\ThemeFileResolver">
+        <!-- <service id="Fyrst\ShogunBundle\Decorator\ThemeFileResolverDecorator" decorates="Shopware\Storefront\Theme\ThemeFileResolver">
             <argument type="service" id="Fyrst\ShogunBundle\Decorator\ThemeFileResolverDecorator.inner"/>
             <argument type="service" id="event_dispatcher"/>
-        </service>
+        </service> -->
 
         <!-- controllers-->
         <service id="Fyrst\ShogunBundle\Storefront\Controller\NavigationController" public="true">
@@ -23,10 +23,10 @@
         </service>
 
         <!-- subscribers -->
-        <service id="Fyrst\ShogunBundle\Subscriber\ThemeSubscriber" public="true">
+        <!-- <service id="Fyrst\ShogunBundle\Subscriber\ThemeSubscriber" public="true">
             <argument type="service" id="kernel"/>
             <tag name="kernel.event_subscriber"/>
-        </service>
+        </service> -->
 
         <!-- twig extensions -->
         <service id="Fyrst\ShogunBundle\Twig\ShIcon" public="true">
